@@ -38,6 +38,11 @@ export const INITIAL_GAME_STATE: GameState = {
   usedQuestionIds: [],
   currentCategory: null,
   currentQuestion: null,
+  dualQuestions: null,
+  dualAnswers: {
+    teamA: null,
+    teamB: null,
+  },
   lastAnswerResult: null,
   pendingDiscovery: null,
   answerHistory: [],

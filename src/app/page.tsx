@@ -12,23 +12,18 @@ import { soundManager } from '@/utils/sound';
 import { GameHeader } from '@/components/GameHeader';
 import { TurnBanner } from '@/components/TurnBanner';
 import { HistoryWheel } from '@/components/HistoryWheel';
-import { CategoryRevealModal } from '@/components/CategoryRevealModal';
-import { QuestionScreen } from '@/components/QuestionScreen';
-import { FeedbackPanel } from '@/components/FeedbackPanel';
-import { DiscoveryModal } from '@/components/DiscoveryModal';
 import { HistoryArchive } from '@/components/HistoryArchive';
 import { HistoryBalance } from '@/components/HistoryBalance';
 import { FinalChallengeModal } from '@/components/FinalChallengeModal';
 import { TieBreakerModal } from '@/components/TieBreakerModal';
 import { ResultsScreen } from '@/components/ResultsScreen';
 import { HistoryReviewModal } from '@/components/HistoryReviewModal';
+import { DualQuestionsArena } from '@/components/DualQuestionsArena';
 import { GameIntro } from '@/components/GameIntro';
 import { GameSetup } from '@/components/GameSetup';
 import { InstructionsScreen } from '@/components/InstructionsScreen';
 import { TeacherSettingsModal } from '@/components/TeacherSettingsModal';
 import { BackgroundVideo } from '@/components/BackgroundVideo';
-import { EmblemIcon } from '@/components/EmblemIcon';
-import { ArrowRight, Sparkles } from 'lucide-react';
 
 export default function HistoryWheelApp() {
   const [state, setState] = useState<GameState>(INITIAL_GAME_STATE);
@@ -57,42 +52,54 @@ export default function HistoryWheelApp() {
   const nextTeamId = state.currentTurn === 'teamA' ? 'teamB' : 'teamA';
   const nextTeam = state.teams[nextTeamId];
 
-  // 1. Wheel Spin Completion Handler
+  // 1. Wheel Spin Completion Handler - Lands on topic and gives questions to BOTH teams
   const handleSpinComplete = useCallback((category: WheelCategory) => {
-    // Select an unused question for this category
-    const result = QuestionEngine.getUnusedQuestion(category, state.usedQuestionIds);
-
-    if (!result) {
+    // Pick question for Team A
+    const resA = QuestionEngine.getUnusedQuestion(category, state.usedQuestionIds);
+    if (!resA) {
       alert("The historical archives are exhausted! Moving to final challenge.");
       setState(prev => ({ ...prev, phase: 'final_challenge' }));
       return;
     }
 
+    // Pick a DIFFERENT question for Team B from the same category
+    const usedWithA = [...state.usedQuestionIds, resA.question.id];
+    const resB = QuestionEngine.getUnusedQuestion(category, usedWithA);
+    if (!resB) {
+      alert("The historical archives are exhausted! Moving to final challenge.");
+      setState(prev => ({ ...prev, phase: 'final_challenge' }));
+      return;
+    }
+
+    // Directly show both questions on screen - NO POPUP NOTHING!
     setState(prev => ({
       ...prev,
       currentCategory: category,
-      currentQuestion: result.question,
-      topicQuestionsAnswered: 0,
-      phase: 'category_reveal',
+      dualQuestions: {
+        teamA: resA.question,
+        teamB: resB.question,
+      },
+      dualAnswers: {
+        teamA: null,
+        teamB: null,
+      },
+      usedQuestionIds: [...prev.usedQuestionIds, resA.question.id, resB.question.id],
+      phase: 'question',
+      lastAnswerResult: null,
+      pendingDiscovery: null,
     }));
   }, [state.usedQuestionIds]);
 
-  // 2. Transition from Category Reveal to Question
-  const handleProceedToQuestion = () => {
-    setState(prev => ({ ...prev, phase: 'question' }));
-  };
-
-  // 3. Question Answer Submission & Evaluation
-  const handleAnswerSubmit = (userAnswer: any) => {
-    const q = state.currentQuestion;
+  // 2. Question Answer Submission for a Team (Inline Feedback, NO POPUP)
+  const handleDualAnswerSubmit = (teamId: 'teamA' | 'teamB', userAnswer: any) => {
+    if (!state.dualQuestions) return;
+    const q = state.dualQuestions[teamId];
     if (!q) return;
 
     let isCorrect = false;
-
     if (q.type === 'mcq' || q.type === 'before-after' || q.type === 'source-detective' || q.type === 'connect-clues' || q.type === 'blitz') {
       isCorrect = userAnswer === (q as any).correctAnswer;
     } else if (q.type === 'ordering') {
-      // Compare arrays
       isCorrect = JSON.stringify(userAnswer) === JSON.stringify(q.correctOrder);
     } else if (q.type === 'fix-timeline') {
       isCorrect = userAnswer === q.wrongEventId;
@@ -102,22 +109,16 @@ export default function HistoryWheelApp() {
 
     const pointsAwarded = isCorrect ? q.points : 0;
 
-    // Sound effect
     if (isCorrect) {
       soundManager.playCorrect();
     } else {
       soundManager.playIncorrect();
     }
 
-    // Prepare discovery if correct
-    let newDiscovery: DiscoveredArtifact | null = null;
-    if (isCorrect) {
-      newDiscovery = getDiscoveryForCategory(q.category, state.currentRound);
-    }
+    const newDiscovery = isCorrect ? getDiscoveryForCategory(q.category, state.currentRound) : null;
 
-    // Update Team Stats
     setState(prev => {
-      const currentTeam = prev.teams[prev.currentTurn];
+      const currentTeam = prev.teams[teamId];
       const newStreak = isCorrect ? currentTeam.currentStreak + 1 : 0;
       const bestStreak = Math.max(currentTeam.bestStreak, newStreak);
 
@@ -139,7 +140,7 @@ export default function HistoryWheelApp() {
 
       const updatedLog = {
         round: prev.currentRound,
-        teamId: prev.currentTurn,
+        teamId,
         question: q,
         selectedAnswer: userAnswer,
         isCorrect,
@@ -151,90 +152,52 @@ export default function HistoryWheelApp() {
         ...prev,
         teams: {
           ...prev.teams,
-          [prev.currentTurn]: updatedTeam,
+          [teamId]: updatedTeam,
         },
-        usedQuestionIds: [...prev.usedQuestionIds, q.id],
-        lastAnswerResult: {
-          isCorrect,
-          points: pointsAwarded,
-          teamId: prev.currentTurn,
-          userChoice: userAnswer,
-          explanation: q.explanation,
+        dualAnswers: {
+          ...prev.dualAnswers,
+          [teamId]: {
+            answered: true,
+            selectedAnswer: userAnswer,
+            isCorrect,
+            pointsAwarded,
+            explanation: q.explanation,
+          },
         },
-        pendingDiscovery: newDiscovery,
         answerHistory: [...prev.answerHistory, updatedLog],
-        phase: 'feedback',
       };
     });
   };
 
-  // 4. Feedback -> Discovery OR Turn Transition
-  const handleProceedFromFeedback = () => {
-    if (state.lastAnswerResult?.isCorrect && state.pendingDiscovery) {
-      setState(prev => ({ ...prev, phase: 'discovery' }));
-    } else {
-      advanceTurn();
-    }
-  };
-
-  // 5. Discovery Modal Proceed -> Turn Transition
-  const handleProceedFromDiscovery = () => {
-    advanceTurn();
-  };
-
-  // 6. Turn Advancement
-  const advanceTurn = () => {
+  // 3. Proceed to Next Spin
+  const handleProceedToNextSpin = () => {
     setState(prev => {
-      // If only 1 team has answered this topic, give the other team a DIFFERENT question from the same category!
-      if (prev.topicQuestionsAnswered === 0 && prev.currentCategory) {
-        const nextTeamId = prev.roundStartingTeam === 'teamA' ? 'teamB' : 'teamA';
-        const result = QuestionEngine.getUnusedQuestion(prev.currentCategory, prev.usedQuestionIds);
-
-        if (!result) {
-          return { ...prev, phase: 'final_challenge' };
-        }
-
-        return {
-          ...prev,
-          currentTurn: nextTeamId,
-          currentQuestion: result.question,
-          topicQuestionsAnswered: 1,
-          phase: 'turn_transition',
-          lastAnswerResult: null,
-          pendingDiscovery: null,
-        };
-      }
-
-      // Both teams have now completed their question on this topic! Advance to next round
       const nextRound = prev.currentRound + 1;
 
-      // Check if regular rounds are complete
       if (nextRound > prev.maxRounds) {
         return {
           ...prev,
           phase: 'final_challenge',
-          currentQuestion: null,
           currentCategory: null,
-          lastAnswerResult: null,
-          pendingDiscovery: null,
-          topicQuestionsAnswered: 0,
+          dualQuestions: null,
+          dualAnswers: { teamA: null, teamB: null },
         };
       }
 
-      // Alternate the round starting team for next spin
-      const nextStarter = prev.roundStartingTeam === 'teamA' ? 'teamB' : 'teamA';
+      // Next team turns the wheel!
+      const nextSpinTeamId = prev.currentTurn === 'teamA' ? 'teamB' : 'teamA';
 
       return {
         ...prev,
         currentRound: nextRound,
-        currentTurn: nextStarter,
-        roundStartingTeam: nextStarter,
+        currentTurn: nextSpinTeamId,
+        roundStartingTeam: nextSpinTeamId,
         phase: 'spin',
-        currentQuestion: null,
         currentCategory: null,
+        dualQuestions: null,
+        dualAnswers: { teamA: null, teamB: null },
         lastAnswerResult: null,
         pendingDiscovery: null,
-        topicQuestionsAnswered: 0,
       };
     });
   };
@@ -420,61 +383,22 @@ export default function HistoryWheelApp() {
           </div>
         )}
 
-        {/* Phase 5: Question Screen */}
-        {state.phase === 'question' && state.currentQuestion && (
-          <div className="animate-fadeIn">
-            <QuestionScreen
-              question={state.currentQuestion}
-              activeTeam={activeTeam}
-              currentRound={state.currentRound}
-              maxRounds={state.maxRounds}
-              questionNumberInTopic={state.topicQuestionsAnswered === 0 ? 1 : 2}
-              onAnswerSubmit={handleAnswerSubmit}
-            />
-          </div>
-        )}
-
-        {/* Phase 5b: Second Team Turn Transition on Same Topic */}
-        {state.phase === 'turn_transition' && state.currentQuestion && (
-          <div className="max-w-xl w-full mx-auto p-6 sm:p-8 bg-white/95 rounded-3xl border-4 border-amber-300 shadow-2xl text-center space-y-6 animate-scaleUp my-8">
-            <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-amber-100 border border-amber-300 text-amber-900 text-xs font-bold uppercase tracking-wider">
-              <Sparkles className="w-3.5 h-3.5 text-amber-700" />
-              <span>Round {state.currentRound} &bull; Part 2 of 2</span>
-            </div>
-
-            <div className="space-y-2">
-              <h2 className="text-2xl sm:text-3xl font-serif font-black text-stone-900">
-                {activeTeam.name}&apos;s Turn!
-              </h2>
-              <p className="text-sm text-stone-600 max-w-md mx-auto">
-                Next up on this same topic: <strong>{activeTeam.name}</strong> faces a brand-new, different question!
-              </p>
-            </div>
-
-            <div className="p-4 rounded-2xl bg-stone-50 border border-stone-200 flex items-center justify-center space-x-3">
-              <div
-                className={`w-12 h-12 rounded-xl flex items-center justify-center text-white shadow-md ${
-                  activeTeam.id === 'teamA' ? 'bg-[#2B4C7E]' : 'bg-[#C85A32]'
-                }`}
-              >
-                <EmblemIcon emblem={activeTeam.emblem} className="w-6 h-6" />
-              </div>
-              <div className="text-left">
-                <div className="text-xs uppercase font-bold text-stone-500">Ready to Answer</div>
-                <div className="font-serif font-bold text-lg text-stone-900">{activeTeam.name}</div>
-              </div>
-            </div>
-
-            <button
-              onClick={() => setState(p => ({ ...p, phase: 'question' }))}
-              className={`w-full py-3.5 px-6 rounded-2xl text-white font-serif font-bold text-base tracking-wider transition-all shadow-md flex items-center justify-center space-x-2 ${
-                activeTeam.id === 'teamA' ? 'bg-[#2B4C7E] hover:bg-[#1E3557]' : 'bg-[#C85A32] hover:bg-[#A34220]'
-              }`}
-            >
-              <span>BEGIN {activeTeam.name.toUpperCase()}&apos;S QUESTION</span>
-              <ArrowRight className="w-5 h-5" />
-            </button>
-          </div>
+        {/* Phase 5: Dual Team Questions on Spun Topic (NO POPUPS) */}
+        {state.phase === 'question' && state.currentCategory && state.dualQuestions?.teamA && state.dualQuestions?.teamB && (
+          <DualQuestionsArena
+            category={state.currentCategory}
+            currentRound={state.currentRound}
+            maxRounds={state.maxRounds}
+            teamA={state.teams.teamA}
+            teamB={state.teams.teamB}
+            questionTeamA={state.dualQuestions.teamA}
+            questionTeamB={state.dualQuestions.teamB}
+            answerTeamA={state.dualAnswers.teamA}
+            answerTeamB={state.dualAnswers.teamB}
+            onAnswerSubmit={handleDualAnswerSubmit}
+            onProceedToNextSpin={handleProceedToNextSpin}
+            nextSpinTeam={nextTeam}
+          />
         )}
 
         {/* Phase 6: Results Screen */}
@@ -485,38 +409,6 @@ export default function HistoryWheelApp() {
             roundsCompleted={state.maxRounds}
             onPlayAgain={handleResetGame}
             onOpenReview={() => setReviewOpen(true)}
-          />
-        )}
-
-        {/* Overlays / Modals */}
-        {/* Category Reveal */}
-        {state.phase === 'category_reveal' && state.currentCategory && (
-          <CategoryRevealModal
-            category={state.currentCategory}
-            firstTeamName={activeTeam.name}
-            secondTeamName={nextTeam.name}
-            onProceed={handleProceedToQuestion}
-          />
-        )}
-
-        {/* Feedback Panel */}
-        {state.phase === 'feedback' && state.lastAnswerResult && (
-          <FeedbackPanel
-            isCorrect={state.lastAnswerResult.isCorrect}
-            pointsEarned={state.lastAnswerResult.points}
-            explanation={state.lastAnswerResult.explanation}
-            activeTeam={activeTeam}
-            nextTeam={nextTeam}
-            onProceed={handleProceedFromFeedback}
-          />
-        )}
-
-        {/* Discovery Modal */}
-        {state.phase === 'discovery' && state.pendingDiscovery && (
-          <DiscoveryModal
-            artifact={state.pendingDiscovery}
-            team={activeTeam}
-            onProceed={handleProceedFromDiscovery}
           />
         )}
 

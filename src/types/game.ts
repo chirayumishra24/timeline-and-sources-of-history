@@ -34,6 +34,14 @@ export interface GameSettings {
   videoBgId: string;
 }
 
+export interface TeamAnswerStatus {
+  answered: boolean;
+  selectedAnswer: any;
+  isCorrect: boolean;
+  pointsAwarded: number;
+  explanation: string;
+}
+
 export interface GameState {
   phase: GamePhase;
   currentRound: number;
@@ -43,6 +51,14 @@ export interface GameState {
   usedQuestionIds: string[];
   currentCategory: WheelCategory | null;
   currentQuestion: Question | null;
+  dualQuestions: {
+    teamA: Question | null;
+    teamB: Question | null;
+  } | null;
+  dualAnswers: {
+    teamA: TeamAnswerStatus | null;
+    teamB: TeamAnswerStatus | null;
+  };
   lastAnswerResult: {
     isCorrect: boolean;
     points: number;
