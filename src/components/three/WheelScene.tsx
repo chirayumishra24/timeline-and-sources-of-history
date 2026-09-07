@@ -229,27 +229,24 @@ export default function WheelScene({
           document.body.style.cursor = 'default';
         }}
       >
-        {/* Main Wheel Disc Face */}
+        {/* Main Wheel Disc Face with Astrolabe Canvas Texture (Facing Camera along +Z) */}
         <mesh position={[0, 0, 0.05]} castShadow receiveShadow>
-          <cylinderGeometry args={[2.5, 2.5, 0.15, 64]} />
+          <circleGeometry args={[2.5, 64]} />
           <meshStandardMaterial
-            attach="material-0"
-            color="#A88434"
-            metalness={0.8}
-            roughness={0.25}
-          />
-          {/* Top Face with Astrolabe Canvas Texture */}
-          <meshStandardMaterial
-            attach="material-1"
             map={texture}
-            metalness={0.4}
-            roughness={0.35}
+            metalness={0.15}
+            roughness={0.4}
+            side={THREE.DoubleSide}
           />
+        </mesh>
+
+        {/* 3D Depth & Antique Brass Rim Backing */}
+        <mesh position={[0, 0, -0.02]} rotation={[Math.PI / 2, 0, 0]} castShadow receiveShadow>
+          <cylinderGeometry args={[2.52, 2.52, 0.14, 64]} />
           <meshStandardMaterial
-            attach="material-2"
-            color="#6B5420"
+            color="#8C6239"
             metalness={0.85}
-            roughness={0.3}
+            roughness={0.25}
           />
         </mesh>
 
@@ -273,7 +270,7 @@ export default function WheelScene({
         })}
 
         {/* Center Medallion Hub */}
-        <mesh position={[0, 0, 0.18]} castShadow>
+        <mesh position={[0, 0, 0.1]} rotation={[Math.PI / 2, 0, 0]} castShadow>
           <cylinderGeometry args={[0.42, 0.48, 0.1, 32]} />
           <meshStandardMaterial color="#1E1C18" metalness={0.8} roughness={0.4} />
         </mesh>
@@ -306,7 +303,7 @@ export default function WheelScene({
           />
         </mesh>
         {/* Pointer Fastener Pin */}
-        <mesh position={[0, 0.28, 0]}>
+        <mesh position={[0, 0.28, 0]} rotation={[Math.PI / 2, 0, 0]}>
           <cylinderGeometry args={[0.1, 0.1, 0.12, 16]} />
           <meshStandardMaterial color="#8C6239" metalness={0.8} roughness={0.3} />
         </mesh>

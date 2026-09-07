@@ -26,7 +26,7 @@ export default function HistoryWheel3D({
       {/* 3D Canvas Viewport */}
       <div className="relative w-full aspect-square max-w-[480px] rounded-full p-2 bg-gradient-to-b from-amber-900/40 via-amber-950/20 to-black/50 shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-4 border-amber-600/60 backdrop-blur-sm overflow-hidden">
         <Canvas
-          camera={{ position: [0, -0.4, 6.2], fov: 48 }}
+          camera={{ position: [0, 0, 6.2], fov: 48 }}
           shadows
           gl={{ antialias: true, alpha: true }}
           className="w-full h-full"
