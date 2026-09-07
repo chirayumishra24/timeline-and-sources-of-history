@@ -34,15 +34,16 @@ export default function WheelScene({
 
   // Generate ultra-crisp procedural Canvas Texture for the astrolabe face
   const texture = useMemo(() => {
-    const size = 1024;
+    if (typeof document === 'undefined') return null;
+    const size = 2048;
     const canvas = document.createElement('canvas');
     canvas.width = size;
     canvas.height = size;
     const ctx = canvas.getContext('2d');
-    if (!ctx) return new THREE.CanvasTexture(canvas);
+    if (!ctx) return null;
 
     const center = size / 2;
-    const radius = center - 16;
+    const radius = center - 32;
 
     ctx.clearRect(0, 0, size, size);
 
@@ -52,84 +53,133 @@ export default function WheelScene({
     ctx.fillStyle = '#1A1815';
     ctx.fill();
 
+    const getCategoryLines = (name: string): [string, string?] => {
+      switch (name) {
+        case 'TIMELINE': return ['TIMELINE'];
+        case 'SOURCES': return ['SOURCES'];
+        case 'SOURCE DETECTIVE': return ['SOURCE', 'DETECTIVE'];
+        case 'CONNECT THE CLUES': return ['CONNECT', 'THE CLUES'];
+        case 'BEFORE OR AFTER?': return ['BEFORE OR', 'AFTER?'];
+        case 'FIX THE TIMELINE': return ['FIX THE', 'TIMELINE'];
+        case 'WHAT CAN WE KNOW?': return ['WHAT CAN', 'WE KNOW?'];
+        case 'HISTORY BLITZ': return ['HISTORY', 'BLITZ'];
+        default: {
+          const words = name.split(' ');
+          return words.length > 1 ? [words[0], words.slice(1).join(' ')] : [name];
+        }
+      }
+    };
+
     // Draw 8 Segments
     WHEEL_CATEGORIES.forEach((cat, i) => {
       const startAngle = (i * segmentAngle * Math.PI) / 180 - Math.PI / 2;
       const endAngle = startAngle + (segmentAngle * Math.PI) / 180;
+      const midAngle = startAngle + (segmentAngle * Math.PI) / 360;
 
       // Slice background
       ctx.save();
       ctx.beginPath();
       ctx.moveTo(center, center);
-      ctx.arc(center, center, radius - 10, startAngle, endAngle);
+      ctx.arc(center, center, radius - 16, startAngle, endAngle);
       ctx.closePath();
       ctx.fillStyle = cat.color;
       ctx.fill();
 
       // Gold inlay separator line
-      ctx.lineWidth = 4;
+      ctx.lineWidth = 10;
       ctx.strokeStyle = '#D4AF37';
       ctx.stroke();
+      ctx.restore();
 
       // Category Icon & Label
+      // Check if angle is in left hemisphere (between 90 deg and 270 deg)
+      const normAngle = ((midAngle % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
+      const isUpsideDown = normAngle > Math.PI / 2 && normAngle < (3 * Math.PI) / 2;
+
       ctx.save();
       ctx.translate(center, center);
-      ctx.rotate(startAngle + (segmentAngle * Math.PI) / 360);
+      // Flip by 180° when in left half so text & icon are ALWAYS right-side up
+      ctx.rotate(isUpsideDown ? midAngle + Math.PI : midAngle);
 
-      // Icon
-      ctx.font = '54px serif';
+      const sign = isUpsideDown ? -1 : 1;
+      const iconDist = sign * (radius * 0.74);
+      const labelDist = sign * (radius * 0.45);
+
+      // 1. Emoji medallion backing disc
+      ctx.beginPath();
+      ctx.arc(iconDist, 0, 72, 0, 2 * Math.PI);
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.35)';
+      ctx.fill();
+      ctx.lineWidth = 4;
+      ctx.strokeStyle = '#FFD700';
+      ctx.stroke();
+
+      // Emoji
+      ctx.font = '84px "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", sans-serif';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      ctx.fillText(cat.icon, radius * 0.72, 0);
+      ctx.fillText(cat.icon, iconDist, 0);
 
-      // Label with drop shadow
-      ctx.font = 'bold 26px serif, Georgia, sans-serif';
-      ctx.fillStyle = '#FFFFFF';
-      ctx.shadowColor = 'rgba(0, 0, 0, 0.85)';
-      ctx.shadowBlur = 8;
-      ctx.shadowOffsetX = 2;
-      ctx.shadowOffsetY = 2;
+      // 2. High-contrast bold Category Label
+      const lines = getCategoryLines(cat.name);
+      ctx.font = '900 48px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
 
-      const words = cat.name.split(' ');
-      if (words.length > 1 && cat.name.length > 9) {
-        ctx.fillText(words[0], radius * 0.44, -14);
-        ctx.fillText(words.slice(1).join(' '), radius * 0.44, 16);
-      } else {
-        ctx.fillText(cat.name, radius * 0.44, 0);
+      const drawTextWithOutline = (text: string, x: number, y: number) => {
+        ctx.save();
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.95)';
+        ctx.shadowBlur = 14;
+        ctx.shadowOffsetX = 3;
+        ctx.shadowOffsetY = 4;
+
+        ctx.lineJoin = 'round';
+        ctx.miterLimit = 2;
+        ctx.strokeStyle = 'rgba(0, 0, 0, 0.95)';
+        ctx.lineWidth = 9;
+        ctx.strokeText(text, x, y);
+
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillText(text, x, y);
+        ctx.restore();
+      };
+
+      if (lines.length === 1) {
+        drawTextWithOutline(lines[0], labelDist, 0);
+      } else if (lines[1]) {
+        drawTextWithOutline(lines[0], labelDist, -28);
+        drawTextWithOutline(lines[1], labelDist, 28);
       }
 
-      ctx.restore();
       ctx.restore();
     });
 
     // Outer decorative celestial rings
     ctx.save();
     ctx.beginPath();
-    ctx.arc(center, center, radius - 10, 0, 2 * Math.PI);
-    ctx.lineWidth = 8;
+    ctx.arc(center, center, radius - 16, 0, 2 * Math.PI);
+    ctx.lineWidth = 14;
     ctx.strokeStyle = '#D4AF37';
     ctx.stroke();
 
     ctx.beginPath();
-    ctx.arc(center, center, radius - 24, 0, 2 * Math.PI);
-    ctx.lineWidth = 3;
+    ctx.arc(center, center, radius - 40, 0, 2 * Math.PI);
+    ctx.lineWidth = 6;
     ctx.strokeStyle = '#B38B22';
     ctx.stroke();
 
-    // Medallion inner shadow & ring
+    // Medallion inner shadow & ring (scaled to 2048)
     ctx.beginPath();
-    ctx.arc(center, center, 110, 0, 2 * Math.PI);
+    ctx.arc(center, center, 220, 0, 2 * Math.PI);
     ctx.fillStyle = '#221F1A';
     ctx.fill();
-    ctx.lineWidth = 6;
+    ctx.lineWidth = 12;
     ctx.strokeStyle = '#D4AF37';
     ctx.stroke();
 
     // Center star
     ctx.fillStyle = '#FDFBF7';
-    ctx.font = 'bold 44px serif';
+    ctx.font = 'bold 88px serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText('✦', center, center);
@@ -137,9 +187,17 @@ export default function WheelScene({
     ctx.restore();
 
     const canvasTexture = new THREE.CanvasTexture(canvas);
+    canvasTexture.colorSpace = THREE.SRGBColorSpace;
     canvasTexture.anisotropy = 8;
+    canvasTexture.needsUpdate = true;
     return canvasTexture;
   }, [segmentAngle]);
+
+  useEffect(() => {
+    if (texture) {
+      texture.needsUpdate = true;
+    }
+  }, [texture]);
 
   // Spin Trigger Engine
   const spinAstrolabe = (forcedCategory?: WheelCategory) => {
@@ -230,29 +288,41 @@ export default function WheelScene({
         }}
       >
         {/* Main Wheel Disc Face with Astrolabe Canvas Texture (Facing Camera along +Z) */}
-        <mesh position={[0, 0, 0.05]} castShadow receiveShadow>
+        <mesh position={[0, 0, 0.08]} castShadow receiveShadow>
           <circleGeometry args={[2.5, 64]} />
           <meshStandardMaterial
-            map={texture}
-            metalness={0.15}
-            roughness={0.4}
+            map={texture || undefined}
+            metalness={0.0}
+            roughness={0.7}
             side={THREE.DoubleSide}
           />
         </mesh>
 
-        {/* 3D Depth & Antique Brass Rim Backing */}
+        {/* 3D Depth & Antique Brass Rim Wall (open-ended cylinder behind the face) */}
         <mesh position={[0, 0, -0.02]} rotation={[Math.PI / 2, 0, 0]} castShadow receiveShadow>
-          <cylinderGeometry args={[2.52, 2.52, 0.14, 64]} />
+          <cylinderGeometry args={[2.53, 2.53, 0.16, 64, 1, true]} />
           <meshStandardMaterial
             color="#8C6239"
             metalness={0.85}
             roughness={0.25}
+            side={THREE.DoubleSide}
+          />
+        </mesh>
+
+        {/* Backing Cover Plate */}
+        <mesh position={[0, 0, -0.1]}>
+          <circleGeometry args={[2.53, 64]} />
+          <meshStandardMaterial
+            color="#4A3525"
+            metalness={0.7}
+            roughness={0.3}
+            side={THREE.DoubleSide}
           />
         </mesh>
 
         {/* Outer Brass Riveted Rim */}
-        <mesh position={[0, 0, 0.08]}>
-          <torusGeometry args={[2.55, 0.08, 16, 64]} />
+        <mesh position={[0, 0, 0.09]}>
+          <torusGeometry args={[2.55, 0.07, 16, 64]} />
           <meshStandardMaterial color="#D4AF37" metalness={0.9} roughness={0.2} />
         </mesh>
 

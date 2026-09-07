@@ -10,6 +10,99 @@ interface HistoryArchiveProps {
   activeTeamId: string;
 }
 
+export interface HistoryArchiveTeamCardProps {
+  team: Team;
+  isActive: boolean;
+  onInspect?: (artifact: DiscoveredArtifact, teamName: string) => void;
+  className?: string;
+}
+
+export const HistoryArchiveTeamCard: React.FC<HistoryArchiveTeamCardProps> = ({
+  team,
+  isActive,
+  onInspect,
+  className = '',
+}) => {
+  const isTeamA = team.id === 'teamA';
+  const milestone = getTeamMilestone(team.discoveries.length);
+
+  return (
+    <div
+      className={`rounded-2xl border-2 transition-all duration-300 p-3 sm:p-3.5 flex flex-col justify-between shadow-sm h-full ${
+        isActive
+          ? isTeamA
+            ? 'bg-gradient-to-b from-blue-50/80 to-white border-blue-400 shadow-md ring-2 ring-blue-200/60'
+            : 'bg-gradient-to-b from-orange-50/80 to-white border-orange-400 shadow-md ring-2 ring-orange-200/60'
+          : 'bg-white/85 border-stone-200 opacity-90'
+      } ${className}`}
+    >
+      {/* Team Identity Banner */}
+      <div>
+        <div className="flex items-center justify-between gap-1.5 mb-1.5">
+          <div className="flex items-center space-x-2">
+            <div
+              className={`w-7 h-7 rounded-lg flex items-center justify-center text-white text-xs shadow-sm shrink-0 ${
+                isTeamA ? 'bg-[#2B4C7E]' : 'bg-[#C85A32]'
+              }`}
+            >
+              <EmblemIcon emblem={team.emblem} className="w-4 h-4" />
+            </div>
+            <div className="min-w-0">
+              <h3 className="text-xs sm:text-sm font-serif font-bold text-stone-900 leading-tight truncate">
+                {team.name}
+              </h3>
+              <span className="text-[10px] font-semibold text-stone-500 uppercase tracking-wider block">
+                {team.score} Pts &bull; {team.discoveries.length} Artifacts
+              </span>
+            </div>
+          </div>
+
+          {/* Current Milestone Badge */}
+          <div
+            className={`px-2 py-0.5 rounded-lg text-[10px] font-bold border flex items-center space-x-1 shrink-0 ${milestone.borderClass} bg-stone-50 text-stone-800`}
+            title={milestone.description}
+          >
+            <span>{milestone.badge}</span>
+            <span className="hidden sm:inline font-serif">{milestone.title}</span>
+          </div>
+        </div>
+
+        {/* Museum Archive Shelves */}
+        <div className="mt-1.5 bg-stone-50/80 rounded-xl p-2 border border-stone-200 min-h-[75px] max-h-[140px] overflow-y-auto flex flex-col justify-center">
+          {team.discoveries.length === 0 ? (
+            <div className="text-center py-2 text-[10px] text-stone-400 italic flex flex-col items-center justify-center space-y-0.5">
+              <BookOpen className="w-4 h-4 text-stone-300" />
+              <span>No discoveries yet. Answer correctly to collect!</span>
+            </div>
+          ) : (
+            <div className="grid grid-cols-4 sm:grid-cols-4 gap-1.5">
+              {team.discoveries.map((art, idx) => (
+                <button
+                  key={`${art.id}_${idx}`}
+                  onClick={() => onInspect?.(art, team.name)}
+                  className="group relative p-1 rounded-lg bg-white border border-stone-200 hover:border-amber-400 hover:scale-105 active:scale-95 transition-all shadow-xs flex flex-col items-center justify-center"
+                  title={`${art.name} (${art.type}) - Click to inspect`}
+                >
+                  <span className="text-base sm:text-lg">{art.icon}</span>
+                  <span className="text-[8px] font-medium text-stone-600 truncate max-w-[40px] text-center mt-0.5">
+                    {art.type}
+                  </span>
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Bottom Status Stats */}
+      <div className="mt-2 pt-1.5 border-t border-stone-100 flex items-center justify-between text-[10px] font-medium text-stone-500">
+        <span>Correct: <strong className="text-emerald-700">{team.correctCount}</strong></span>
+        <span>Streak: <strong className="text-amber-700">{team.currentStreak}</strong> (Best: {team.bestStreak})</span>
+      </div>
+    </div>
+  );
+};
+
 export const HistoryArchive: React.FC<HistoryArchiveProps> = ({
   teamA,
   teamB,
@@ -20,94 +113,19 @@ export const HistoryArchive: React.FC<HistoryArchiveProps> = ({
     teamName: string;
   } | null>(null);
 
-  const renderArchivePanel = (team: Team) => {
-    const isTeamA = team.id === 'teamA';
-    const isActive = activeTeamId === team.id;
-    const milestone = getTeamMilestone(team.discoveries.length);
-
-    return (
-      <div
-        className={`flex-1 rounded-3xl border-2 transition-all duration-300 p-4 sm:p-5 flex flex-col justify-between shadow-sm ${
-          isActive
-            ? isTeamA
-              ? 'bg-gradient-to-b from-blue-50/70 to-white border-blue-400 shadow-md ring-2 ring-blue-200'
-              : 'bg-gradient-to-b from-orange-50/70 to-white border-orange-400 shadow-md ring-2 ring-orange-200'
-            : 'bg-white/80 border-stone-200 opacity-90'
-        }`}
-      >
-        {/* Team Identity Banner */}
-        <div>
-          <div className="flex items-center justify-between gap-2 mb-2">
-            <div className="flex items-center space-x-2.5">
-              <div
-                className={`w-9 h-9 rounded-xl flex items-center justify-center text-white text-sm shadow-sm ${
-                  isTeamA ? 'bg-[#2B4C7E]' : 'bg-[#C85A32]'
-                }`}
-              >
-                <EmblemIcon emblem={team.emblem} className="w-5 h-5" />
-              </div>
-              <div>
-                <h3 className="text-base font-serif font-bold text-stone-900 leading-tight">
-                  {team.name}
-                </h3>
-                <span className="text-[11px] font-semibold text-stone-500 uppercase tracking-wider">
-                  {team.score} Points &bull; {team.discoveries.length} Discoveries
-                </span>
-              </div>
-            </div>
-
-            {/* Current Milestone Badge */}
-            <div
-              className={`px-2.5 py-1 rounded-xl text-[11px] font-bold border flex items-center space-x-1 shrink-0 ${milestone.borderClass} bg-stone-50 text-stone-800`}
-              title={milestone.description}
-            >
-              <span>{milestone.badge}</span>
-              <span className="hidden sm:inline font-serif">{milestone.title}</span>
-            </div>
-          </div>
-
-          {/* Museum Archive Shelves */}
-          <div className="mt-3 bg-stone-50/80 rounded-2xl p-3 border border-stone-200 min-h-[110px] flex flex-col justify-center">
-            {team.discoveries.length === 0 ? (
-              <div className="text-center py-4 text-xs text-stone-400 italic flex flex-col items-center justify-center space-y-1">
-                <BookOpen className="w-5 h-5 text-stone-300" />
-                <span>No discoveries yet. Answer correctly to collect artifacts!</span>
-              </div>
-            ) : (
-              <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 gap-2">
-                {team.discoveries.map((art, idx) => (
-                  <button
-                    key={`${art.id}_${idx}`}
-                    onClick={() => setInspectedArtifact({ artifact: art, teamName: team.name })}
-                    className="group relative p-2 rounded-xl bg-white border border-stone-200 hover:border-amber-400 hover:scale-110 active:scale-95 transition-all shadow-sm flex flex-col items-center justify-center"
-                    title={`${art.name} (${art.type}) - Click to inspect`}
-                  >
-                    <span className="text-xl sm:text-2xl">{art.icon}</span>
-                    <span className="text-[9px] font-medium text-stone-600 truncate max-w-[48px] text-center mt-0.5">
-                      {art.type}
-                    </span>
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* Bottom Status Stats */}
-        <div className="mt-3 pt-2.5 border-t border-stone-100 flex items-center justify-between text-[11px] font-medium text-stone-500">
-          <span>Correct: <strong className="text-emerald-700">{team.correctCount}</strong></span>
-          <span>Best Streak: <strong className="text-amber-700">{team.bestStreak}</strong></span>
-          <span className="text-stone-400">Round {team.discoveries.length > 0 ? team.discoveries[team.discoveries.length - 1].discoveredAtRound : '-'} latest</span>
-        </div>
-      </div>
-    );
-  };
-
   return (
-    <section className="w-full max-w-5xl mx-auto my-3 px-4">
-      <div className="flex flex-col md:flex-row gap-4">
-        {renderArchivePanel(teamA)}
-        {renderArchivePanel(teamB)}
+    <section className="w-full max-w-5xl mx-auto my-1 px-2">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+        <HistoryArchiveTeamCard
+          team={teamA}
+          isActive={activeTeamId === 'teamA'}
+          onInspect={(artifact, teamName) => setInspectedArtifact({ artifact, teamName })}
+        />
+        <HistoryArchiveTeamCard
+          team={teamB}
+          isActive={activeTeamId === 'teamB'}
+          onInspect={(artifact, teamName) => setInspectedArtifact({ artifact, teamName })}
+        />
       </div>
 
       {/* Artifact Inspection Modal */}

@@ -12,7 +12,7 @@ import { soundManager } from '@/utils/sound';
 import { GameHeader } from '@/components/GameHeader';
 import { TurnBanner } from '@/components/TurnBanner';
 import { HistoryWheel } from '@/components/HistoryWheel';
-import { HistoryArchive } from '@/components/HistoryArchive';
+import { HistoryArchive, HistoryArchiveTeamCard } from '@/components/HistoryArchive';
 import { HistoryBalance } from '@/components/HistoryBalance';
 import { FinalChallengeModal } from '@/components/FinalChallengeModal';
 import { TieBreakerModal } from '@/components/TieBreakerModal';
@@ -357,7 +357,7 @@ export default function HistoryWheelApp() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col justify-between relative">
+    <div className="h-screen max-h-screen overflow-hidden flex flex-col justify-between relative select-none">
       {/* Historical Ambient Background Video */}
       <BackgroundVideo
         enabled={state.settings.videoBgEnabled}
@@ -384,7 +384,7 @@ export default function HistoryWheelApp() {
       />
 
       {/* Main Game Arena */}
-      <main className="flex-1 max-w-7xl w-full mx-auto p-2 sm:p-4 flex flex-col justify-center">
+      <main className="flex-1 min-h-0 max-w-7xl w-full mx-auto p-1 sm:p-2 flex flex-col justify-center overflow-y-auto lg:overflow-hidden">
         {/* Phase 1: Intro */}
         {state.phase === 'intro' && (
           <GameIntro onProceedToSetup={() => setState(p => ({ ...p, phase: 'setup' }))} />
@@ -411,29 +411,55 @@ export default function HistoryWheelApp() {
 
         {/* Phase 4: Spin the Wheel Arena */}
         {state.phase === 'spin' && (
-          <div className="flex flex-col items-center animate-fadeIn">
+          <div className="w-full h-full flex flex-col justify-between animate-fadeIn py-0.5">
             <TurnBanner
               activeTeam={activeTeam}
               round={state.currentRound}
               promptText={`${activeTeam.name} spins for topic`}
             />
-            {state.settings.wheelMode === '3d' ? (
-              <HistoryWheel3D
-                onSpinComplete={handleSpinComplete}
-                isSpinning={false}
-              />
-            ) : (
-              <HistoryWheel
-                onSpinComplete={handleSpinComplete}
-                isSpinning={false}
-              />
-            )}
-            <HistoryBalance teamA={state.teams.teamA} teamB={state.teams.teamB} />
-            <HistoryArchive
-              teamA={state.teams.teamA}
-              teamB={state.teams.teamB}
-              activeTeamId={state.currentTurn}
-            />
+
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-2 lg:gap-4 items-center flex-1 min-h-0 px-2 my-auto">
+              {/* Left Column: Team A Archives */}
+              <div className="hidden lg:flex lg:col-span-3 h-full max-h-[380px] flex-col justify-center">
+                <HistoryArchiveTeamCard
+                  team={state.teams.teamA}
+                  isActive={state.currentTurn === 'teamA'}
+                />
+              </div>
+
+              {/* Center Column: Wheel & Balance */}
+              <div className="lg:col-span-6 flex flex-col items-center justify-center my-auto">
+                {state.settings.wheelMode === '3d' ? (
+                  <HistoryWheel3D
+                    onSpinComplete={handleSpinComplete}
+                    isSpinning={false}
+                  />
+                ) : (
+                  <HistoryWheel
+                    onSpinComplete={handleSpinComplete}
+                    isSpinning={false}
+                  />
+                )}
+                <HistoryBalance teamA={state.teams.teamA} teamB={state.teams.teamB} />
+              </div>
+
+              {/* Right Column: Team B Archives */}
+              <div className="hidden lg:flex lg:col-span-3 h-full max-h-[380px] flex-col justify-center">
+                <HistoryArchiveTeamCard
+                  team={state.teams.teamB}
+                  isActive={state.currentTurn === 'teamB'}
+                />
+              </div>
+
+              {/* Mobile-only compact archive summary */}
+              <div className="flex lg:hidden justify-center w-full">
+                <HistoryArchive
+                  teamA={state.teams.teamA}
+                  teamB={state.teams.teamB}
+                  activeTeamId={state.currentTurn}
+                />
+              </div>
+            </div>
           </div>
         )}
 
@@ -523,7 +549,7 @@ export default function HistoryWheelApp() {
       </main>
 
       {/* Footer */}
-      <footer className="w-full text-center py-3 text-[11px] text-stone-500 border-t border-parchment-200">
+      <footer className="w-full text-center py-1 text-[10px] text-stone-500 border-t border-parchment-200 shrink-0">
         Grade 6 Social Science &bull; Theme B: Tapestry of the Past &bull; Chapter 4: Timeline and Sources of History
       </footer>
     </div>

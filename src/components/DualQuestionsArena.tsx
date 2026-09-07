@@ -122,79 +122,76 @@ export const DualQuestionsArena: React.FC<DualQuestionsArenaProps> = ({
   };
 
   return (
-    <div className="w-full max-w-7xl mx-auto p-2 sm:p-4 space-y-6 animate-fadeIn">
-      {/* Top Banner: Landed Topic & Round Info (NO POPUPS) */}
-      <div className="bg-white/95 rounded-3xl border-2 border-stone-300 shadow-md p-4 sm:p-5 flex flex-col md:flex-row items-center justify-between gap-4">
+    <div className="w-full max-w-7xl mx-auto p-1 sm:p-2 space-y-2 animate-fadeIn">
+      {/* Top Banner: Landed Topic & Round Info (Compact) */}
+      <div className="bg-white/95 rounded-2xl border-2 border-stone-300 shadow-sm p-2 sm:p-2.5 flex flex-row items-center justify-between gap-2">
         {/* Topic Badge & Title */}
-        <div className="flex items-center space-x-3 text-center md:text-left">
-          <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-stone-100 to-amber-100 border-2 border-amber-300 flex items-center justify-center text-3xl shadow-sm shrink-0">
+        <div className="flex items-center space-x-2.5">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-stone-100 to-amber-100 border-2 border-amber-300 flex items-center justify-center text-xl shadow-xs shrink-0">
             {meta.icon}
           </div>
           <div>
-            <div className="flex items-center space-x-2 justify-center md:justify-start">
-              <span className="text-[11px] font-bold uppercase tracking-widest px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-900 border border-amber-200">
-                Round {currentRound} of {maxRounds} Topic
+            <div className="flex items-center space-x-2">
+              <span className="text-[10px] font-bold uppercase tracking-widest px-2 py-0.2 rounded-full bg-amber-100 text-amber-900 border border-amber-200">
+                Round {currentRound} of {maxRounds}
               </span>
-              <span className="text-xs font-semibold text-stone-500">
-                Different questions for each team
+              <span className="text-[11px] font-semibold text-stone-500 hidden sm:inline">
+                Simultaneous Challenges
               </span>
             </div>
-            <h2 className="text-xl sm:text-2xl font-serif font-black text-stone-900 tracking-wide mt-0.5">
-              {meta.name}
+            <h2 className="text-sm sm:text-base font-serif font-black text-stone-900 tracking-wide leading-tight">
+              {meta.name} <span className="text-xs font-normal text-stone-500 font-sans hidden md:inline">&bull; {meta.tagline}</span>
             </h2>
-            <p className="text-xs text-stone-600 font-medium">
-              {meta.tagline}
-            </p>
           </div>
         </div>
 
         {/* Live Round Status */}
-        <div className="flex items-center space-x-2 text-xs font-bold">
-          <div className={`px-3 py-1.5 rounded-xl border flex items-center space-x-1.5 ${
+        <div className="flex items-center space-x-1.5 text-[11px] font-bold">
+          <div className={`px-2.5 py-1 rounded-lg border flex items-center space-x-1 ${
             answerTeamA
               ? 'bg-emerald-50 text-emerald-800 border-emerald-300'
               : 'bg-blue-50 text-blue-800 border-blue-200 animate-pulse'
           }`}>
             <span>{teamA.name}:</span>
-            <span>{answerTeamA ? '✓ Answered' : 'Thinking...'}</span>
+            <span>{answerTeamA ? '✓' : 'Thinking'}</span>
           </div>
 
-          <div className={`px-3 py-1.5 rounded-xl border flex items-center space-x-1.5 ${
+          <div className={`px-2.5 py-1 rounded-lg border flex items-center space-x-1 ${
             answerTeamB
               ? 'bg-emerald-50 text-emerald-800 border-emerald-300'
               : 'bg-orange-50 text-orange-800 border-orange-200 animate-pulse'
           }`}>
             <span>{teamB.name}:</span>
-            <span>{answerTeamB ? '✓ Answered' : 'Thinking...'}</span>
+            <span>{answerTeamB ? '✓' : 'Thinking'}</span>
           </div>
         </div>
       </div>
 
       {/* Side-by-Side Dual Team Questions Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 sm:gap-3 items-start">
         {/* Team A Column */}
-        <div className="bg-white/95 rounded-3xl border-2 border-blue-300 shadow-md p-5 flex flex-col space-y-4 relative overflow-hidden">
+        <div className="bg-white/95 rounded-2xl border-2 border-blue-300 shadow-sm p-3 sm:p-3.5 flex flex-col space-y-2 relative overflow-hidden">
           {/* Team A Header */}
-          <div className="flex items-center justify-between pb-3 border-b border-stone-200">
-            <div className="flex items-center space-x-2.5">
-              <div className="w-9 h-9 rounded-xl bg-[#2B4C7E] text-white flex items-center justify-center shadow-sm">
-                <EmblemIcon emblem={teamA.emblem} className="w-5 h-5" />
+          <div className="flex items-center justify-between pb-1.5 border-b border-stone-200">
+            <div className="flex items-center space-x-2">
+              <div className="w-7 h-7 rounded-lg bg-[#2B4C7E] text-white flex items-center justify-center shadow-xs">
+                <EmblemIcon emblem={teamA.emblem} className="w-4 h-4" />
               </div>
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-blue-900 block leading-tight">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-blue-900 block leading-tight">
                   Team A Challenge
                 </span>
-                <span className="font-serif font-bold text-base text-stone-900">
+                <span className="font-serif font-bold text-xs sm:text-sm text-stone-900">
                   {teamA.name}
                 </span>
               </div>
             </div>
 
-            <div className="text-right flex items-center space-x-2">
-              <span className="text-xs font-bold px-2.5 py-1 rounded-xl bg-amber-50 text-amber-900 border border-amber-300">
+            <div className="text-right flex items-center space-x-1.5">
+              <span className="text-[10px] font-bold px-2 py-0.5 rounded-lg bg-amber-50 text-amber-900 border border-amber-300">
                 +{questionTeamA.points} Pts
               </span>
-              <span className="text-xs font-mono font-bold text-stone-700 bg-stone-100 px-2 py-1 rounded-lg">
+              <span className="text-[10px] font-mono font-bold text-stone-700 bg-stone-100 px-1.5 py-0.5 rounded">
                 Score: {teamA.score}
               </span>
             </div>
@@ -208,28 +205,28 @@ export const DualQuestionsArena: React.FC<DualQuestionsArenaProps> = ({
           {/* Team A Inline Result (NO POPUP) */}
           {answerTeamA && (
             <div
-              className={`p-4 rounded-2xl border-2 transition-all animate-fadeIn ${
+              className={`p-2.5 rounded-xl border-2 transition-all animate-fadeIn ${
                 answerTeamA.isCorrect
                   ? 'bg-emerald-50/90 border-emerald-300 text-emerald-950'
                   : 'bg-amber-50/90 border-amber-300 text-amber-950'
               }`}
             >
-              <div className="flex items-center justify-between mb-1.5">
-                <div className="flex items-center space-x-1.5 font-bold text-sm">
+              <div className="flex items-center justify-between mb-1">
+                <div className="flex items-center space-x-1.5 font-bold text-xs">
                   {answerTeamA.isCorrect ? (
                     <>
-                      <CheckCircle2 className="w-5 h-5 text-emerald-600" />
+                      <CheckCircle2 className="w-4 h-4 text-emerald-600" />
                       <span className="text-emerald-800">Correct! +{answerTeamA.pointsAwarded} Points</span>
                     </>
                   ) : (
                     <>
-                      <XCircle className="w-5 h-5 text-amber-600" />
+                      <XCircle className="w-4 h-4 text-amber-600" />
                       <span className="text-amber-800">Incorrect! (0 Points)</span>
                     </>
                   )}
                 </div>
               </div>
-              <p className="text-xs font-medium text-stone-800 leading-relaxed">
+              <p className="text-[11px] font-medium text-stone-800 leading-relaxed">
                 <strong>Explanation:</strong> {answerTeamA.explanation}
               </p>
             </div>
@@ -237,28 +234,28 @@ export const DualQuestionsArena: React.FC<DualQuestionsArenaProps> = ({
         </div>
 
         {/* Team B Column */}
-        <div className="bg-white/95 rounded-3xl border-2 border-orange-300 shadow-md p-5 flex flex-col space-y-4 relative overflow-hidden">
+        <div className="bg-white/95 rounded-2xl border-2 border-orange-300 shadow-sm p-3 sm:p-3.5 flex flex-col space-y-2 relative overflow-hidden">
           {/* Team B Header */}
-          <div className="flex items-center justify-between pb-3 border-b border-stone-200">
-            <div className="flex items-center space-x-2.5">
-              <div className="w-9 h-9 rounded-xl bg-[#C85A32] text-white flex items-center justify-center shadow-sm">
-                <EmblemIcon emblem={teamB.emblem} className="w-5 h-5" />
+          <div className="flex items-center justify-between pb-1.5 border-b border-stone-200">
+            <div className="flex items-center space-x-2">
+              <div className="w-7 h-7 rounded-lg bg-[#C85A32] text-white flex items-center justify-center shadow-xs">
+                <EmblemIcon emblem={teamB.emblem} className="w-4 h-4" />
               </div>
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-orange-900 block leading-tight">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-orange-900 block leading-tight">
                   Team B Challenge
                 </span>
-                <span className="font-serif font-bold text-base text-stone-900">
+                <span className="font-serif font-bold text-xs sm:text-sm text-stone-900">
                   {teamB.name}
                 </span>
               </div>
             </div>
 
-            <div className="text-right flex items-center space-x-2">
-              <span className="text-xs font-bold px-2.5 py-1 rounded-xl bg-amber-50 text-amber-900 border border-amber-300">
+            <div className="text-right flex items-center space-x-1.5">
+              <span className="text-[10px] font-bold px-2 py-0.5 rounded-lg bg-amber-50 text-amber-900 border border-amber-300">
                 +{questionTeamB.points} Pts
               </span>
-              <span className="text-xs font-mono font-bold text-stone-700 bg-stone-100 px-2 py-1 rounded-lg">
+              <span className="text-[10px] font-mono font-bold text-stone-700 bg-stone-100 px-1.5 py-0.5 rounded">
                 Score: {teamB.score}
               </span>
             </div>
@@ -272,28 +269,28 @@ export const DualQuestionsArena: React.FC<DualQuestionsArenaProps> = ({
           {/* Team B Inline Result (NO POPUP) */}
           {answerTeamB && (
             <div
-              className={`p-4 rounded-2xl border-2 transition-all animate-fadeIn ${
+              className={`p-2.5 rounded-xl border-2 transition-all animate-fadeIn ${
                 answerTeamB.isCorrect
                   ? 'bg-emerald-50/90 border-emerald-300 text-emerald-950'
                   : 'bg-amber-50/90 border-amber-300 text-amber-950'
               }`}
             >
-              <div className="flex items-center justify-between mb-1.5">
-                <div className="flex items-center space-x-1.5 font-bold text-sm">
+              <div className="flex items-center justify-between mb-1">
+                <div className="flex items-center space-x-1.5 font-bold text-xs">
                   {answerTeamB.isCorrect ? (
                     <>
-                      <CheckCircle2 className="w-5 h-5 text-emerald-600" />
+                      <CheckCircle2 className="w-4 h-4 text-emerald-600" />
                       <span className="text-emerald-800">Correct! +{answerTeamB.pointsAwarded} Points</span>
                     </>
                   ) : (
                     <>
-                      <XCircle className="w-5 h-5 text-amber-600" />
+                      <XCircle className="w-4 h-4 text-amber-600" />
                       <span className="text-amber-800">Incorrect! (0 Points)</span>
                     </>
                   )}
                 </div>
               </div>
-              <p className="text-xs font-medium text-stone-800 leading-relaxed">
+              <p className="text-[11px] font-medium text-stone-800 leading-relaxed">
                 <strong>Explanation:</strong> {answerTeamB.explanation}
               </p>
             </div>
@@ -305,21 +302,21 @@ export const DualQuestionsArena: React.FC<DualQuestionsArenaProps> = ({
       <HistoryBalance teamA={teamA} teamB={teamB} />
 
       {/* Central Bottom Action Bar: Ready for Next Spin */}
-      <div className="flex flex-col items-center justify-center pt-2">
+      <div className="flex flex-col items-center justify-center pt-0.5">
         {bothAnswered ? (
           <button
             onClick={onProceedToNextSpin}
-            className="px-8 py-4 rounded-2xl bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 hover:from-amber-500 hover:to-amber-500 text-white font-serif font-bold text-lg tracking-wider transition-all shadow-xl hover:scale-105 active:scale-95 flex items-center space-x-3 border-2 border-amber-400 animate-bounce"
+            className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 hover:from-amber-500 hover:to-amber-500 text-white font-serif font-bold text-sm tracking-wider transition-all shadow-lg hover:scale-105 active:scale-95 flex items-center space-x-2 border border-amber-400 animate-bounce"
           >
             <span>
               {isFinalRound
                 ? 'PROCEED TO FINAL CHALLENGE'
                 : `SPIN FOR NEXT TOPIC (${nextSpinTeam.name.toUpperCase()}'S TURN)`}
             </span>
-            <ArrowRight className="w-5 h-5" />
+            <ArrowRight className="w-4 h-4" />
           </button>
         ) : (
-          <div className="text-xs font-bold uppercase tracking-wider text-stone-500 bg-white/80 border border-stone-200 px-4 py-2 rounded-full">
+          <div className="text-[11px] font-bold uppercase tracking-wider text-stone-500 bg-white/80 border border-stone-200 px-3 py-1 rounded-full">
             Waiting for both teams to submit their answers...
           </div>
         )}

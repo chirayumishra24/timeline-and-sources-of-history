@@ -28,35 +28,35 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
   hasAnswerHistory,
 }) => {
   return (
-    <header className="w-full bg-parchment-100 border-b border-parchment-300 shadow-sm px-4 py-3 sm:px-6">
-      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+    <header className="w-full bg-parchment-100/95 border-b border-parchment-300 shadow-xs px-3 py-1.5 sm:px-4 shrink-0">
+      <div className="max-w-7xl mx-auto flex flex-row items-center justify-between gap-2">
         {/* Title and Academic Metadata */}
-        <div className="flex items-center space-x-3 text-center sm:text-left">
-          <div className="w-10 h-10 rounded-full bg-amber-100 border border-amber-300 flex items-center justify-center text-xl shadow-inner">
+        <div className="flex items-center space-x-2">
+          <div className="w-7 h-7 rounded-full bg-amber-100 border border-amber-300 flex items-center justify-center text-sm shadow-inner shrink-0">
             🏛️
           </div>
           <div>
-            <h1 className="text-xl sm:text-2xl font-serif font-bold tracking-wide text-stone-900 leading-tight">
+            <h1 className="text-sm sm:text-base font-serif font-bold tracking-wide text-stone-900 leading-tight">
               THE HISTORY WHEEL
             </h1>
-            <p className="text-xs text-stone-600 font-sans tracking-wide">
-              Grade 6 Social Science &bull; Chapter 4: Timeline and Sources of History
+            <p className="text-[10px] text-stone-500 font-sans tracking-tight hidden sm:block">
+              Grade 6 Social Science &bull; Timeline &amp; Sources of History
             </p>
           </div>
         </div>
 
         {/* Center Round & Non-Repetition Indicator */}
-        <div className="flex items-center space-x-2 sm:space-x-4 bg-white/80 border border-parchment-300 rounded-full px-4 py-1.5 shadow-inner">
-          <div className="flex items-center space-x-1.5 text-sm font-semibold text-stone-800">
-            <span className="text-xs uppercase tracking-wider text-stone-500">Round</span>
-            <span className="font-mono text-base font-bold text-amber-700">
+        <div className="flex items-center space-x-2 sm:space-x-3 bg-white/80 border border-parchment-300 rounded-full px-3 py-0.5 shadow-inner">
+          <div className="flex items-center space-x-1 text-xs font-semibold text-stone-800">
+            <span className="text-[10px] uppercase tracking-wider text-stone-500">Round</span>
+            <span className="font-mono text-sm font-bold text-amber-700">
               {String(Math.min(currentRound, maxRounds)).padStart(2, '0')}
             </span>
             <span className="text-stone-400">/</span>
             <span className="font-mono text-stone-600">{String(maxRounds).padStart(2, '0')}</span>
           </div>
 
-          <div className="hidden md:block w-px h-4 bg-stone-300" />
+          <div className="hidden md:block w-px h-3 bg-stone-300" />
 
           <div className="hidden md:flex items-center space-x-1.5 text-xs text-stone-600">
             <span>Challenges Used:</span>
