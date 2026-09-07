@@ -52,6 +52,7 @@ export const INITIAL_GAME_STATE: GameState = {
     timerEnabled: true,
     videoBgEnabled: true,
     videoBgId: 'xDIwPfMbayQ',
+    wheelMode: '3d',
   },
   roundStartingTeam: 'teamA',
   topicQuestionsAnswered: 0,

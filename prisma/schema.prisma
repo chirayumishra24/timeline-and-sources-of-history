@@ -1,0 +1,53 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model GameSession {
+  id           String        @id @default(uuid())
+  startedAt    DateTime      @default(now())
+  finishedAt   DateTime?
+  totalRounds  Int           @default(5)
+  winnerId     String?
+  teamAName    String
+  teamBName    String
+  teamAScore   Int           @default(0)
+  teamBScore   Int           @default(0)
+  teamAEmblem  String        @default("scroll")
+  teamBEmblem  String        @default("monument")
+  roundLogs    RoundLog[]
+  createdAt    DateTime      @default(now())
+}
+
+model RoundLog {
+  id              String      @id @default(uuid())
+  sessionId       String
+  session         GameSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  roundNumber     Int
+  category        String
+  activeTeamId    String
+  teamAQuestionId String?
+  teamBQuestionId String?
+  teamACorrect    Boolean     @default(false)
+  teamBCorrect    Boolean     @default(false)
+  pointsAwardedA  Int         @default(0)
+  pointsAwardedB  Int         @default(0)
+  createdAt       DateTime    @default(now())
+}
+
+model CustomQuestion {
+  id            String   @id @default(uuid())
+  category      String
+  type          String
+  title         String
+  prompt        String
+  optionsJson   String?  // JSON array string
+  correctAnswer String
+  explanation   String
+  points        Int      @default(100)
+  createdAt     DateTime @default(now())
+}

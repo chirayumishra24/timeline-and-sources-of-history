@@ -32,6 +32,7 @@ export interface GameSettings {
   timerEnabled: boolean;
   videoBgEnabled: boolean;
   videoBgId: string;
+  wheelMode: '2d' | '3d';
 }
 
 export interface TeamAnswerStatus {

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { GameState, GamePhase } from '@/types/game';
 import { WheelCategory, Question } from '@/types/question';
 import { EmblemType, DiscoveredArtifact } from '@/types/team';
@@ -24,12 +24,15 @@ import { GameSetup } from '@/components/GameSetup';
 import { InstructionsScreen } from '@/components/InstructionsScreen';
 import { TeacherSettingsModal } from '@/components/TeacherSettingsModal';
 import { BackgroundVideo } from '@/components/BackgroundVideo';
+import HistoryWheel3D from '@/components/three/HistoryWheel3D';
+import MatchHistoryModal from '@/components/MatchHistoryModal';
 
 export default function HistoryWheelApp() {
   const [state, setState] = useState<GameState>(INITIAL_GAME_STATE);
   const [isClient, setIsClient] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [reviewOpen, setReviewOpen] = useState(false);
+  const [historyOpen, setHistoryOpen] = useState(false);
 
   // Restore game session on client mount
   useEffect(() => {
@@ -41,12 +44,56 @@ export default function HistoryWheelApp() {
     }
   }, []);
 
-  // Save game state automatically
+  // Save game state automatically to local storage
   useEffect(() => {
     if (isClient) {
       saveGameState(state);
     }
   }, [state, isClient]);
+
+  // Automatically persist session to Prisma when results phase is reached
+  const sessionSavedRef = useRef<boolean>(false);
+  useEffect(() => {
+    if (state.phase === 'results' && !sessionSavedRef.current && state.currentRound > 1) {
+      sessionSavedRef.current = true;
+      const winnerId =
+        state.teams.teamA.score > state.teams.teamB.score
+          ? 'teamA'
+          : state.teams.teamB.score > state.teams.teamA.score
+          ? 'teamB'
+          : null;
+
+      const roundLogs = state.answerHistory.map((log) => ({
+        roundNumber: log.round,
+        category: log.question.category,
+        activeTeamId: log.teamId,
+        teamAQuestionId: log.teamId === 'teamA' ? log.question.id : null,
+        teamBQuestionId: log.teamId === 'teamB' ? log.question.id : null,
+        teamACorrect: log.teamId === 'teamA' ? log.isCorrect : false,
+        teamBCorrect: log.teamId === 'teamB' ? log.isCorrect : false,
+        pointsAwardedA: log.teamId === 'teamA' ? log.pointsAwarded : 0,
+        pointsAwardedB: log.teamId === 'teamB' ? log.pointsAwarded : 0,
+      }));
+
+      fetch('/api/game-sessions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          totalRounds: state.maxRounds,
+          winnerId,
+          teamAName: state.teams.teamA.name,
+          teamBName: state.teams.teamB.name,
+          teamAScore: state.teams.teamA.score,
+          teamBScore: state.teams.teamB.score,
+          teamAEmblem: state.teams.teamA.emblem,
+          teamBEmblem: state.teams.teamB.emblem,
+          roundLogs,
+        }),
+      }).catch((err) => console.warn('Prisma auto-save error:', err));
+    } else if (state.phase !== 'results') {
+      sessionSavedRef.current = false;
+    }
+  }, [state.phase, state.currentRound, state.maxRounds, state.teams, state.answerHistory]);
 
   const activeTeam = state.teams[state.currentTurn];
   const nextTeamId = state.currentTurn === 'teamA' ? 'teamB' : 'teamA';
@@ -370,10 +417,17 @@ export default function HistoryWheelApp() {
               round={state.currentRound}
               promptText={`${activeTeam.name} spins for topic`}
             />
-            <HistoryWheel
-              onSpinComplete={handleSpinComplete}
-              isSpinning={false}
-            />
+            {state.settings.wheelMode === '3d' ? (
+              <HistoryWheel3D
+                onSpinComplete={handleSpinComplete}
+                isSpinning={false}
+              />
+            ) : (
+              <HistoryWheel
+                onSpinComplete={handleSpinComplete}
+                isSpinning={false}
+              />
+            )}
             <HistoryBalance teamA={state.teams.teamA} teamB={state.teams.teamB} />
             <HistoryArchive
               teamA={state.teams.teamA}
@@ -456,9 +510,16 @@ export default function HistoryWheelApp() {
               }
             }}
             onResetGame={handleResetGame}
+            onOpenHistory={() => setHistoryOpen(true)}
             onClose={() => setSettingsOpen(false)}
           />
         )}
+
+        {/* Classroom Match History / Chronicles Modal (Prisma) */}
+        <MatchHistoryModal
+          isOpen={historyOpen}
+          onClose={() => setHistoryOpen(false)}
+        />
       </main>
 
       {/* Footer */}

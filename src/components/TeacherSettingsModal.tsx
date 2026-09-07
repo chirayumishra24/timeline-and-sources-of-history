@@ -1,12 +1,13 @@
 import React from 'react';
 import { GameSettings } from '@/types/game';
-import { Settings, Volume2, VolumeX, RotateCcw } from 'lucide-react';
+import { Settings, Volume2, VolumeX, RotateCcw, History, Compass } from 'lucide-react';
 
 interface TeacherSettingsModalProps {
   settings: GameSettings;
   currentMaxRounds: number;
   onUpdateSettings: (newSettings: Partial<GameSettings>) => void;
   onResetGame: () => void;
+  onOpenHistory?: () => void;
   onClose: () => void;
 }
 
@@ -15,6 +16,7 @@ export const TeacherSettingsModal: React.FC<TeacherSettingsModalProps> = ({
   currentMaxRounds,
   onUpdateSettings,
   onResetGame,
+  onOpenHistory,
   onClose,
 }) => {
   return (
@@ -53,6 +55,41 @@ export const TeacherSettingsModal: React.FC<TeacherSettingsModalProps> = ({
               {settings.soundEnabled ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
               <span>{settings.soundEnabled ? 'ON' : 'OFF'}</span>
             </button>
+          </div>
+
+          {/* Wheel Visual Engine Toggle (3D Astrolabe vs 2D Classic) */}
+          <div className="flex items-center justify-between p-3 rounded-xl bg-stone-50 border border-stone-200">
+            <div>
+              <div className="flex items-center space-x-1.5">
+                <Compass className="w-4 h-4 text-amber-700" />
+                <span className="font-bold text-stone-800 block">Wheel Visual Engine</span>
+              </div>
+              <span className="text-xs text-stone-500">3D WebGL Astrolabe (Three.js) or 2D Classic</span>
+            </div>
+            <div className="flex bg-stone-200 p-1 rounded-xl">
+              <button
+                type="button"
+                onClick={() => onUpdateSettings({ wheelMode: '3d' })}
+                className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all ${
+                  settings.wheelMode === '3d'
+                    ? 'bg-amber-600 text-white shadow-sm'
+                    : 'text-stone-700 hover:text-stone-900'
+                }`}
+              >
+                3D Astrolabe
+              </button>
+              <button
+                type="button"
+                onClick={() => onUpdateSettings({ wheelMode: '2d' })}
+                className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all ${
+                  settings.wheelMode === '2d'
+                    ? 'bg-amber-600 text-white shadow-sm'
+                    : 'text-stone-700 hover:text-stone-900'
+                }`}
+              >
+                2D Classic
+              </button>
+            </div>
           </div>
 
           {/* YouTube Video Background Toggle */}
@@ -121,6 +158,23 @@ export const TeacherSettingsModal: React.FC<TeacherSettingsModalProps> = ({
               ))}
             </div>
           </div>
+
+          {/* Match History / Chronicles Button */}
+          {onOpenHistory && (
+            <div className="pt-1">
+              <button
+                type="button"
+                onClick={() => {
+                  onClose();
+                  onOpenHistory();
+                }}
+                className="w-full py-2.5 rounded-xl bg-amber-100/90 hover:bg-amber-200/90 border border-amber-300 text-amber-950 font-serif font-bold text-xs flex items-center justify-center space-x-2 transition-colors shadow-sm"
+              >
+                <History className="w-4 h-4 text-amber-800" />
+                <span>Classroom Chronicles & Records (Prisma)</span>
+              </button>
+            </div>
+          )}
 
           {/* Reset session button */}
           <div className="pt-2">
