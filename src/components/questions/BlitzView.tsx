@@ -53,32 +53,32 @@ export const BlitzView: React.FC<BlitzViewProps> = ({
   const isWarning = secondsRemaining <= 5;
 
   return (
-    <div className="w-full flex flex-col space-y-6">
+    <div className="w-full flex flex-col space-y-3.5">
       {/* Rapid Timer Banner */}
-      <div className="bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 rounded-2xl p-4 text-white shadow-md flex items-center justify-between">
+      <div className="bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 rounded-2xl p-3 sm:p-3.5 text-white shadow-md flex items-center justify-between">
         <div className="flex items-center space-x-2">
-          <div className="p-2 rounded-xl bg-white/20 animate-bounce">
-            <Zap className="w-5 h-5 text-yellow-200 fill-yellow-300" />
+          <div className="p-1.5 rounded-lg bg-white/20 animate-bounce">
+            <Zap className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-200 fill-yellow-300" />
           </div>
           <div>
-            <span className="text-xs uppercase font-bold tracking-wider opacity-90 block">
+            <span className="text-[11px] uppercase font-bold tracking-wider opacity-90 block">
               HISTORY BLITZ &bull; SPEED ROUND
             </span>
-            <h3 className="text-base font-serif font-bold">Fast Answer = +5 Points!</h3>
+            <h3 className="text-sm sm:text-base font-serif font-bold">Fast Answer = +5 Points!</h3>
           </div>
         </div>
 
         {/* Live Timer Gauge */}
-        <div className="flex items-center space-x-2 bg-black/25 px-4 py-1.5 rounded-xl border border-white/20">
-          <Timer className={`w-5 h-5 ${isWarning ? 'text-rose-300 animate-spin' : 'text-amber-200'}`} />
-          <span className={`font-mono text-2xl font-black ${isWarning ? 'text-rose-200 scale-110' : 'text-white'}`}>
+        <div className="flex items-center space-x-2 bg-black/25 px-3 py-1 rounded-xl border border-white/20">
+          <Timer className={`w-4 h-4 ${isWarning ? 'text-rose-300 animate-spin' : 'text-amber-200'}`} />
+          <span className={`font-mono text-xl sm:text-2xl font-black ${isWarning ? 'text-rose-200 scale-110' : 'text-white'}`}>
             {secondsRemaining}s
           </span>
         </div>
       </div>
 
       {/* Progress Bar */}
-      <div className="w-full bg-stone-200 h-2.5 rounded-full overflow-hidden shadow-inner">
+      <div className="w-full bg-stone-200 h-2 rounded-full overflow-hidden shadow-inner">
         <div
           className={`h-full transition-all duration-1000 rounded-full ${
             isWarning ? 'bg-rose-600' : 'bg-amber-500'
@@ -88,14 +88,14 @@ export const BlitzView: React.FC<BlitzViewProps> = ({
       </div>
 
       {/* Prompt */}
-      <div className="bg-white/95 rounded-2xl border-2 border-stone-200 p-5 sm:p-6 shadow-sm">
-        <h4 className="text-xl sm:text-2xl font-serif font-bold text-stone-900 leading-snug">
+      <div className="bg-white/95 rounded-2xl border-2 border-stone-200 p-3.5 sm:p-4 shadow-sm">
+        <h4 className="text-base sm:text-xl font-serif font-bold text-stone-900 leading-snug">
           {question.question}
         </h4>
       </div>
 
       {/* Blitz Quick Options Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
         {question.options.map((option, idx) => {
           const isSelected = selected === option;
 
@@ -104,9 +104,9 @@ export const BlitzView: React.FC<BlitzViewProps> = ({
               key={idx}
               onClick={() => handleSelect(option)}
               disabled={disabled}
-              className={`p-5 rounded-2xl border-2 font-serif text-base sm:text-lg font-bold text-left transition-all duration-150 shadow-sm flex items-center justify-between ${
+              className={`p-3.5 sm:p-4 rounded-xl border-2 font-serif text-sm sm:text-base font-bold text-left transition-all duration-150 shadow-sm flex items-center justify-between ${
                 isSelected
-                  ? 'bg-amber-500 text-white border-amber-600 scale-[1.02]'
+                  ? 'bg-amber-500 text-white border-amber-600 scale-[1.01]'
                   : 'bg-white hover:bg-amber-50 text-stone-800 border-stone-200 hover:border-amber-400 active:scale-95'
               } ${disabled ? 'cursor-not-allowed opacity-80' : 'cursor-pointer'}`}
             >

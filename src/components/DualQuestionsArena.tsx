@@ -50,6 +50,19 @@ export const DualQuestionsArena: React.FC<DualQuestionsArenaProps> = ({
   const bothAnswered = !!answerTeamA && !!answerTeamB;
   const isFinalRound = currentRound >= maxRounds;
 
+  // Press Enter key to proceed when both teams have answered
+  React.useEffect(() => {
+    if (!bothAnswered) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        onProceedToNextSpin();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [bothAnswered, onProceedToNextSpin]);
+
   const renderQuestionComponent = (question: Question, teamId: TeamId, disabled: boolean) => {
     switch (question.type) {
       case 'mcq':
@@ -302,21 +315,22 @@ export const DualQuestionsArena: React.FC<DualQuestionsArenaProps> = ({
       <HistoryBalance teamA={teamA} teamB={teamB} />
 
       {/* Central Bottom Action Bar: Ready for Next Spin */}
-      <div className="flex flex-col items-center justify-center pt-0.5">
+      <div className="sticky bottom-2 z-20 flex flex-col items-center justify-center pt-1 pb-1">
         {bothAnswered ? (
           <button
+            type="button"
             onClick={onProceedToNextSpin}
-            className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 hover:from-amber-500 hover:to-amber-500 text-white font-serif font-bold text-sm tracking-wider transition-all shadow-lg hover:scale-105 active:scale-95 flex items-center space-x-2 border border-amber-400 animate-bounce"
+            className="px-8 py-3 rounded-2xl bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 hover:from-amber-500 hover:to-amber-500 text-white font-serif font-bold text-sm sm:text-base tracking-wider transition-all shadow-xl hover:scale-105 active:scale-95 flex items-center space-x-2.5 border-2 border-amber-400 ring-4 ring-amber-400/25 animate-bounce"
           >
             <span>
               {isFinalRound
-                ? 'PROCEED TO FINAL CHALLENGE'
-                : `SPIN FOR NEXT TOPIC (${nextSpinTeam.name.toUpperCase()}'S TURN)`}
+                ? 'PROCEED TO FINAL CHALLENGE 🏆'
+                : `SPIN FOR NEXT TOPIC (${nextSpinTeam.name.toUpperCase()}'S TURN) →`}
             </span>
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-5 h-5" />
           </button>
         ) : (
-          <div className="text-[11px] font-bold uppercase tracking-wider text-stone-500 bg-white/80 border border-stone-200 px-3 py-1 rounded-full">
+          <div className="text-[11px] font-bold uppercase tracking-wider text-stone-600 bg-white/95 backdrop-blur-sm border border-stone-300 px-4 py-1.5 rounded-full shadow-xs">
             Waiting for both teams to submit their answers...
           </div>
         )}

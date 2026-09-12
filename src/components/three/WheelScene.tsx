@@ -12,6 +12,8 @@ interface WheelSceneProps {
   onSpinComplete: (category: WheelCategory) => void;
   onSpinStart?: () => void;
   disabled?: boolean;
+  spinTriggerSignal?: number;
+  forcedCategory?: WheelCategory | null;
 }
 
 export default function WheelScene({
@@ -19,6 +21,8 @@ export default function WheelScene({
   onSpinComplete,
   onSpinStart,
   disabled = false,
+  spinTriggerSignal,
+  forcedCategory,
 }: WheelSceneProps) {
   const wheelGroupRef = useRef<THREE.Group>(null);
   const pointerRef = useRef<THREE.Mesh>(null);
@@ -107,36 +111,37 @@ export default function WheelScene({
 
       // 1. Emoji medallion backing disc
       ctx.beginPath();
-      ctx.arc(iconDist, 0, 72, 0, 2 * Math.PI);
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.35)';
+      ctx.arc(iconDist, 0, 92, 0, 2 * Math.PI);
+      ctx.fillStyle = 'rgba(20, 16, 10, 0.65)';
       ctx.fill();
-      ctx.lineWidth = 4;
+      ctx.lineWidth = 6;
       ctx.strokeStyle = '#FFD700';
       ctx.stroke();
 
       // Emoji
-      ctx.font = '84px "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", sans-serif';
+      ctx.font = '105px "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", sans-serif';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.fillText(cat.icon, iconDist, 0);
 
-      // 2. High-contrast bold Category Label
+      // 2. High-contrast bold Category Label (Extra large and crisp)
       const lines = getCategoryLines(cat.name);
-      ctx.font = '900 48px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
 
-      const drawTextWithOutline = (text: string, x: number, y: number) => {
+      const drawTextWithOutline = (text: string, x: number, y: number, fontSize: number, strokeW: number) => {
         ctx.save();
+        ctx.font = `900 ${fontSize}px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+
         ctx.shadowColor = 'rgba(0, 0, 0, 0.95)';
-        ctx.shadowBlur = 14;
+        ctx.shadowBlur = 16;
         ctx.shadowOffsetX = 3;
         ctx.shadowOffsetY = 4;
 
         ctx.lineJoin = 'round';
         ctx.miterLimit = 2;
-        ctx.strokeStyle = 'rgba(0, 0, 0, 0.95)';
-        ctx.lineWidth = 9;
+        ctx.strokeStyle = '#000000';
+        ctx.lineWidth = strokeW;
         ctx.strokeText(text, x, y);
 
         ctx.fillStyle = '#FFFFFF';
@@ -145,10 +150,10 @@ export default function WheelScene({
       };
 
       if (lines.length === 1) {
-        drawTextWithOutline(lines[0], labelDist, 0);
+        drawTextWithOutline(lines[0], labelDist, 0, 84, 14);
       } else if (lines[1]) {
-        drawTextWithOutline(lines[0], labelDist, -28);
-        drawTextWithOutline(lines[1], labelDist, 28);
+        drawTextWithOutline(lines[0], labelDist, -36, 70, 12);
+        drawTextWithOutline(lines[1], labelDist, 36, 70, 12);
       }
 
       ctx.restore();
@@ -253,6 +258,14 @@ export default function WheelScene({
 
     requestAnimationFrame(animateSpin);
   };
+
+  const lastSignalRef = useRef(0);
+  useEffect(() => {
+    if (spinTriggerSignal && spinTriggerSignal !== lastSignalRef.current) {
+      lastSignalRef.current = spinTriggerSignal;
+      spinAstrolabe(forcedCategory || undefined);
+    }
+  }, [spinTriggerSignal, forcedCategory]);
 
   // Sync rotation to 3D Wheel Group every frame
   useFrame((_, delta) => {

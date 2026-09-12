@@ -29,7 +29,13 @@ const AVAILABLE_EMBLEMS: { type: EmblemType; label: string }[] = [
   { type: 'shield', label: 'Shield' },
 ];
 
-const ROUND_OPTIONS = [10, 15, 20, 25, 30];
+const ROUND_OPTIONS = [
+  { count: 5, label: '5 Rounds', hint: 'Quick Match (~6 mins)' },
+  { count: 10, label: '10 Rounds', hint: 'Class Sprint (~12 mins)' },
+  { count: 15, label: '15 Rounds', hint: 'Deep Inquiry (~18 mins)' },
+  { count: 20, label: '20 Rounds (Standard)', hint: 'Complete Tour (~22 mins)' },
+  { count: 30, label: '30 Rounds', hint: 'Grand Marathon (~35 mins)' },
+];
 
 export const GameSetup: React.FC<GameSetupProps> = ({
   initialTeamAName,
@@ -57,17 +63,17 @@ export const GameSetup: React.FC<GameSetupProps> = ({
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto p-4 sm:p-6 animate-fadeIn">
-      <div className="bg-white/95 rounded-3xl border-4 border-amber-300 shadow-2xl p-6 sm:p-8">
-        <div className="text-center mb-6">
-          <div className="inline-flex items-center space-x-1.5 px-4 py-1 rounded-full bg-amber-100 border border-amber-300 text-amber-900 text-xs font-bold uppercase tracking-widest mb-2">
-            <Users className="w-4 h-4 text-amber-600" />
+    <div className="w-full max-w-4xl mx-auto p-2 sm:p-4 my-auto animate-fadeIn">
+      <div className="bg-white/95 rounded-3xl border-4 border-amber-300 shadow-2xl p-4 sm:p-6">
+        <div className="text-center mb-4">
+          <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-amber-100 border border-amber-300 text-amber-900 text-[11px] font-bold uppercase tracking-widest mb-1.5">
+            <Users className="w-3.5 h-3.5 text-amber-600" />
             <span>Team Registration</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-serif font-black text-stone-900 tracking-wide">
+          <h2 className="text-2xl sm:text-3xl font-serif font-black text-stone-900 tracking-wide">
             THE HISTORY WHEEL
           </h2>
-          <p className="text-xs sm:text-sm text-stone-600 mt-1">
+          <p className="text-xs sm:text-sm text-stone-600 mt-0.5">
             Configure team identities and challenge duration for today&apos;s history competition
           </p>
         </div>
@@ -170,29 +176,29 @@ export const GameSetup: React.FC<GameSetupProps> = ({
           </div>
 
           {/* Game Length Selection */}
-          <div className="bg-stone-50 p-4 sm:p-5 rounded-2xl border border-stone-200 text-center">
+          <div className="bg-stone-50 p-3 sm:p-4 rounded-2xl border border-stone-200 text-center">
             <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-2">
               Select Game Length (Total Rounds)
             </label>
             <div className="flex flex-wrap items-center justify-center gap-2">
-              {ROUND_OPTIONS.map((rounds) => (
+              {ROUND_OPTIONS.map((opt) => (
                 <button
-                  key={rounds}
+                  key={opt.count}
                   type="button"
-                  onClick={() => setMaxRounds(rounds)}
-                  className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all ${
-                    maxRounds === rounds
-                      ? 'bg-amber-600 text-white shadow-md scale-105'
+                  onClick={() => setMaxRounds(opt.count)}
+                  className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-bold transition-all flex flex-col items-center ${
+                    maxRounds === opt.count
+                      ? 'bg-amber-600 text-white shadow-md scale-105 ring-2 ring-amber-400/40'
                       : 'bg-white hover:bg-stone-100 text-stone-700 border border-stone-300'
                   }`}
                 >
-                  {rounds} Rounds {rounds === 20 ? '(Standard)' : ''}
+                  <span>{opt.label}</span>
+                  <span className={`text-[10px] font-normal ${maxRounds === opt.count ? 'text-amber-100' : 'text-stone-500'}`}>
+                    {opt.hint}
+                  </span>
                 </button>
               ))}
             </div>
-            <p className="text-[11px] text-stone-500 mt-2">
-              Standard 20 rounds takes approx 15–20 minutes in a classroom setting.
-            </p>
           </div>
 
           {/* Action CTA */}

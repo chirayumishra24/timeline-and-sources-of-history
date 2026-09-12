@@ -1,5 +1,5 @@
-import React from 'react';
-import { Volume2, VolumeX, RotateCcw, Settings as SettingsIcon, BookOpen } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Volume2, VolumeX, RotateCcw, Settings as SettingsIcon, BookOpen, Maximize2, Minimize2 } from 'lucide-react';
 import { soundManager } from '@/utils/sound';
 
 interface GameHeaderProps {
@@ -27,6 +27,30 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
   onOpenReview,
   hasAnswerHistory,
 }) => {
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      setIsFullscreen(Boolean(document.fullscreenElement));
+    };
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
+  }, []);
+
+  const toggleFullscreen = () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch((err) => {
+        console.warn('Could not activate fullscreen mode:', err);
+      });
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen().catch((err) => {
+          console.warn('Could not exit fullscreen mode:', err);
+        });
+      }
+    }
+  };
+
   return (
     <header className="w-full bg-parchment-100/95 border-b border-parchment-300 shadow-xs px-3 py-1.5 sm:px-4 shrink-0">
       <div className="max-w-7xl mx-auto flex flex-row items-center justify-between gap-2">
@@ -104,6 +128,15 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
               <SettingsIcon className="w-4 h-4" />
             </button>
           )}
+
+          <button
+            onClick={toggleFullscreen}
+            className="p-2 rounded-lg bg-amber-50 hover:bg-amber-100 border border-amber-300 text-amber-900 transition-colors shadow-sm"
+            title={isFullscreen ? 'Exit Fullscreen' : 'Fullscreen Mode'}
+            aria-label="Toggle Fullscreen"
+          >
+            {isFullscreen ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
+          </button>
 
           <button
             onClick={() => {

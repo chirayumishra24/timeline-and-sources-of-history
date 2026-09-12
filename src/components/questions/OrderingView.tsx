@@ -47,88 +47,78 @@ export const OrderingView: React.FC<OrderingViewProps> = ({
   };
 
   return (
-    <div className="w-full flex flex-col space-y-6">
+    <div className="w-full flex flex-col space-y-2.5">
       {/* Prompt Header */}
-      <div className="bg-white/95 rounded-2xl border-2 border-stone-200 p-5 sm:p-6 shadow-sm">
-        <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-amber-800 mb-2">
-          <ArrowUpDown className="w-4 h-4 text-amber-600" />
+      <div className="bg-white/95 rounded-2xl border-2 border-stone-200 p-3 sm:p-3.5 shadow-xs">
+        <div className="flex items-center space-x-1.5 text-[10px] font-bold uppercase tracking-wider text-amber-800 mb-1">
+          <ArrowUpDown className="w-3.5 h-3.5 text-amber-600" />
           <span>Chronological Ordering Challenge</span>
         </div>
-        <h3 className="text-lg sm:text-xl font-serif font-bold text-stone-900 leading-snug">
+        <h3 className="text-sm sm:text-base font-serif font-bold text-stone-900 leading-snug">
           {question.prompt}
         </h3>
-        <p className="text-xs font-semibold text-stone-500 mt-2 bg-stone-50 inline-block px-3 py-1 rounded-lg border border-stone-200">
+        <p className="text-[11px] font-semibold text-stone-500 mt-1 bg-stone-50 inline-block px-2.5 py-0.5 rounded-lg border border-stone-200">
           Order Direction: {question.directionLabel || "Earliest (Past) → Latest (Recent)"}
         </p>
       </div>
 
       {/* Interactive Ordered Cards */}
-      <div className="space-y-3">
+      <div className="space-y-1.5">
         {items.map((item, index) => {
           return (
             <div
               key={item.id}
-              className="bg-white rounded-2xl border-2 border-stone-200 hover:border-amber-400 p-4 transition-all shadow-sm flex flex-col sm:flex-row items-center justify-between gap-3"
+              className="bg-white rounded-xl border-2 border-stone-200 hover:border-amber-400 p-2.5 sm:p-3 transition-all shadow-xs flex flex-row items-center justify-between gap-2"
             >
               {/* Left Rank Indicator + Content */}
-              <div className="flex items-center space-x-3.5 w-full sm:w-auto">
-                <div className="w-9 h-9 rounded-xl bg-amber-100 border border-amber-300 text-amber-900 font-serif font-bold text-base flex items-center justify-center shrink-0">
+              <div className="flex items-center space-x-2.5 flex-1 min-w-0">
+                <div className="w-6 h-6 rounded-lg bg-amber-100 border border-amber-300 text-amber-900 font-serif font-bold text-xs flex items-center justify-center shrink-0">
                   {index + 1}
                 </div>
-                <div>
-                  <h4 className="text-sm sm:text-base font-bold text-stone-800">
+                <div className="min-w-0">
+                  <h4 className="text-xs sm:text-sm font-bold text-stone-800 truncate">
                     {item.label}
                   </h4>
                   {item.detail && (
-                    <p className="text-xs text-stone-500 mt-0.5">{item.detail}</p>
+                    <p className="text-[11px] text-stone-500 truncate">{item.detail}</p>
                   )}
                 </div>
               </div>
 
               {/* Accessible Controls: Up/Down Buttons & Slot Selector */}
-              <div className="flex items-center space-x-2 shrink-0 self-end sm:self-auto">
-                {/* Number selector */}
-                <div className="flex items-center space-x-1 mr-2 text-xs text-stone-500">
-                  <span className="hidden sm:inline">Slot:</span>
-                  <select
-                    value={index + 1}
-                    onChange={(e) => moveToSlot(index, parseInt(e.target.value))}
-                    disabled={disabled}
-                    className="bg-stone-50 border border-stone-300 rounded-lg px-2 py-1 text-xs font-bold text-stone-700 cursor-pointer focus:outline-none focus:border-amber-500"
-                    aria-label={`Position for ${item.label}`}
-                  >
-                    {items.map((_, i) => (
-                      <option key={i} value={i + 1}>
-                        #{i + 1}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+              <div className="flex items-center space-x-1.5 shrink-0">
+                <select
+                  value={index + 1}
+                  onChange={(e) => moveToSlot(index, parseInt(e.target.value))}
+                  disabled={disabled}
+                  className="bg-stone-50 border border-stone-300 rounded-md px-1.5 py-0.5 text-xs font-bold text-stone-700 cursor-pointer focus:outline-none"
+                  aria-label={`Position for ${item.label}`}
+                >
+                  {items.map((_, i) => (
+                    <option key={i} value={i + 1}>
+                      #{i + 1}
+                    </option>
+                  ))}
+                </select>
 
                 <button
+                  type="button"
                   onClick={() => moveUp(index)}
                   disabled={index === 0 || disabled}
-                  className={`p-2 rounded-xl border text-stone-700 transition-colors ${
-                    index === 0 || disabled
-                      ? 'bg-stone-100 border-stone-200 text-stone-300 cursor-not-allowed'
-                      : 'bg-stone-50 hover:bg-amber-100 border-stone-300 hover:border-amber-400 cursor-pointer'
-                  }`}
-                  title="Move Earlier in Time (Up)"
+                  className="p-1 rounded-md bg-stone-100 hover:bg-stone-200 text-stone-700 disabled:opacity-30 disabled:cursor-not-allowed"
+                  title="Move Up"
                 >
-                  <ChevronUp className="w-4 h-4" />
+                  <ChevronUp className="w-3.5 h-3.5" />
                 </button>
 
                 <button
+                  type="button"
                   onClick={() => moveDown(index)}
                   disabled={index === items.length - 1 || disabled}
-                  className={`p-2 rounded-xl border text-stone-700 transition-colors ${
-                    index === items.length - 1 || disabled
-                      ? 'bg-stone-100 border-stone-200 text-stone-300 cursor-not-allowed'
-                      : 'bg-stone-50 hover:bg-amber-100 border-stone-300 hover:border-amber-400 cursor-pointer'
-                  }`}
-                  title="Move Later in Time (Down)"
+                  className="p-1 rounded-md bg-stone-100 hover:bg-stone-200 text-stone-700 disabled:opacity-30 disabled:cursor-not-allowed"
+                  title="Move Down"
                 >
-                  <ChevronDown className="w-4 h-4" />
+                  <ChevronDown className="w-3.5 h-3.5" />
                 </button>
               </div>
             </div>
@@ -136,15 +126,19 @@ export const OrderingView: React.FC<OrderingViewProps> = ({
         })}
       </div>
 
-      {/* Confirm Button */}
-      <div className="flex justify-end pt-2">
+      {/* Submit Action */}
+      <div className="flex justify-end pt-1">
         <button
+          type="button"
           onClick={handleSubmit}
           disabled={disabled}
-          className="px-8 py-3 rounded-2xl font-serif font-bold text-base tracking-wider bg-[#2B4C7E] hover:bg-[#1E3557] text-white transition-all shadow-md hover:scale-105 active:scale-95 flex items-center space-x-2"
+          className={`px-6 py-2 rounded-xl font-serif font-bold text-xs sm:text-sm tracking-wider transition-all shadow-sm ${
+            !disabled
+              ? 'bg-[#2B4C7E] hover:bg-[#1E3557] text-white hover:scale-105 active:scale-95 cursor-pointer'
+              : 'bg-stone-200 text-stone-400 cursor-not-allowed'
+          }`}
         >
-          <Check className="w-5 h-5" />
-          <span>CONFIRM TIMELINE SEQUENCE</span>
+          CONFIRM ORDER
         </button>
       </div>
     </div>

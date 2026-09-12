@@ -28,9 +28,9 @@ export const ConnectCluesView: React.FC<ConnectCluesViewProps> = ({
   };
 
   return (
-    <div className="w-full flex flex-col space-y-6">
+    <div className="w-full flex flex-col space-y-3.5">
       {/* Scenario Header */}
-      <div className="bg-white/95 rounded-2xl border-2 border-stone-200 p-5 sm:p-6 shadow-sm">
+      <div className="bg-white/95 rounded-2xl border-2 border-stone-200 p-3.5 sm:p-4 shadow-sm">
         <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-emerald-800 mb-2">
           <Network className="w-4 h-4 text-emerald-600" />
           <span>Evidence Synthesis Challenge</span>
@@ -72,16 +72,16 @@ export const ConnectCluesView: React.FC<ConnectCluesViewProps> = ({
       </div>
 
       {/* Synthesis Question & Options */}
-      <div className="bg-white/95 rounded-2xl border-2 border-stone-200 p-5 sm:p-6 shadow-sm">
-        <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-stone-500 mb-2">
+      <div className="bg-white/95 rounded-2xl border-2 border-stone-200 p-3.5 sm:p-4 shadow-sm">
+        <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-stone-500 mb-1.5">
           <Layers className="w-4 h-4 text-emerald-600" />
           <span>Synthesize the Clues</span>
         </div>
-        <h4 className="text-base sm:text-lg font-serif font-bold text-stone-900 leading-snug mb-4">
+        <h4 className="text-sm sm:text-base font-serif font-bold text-stone-900 leading-snug mb-3">
           {question.question}
         </h4>
 
-        <div className="grid grid-cols-1 gap-3">
+        <div className="grid grid-cols-1 gap-2 sm:gap-2.5">
           {question.options.map((option, idx) => {
             const isSelected = selected === option;
             const letter = optionLetters[idx];
@@ -91,7 +91,7 @@ export const ConnectCluesView: React.FC<ConnectCluesViewProps> = ({
                 key={idx}
                 onClick={() => handleSelect(option)}
                 disabled={disabled}
-                className={`w-full text-left p-4 rounded-2xl border-2 transition-all duration-200 flex items-center space-x-3.5 shadow-sm ${
+                className={`w-full text-left p-2.5 sm:p-3 rounded-xl border-2 transition-all duration-200 flex items-center space-x-3 shadow-sm ${
                   isSelected
                     ? 'bg-emerald-50 border-emerald-500 shadow-emerald-500/15 scale-[1.01]'
                     : 'bg-white hover:bg-stone-50 border-stone-200 hover:border-emerald-300'

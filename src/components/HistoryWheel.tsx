@@ -253,62 +253,62 @@ export const HistoryWheel: React.FC<HistoryWheelProps> = ({
   const isBusy = internalSpinning || externalIsSpinning || disabled;
 
   return (
-    <div className="flex flex-col items-center justify-center p-4">
+    <div className="flex flex-col items-center justify-center p-1 sm:p-2">
       {/* Centerpiece Wheel Container */}
       <div className="relative flex items-center justify-center">
         {/* Top Pointer Needle */}
         <div className="absolute -top-3 z-20 flex flex-col items-center filter drop-shadow-md">
           {/* Triangular Brass Pointer */}
           <div
-            className="w-0 h-0 border-l-[14px] border-l-transparent border-r-[14px] border-r-transparent border-t-[26px] border-t-amber-600 transform transition-transform"
+            className="w-0 h-0 border-l-[12px] border-l-transparent border-r-[12px] border-r-transparent border-t-[22px] border-t-amber-600 transform transition-transform"
             style={{
               filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.4))',
             }}
           />
-          <div className="w-3.5 h-3.5 -mt-7 rounded-full bg-amber-400 border border-stone-800 shadow-sm" />
+          <div className="w-3 h-3 -mt-6 rounded-full bg-amber-400 border border-stone-800 shadow-sm" />
         </div>
 
         {/* Canvas Wheel */}
-        <div className="relative rounded-full p-2 bg-gradient-to-b from-amber-100 via-stone-100 to-stone-200 shadow-parchment-lg border-4 border-amber-300">
+        <div className="relative rounded-full p-1.5 bg-gradient-to-b from-amber-100 via-stone-100 to-stone-200 shadow-parchment-lg border-4 border-amber-300">
           <canvas
             ref={canvasRef}
             width={440}
             height={440}
-            className="w-[320px] h-[320px] sm:w-[400px] sm:h-[400px] md:w-[440px] md:h-[440px] rounded-full transition-transform"
+            className="w-[min(260px,32vh)] h-[min(260px,32vh)] sm:w-[min(300px,36vh)] sm:h-[min(300px,36vh)] md:w-[min(330px,38vh)] md:h-[min(330px,38vh)] rounded-full transition-transform"
           />
         </div>
       </div>
 
       {/* Selected Category Highlight Banner (When Stopped) */}
-      <div className="h-14 mt-4 flex items-center justify-center">
+      <div className="min-h-[36px] my-1 flex items-center justify-center">
         {selectedCategory ? (
           <div
-            className={`px-5 py-2 rounded-full border-2 shadow-md animate-bounce flex items-center space-x-2 ${selectedCategory.badgeBg} ${selectedCategory.badgeBorder}`}
+            className={`px-4 py-1 rounded-full border-2 shadow-sm animate-bounce flex items-center space-x-1.5 ${selectedCategory.badgeBg} ${selectedCategory.badgeBorder}`}
           >
-            <span className="text-xl">{selectedCategory.icon}</span>
-            <span className={`text-base font-bold tracking-wider ${selectedCategory.textColor}`}>
+            <span className="text-base">{selectedCategory.icon}</span>
+            <span className={`text-xs sm:text-sm font-bold tracking-wider ${selectedCategory.textColor}`}>
               {selectedCategory.name}
             </span>
           </div>
         ) : (
-          <p className="text-xs text-stone-500 italic tracking-wide">
+          <p className="text-[11px] text-stone-500 italic tracking-wide">
             {isBusy ? 'Consulting the Archives of Time...' : 'Ready for the next spin!'}
           </p>
         )}
       </div>
 
       {/* Primary Spin Button */}
-      <div className="mt-2 flex flex-col sm:flex-row items-center gap-3">
+      <div className="mt-1 flex flex-row items-center gap-2">
         <button
           onClick={() => spinWheel()}
           disabled={isBusy}
-          className={`group relative px-8 py-3.5 rounded-2xl font-serif text-lg font-bold tracking-wider transition-all duration-200 shadow-lg flex items-center space-x-2.5 ${
+          className={`group relative px-6 py-2.5 rounded-xl font-serif text-sm sm:text-base font-bold tracking-wider transition-all duration-200 shadow-md flex items-center space-x-2 ${
             isBusy
               ? 'bg-stone-300 text-stone-500 cursor-not-allowed shadow-none'
               : 'bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 hover:from-amber-500 hover:to-amber-500 text-white hover:scale-105 active:scale-95 shadow-amber-500/25 border-2 border-amber-400'
           }`}
         >
-          <Sparkles className={`w-5 h-5 ${isBusy ? 'animate-spin' : 'group-hover:rotate-12 transition-transform'}`} />
+          <Sparkles className={`w-4 h-4 ${isBusy ? 'animate-spin' : 'group-hover:rotate-12 transition-transform'}`} />
           <span>{isBusy ? 'SPINNING THE PAST...' : 'SPIN THE WHEEL'}</span>
         </button>
 
@@ -316,11 +316,11 @@ export const HistoryWheel: React.FC<HistoryWheelProps> = ({
         <button
           onClick={() => setManualFallbackOpen(!manualFallbackOpen)}
           disabled={isBusy}
-          className="px-3 py-2 rounded-xl text-xs font-medium text-stone-600 hover:text-stone-900 bg-stone-100 hover:bg-stone-200 border border-stone-300 transition-colors flex items-center space-x-1"
+          className="px-2.5 py-2 rounded-xl text-xs font-medium text-stone-600 hover:text-stone-900 bg-stone-100 hover:bg-stone-200 border border-stone-300 transition-colors flex items-center space-x-1"
           title="Manual Category Selector (Accessibility / Fallback)"
         >
           <HelpCircle className="w-3.5 h-3.5 text-stone-500" />
-          <span>Select Category</span>
+          <span className="hidden sm:inline">Select</span>
         </button>
       </div>
 

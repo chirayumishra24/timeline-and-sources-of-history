@@ -26,68 +26,69 @@ export const FixTimelineView: React.FC<FixTimelineViewProps> = ({
   };
 
   return (
-    <div className="w-full flex flex-col space-y-6">
-      {/* Prompt Header */}
-      <div className="bg-white/95 rounded-2xl border-2 border-stone-200 p-5 sm:p-6 shadow-sm">
-        <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-teal-800 mb-2">
-          <Wrench className="w-4 h-4 text-teal-600" />
-          <span>Timeline Repair Laboratory</span>
+    <div className="w-full flex flex-col space-y-2.5">
+      {/* Header Prompt */}
+      <div className="bg-white/95 rounded-2xl border-2 border-stone-200 p-3 sm:p-3.5 shadow-xs">
+        <div className="flex items-center space-x-1.5 text-[10px] font-bold uppercase tracking-wider text-teal-800 mb-1">
+          <Wrench className="w-3.5 h-3.5 text-teal-600" />
+          <span>Timeline Anachronism Diagnostic</span>
         </div>
-        <h3 className="text-lg sm:text-xl font-serif font-bold text-stone-900 leading-snug">
+        <h3 className="text-xs sm:text-sm font-serif font-bold text-stone-900 leading-snug">
           {question.prompt}
         </h3>
-        <p className="text-xs text-stone-600 mt-2">
-          Click on the card that is placed in the <strong className="text-teal-900">WRONG chronological order</strong>.
+        <p className="text-[11px] text-stone-600 mt-1">
+          Click on the card that is placed in the <strong className="text-teal-900">WRONG order</strong>.
         </p>
       </div>
 
       {/* Visual Timeline Bar (Past to Present) */}
-      <div className="bg-stone-100/90 rounded-3xl p-5 border border-stone-200 shadow-inner">
+      <div className="bg-stone-100/90 rounded-2xl p-3 border border-stone-200 shadow-inner">
         {/* Direction Flow Marker */}
-        <div className="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-stone-500 mb-3 px-2">
-          <span>PAST (Earlier in Time)</span>
-          <div className="flex-1 mx-4 border-t-2 border-dashed border-stone-300 relative">
-            <div className="absolute right-0 -top-1.5 w-0 h-0 border-t-4 border-t-transparent border-b-4 border-b-transparent border-l-8 border-l-stone-400" />
+        <div className="flex items-center justify-between text-[10px] font-bold uppercase tracking-wider text-stone-500 mb-2 px-1">
+          <span>PAST</span>
+          <div className="flex-1 mx-3 border-t border-dashed border-stone-300 relative">
+            <div className="absolute right-0 -top-1 w-0 h-0 border-t-3 border-t-transparent border-b-3 border-b-transparent border-l-6 border-l-stone-400" />
           </div>
-          <span>PRESENT (Later in Time)</span>
+          <span>PRESENT</span>
         </div>
 
         {/* Timeline Cards in Row */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        <div className="grid grid-cols-2 gap-2">
           {question.timeline.map((event, index) => {
             const isSelected = selectedWrongId === event.id;
 
             return (
               <button
                 key={event.id}
+                type="button"
                 onClick={() => handleSelectEvent(event.id)}
                 disabled={disabled}
-                className={`p-4 rounded-2xl border-2 text-left transition-all duration-200 flex flex-col justify-between relative shadow-sm ${
+                className={`p-2.5 rounded-xl border-2 text-left transition-all duration-150 flex flex-col justify-between relative shadow-xs ${
                   isSelected
-                    ? 'bg-teal-50 border-teal-500 ring-2 ring-teal-300 scale-[1.03] shadow-md'
+                    ? 'bg-teal-50 border-teal-500 ring-2 ring-teal-300 scale-[1.01] shadow-xs'
                     : 'bg-white hover:bg-stone-50 border-stone-300 hover:border-teal-400'
                 } ${disabled ? 'cursor-not-allowed opacity-80' : ''}`}
               >
                 <div>
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-[11px] font-bold text-stone-500 uppercase tracking-wider bg-stone-100 px-2 py-0.5 rounded-md">
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="text-[10px] font-bold text-stone-500 uppercase tracking-wider bg-stone-100 px-1.5 py-0.2 rounded">
                       Pos {index + 1}
                     </span>
                     {isSelected && (
-                      <AlertCircle className="w-5 h-5 text-teal-600 animate-pulse" />
+                      <AlertCircle className="w-3.5 h-3.5 text-teal-600 animate-pulse" />
                     )}
                   </div>
-                  <h4 className="text-sm font-bold text-stone-900 font-serif leading-snug">
+                  <h4 className="text-xs sm:text-sm font-bold text-stone-900 font-serif leading-snug">
                     {event.label}
                   </h4>
                 </div>
 
-                <div className="mt-4 pt-2 border-t border-stone-100 flex items-center justify-between text-[11px] font-semibold text-teal-800">
+                <div className="mt-2 pt-1 border-t border-stone-100 flex items-center justify-between text-[10px] font-semibold text-teal-800">
                   <span>{event.era}</span>
                   {isSelected ? (
-                    <span className="text-teal-700 font-bold underline">Selected as Error</span>
+                    <span className="text-teal-700 font-bold underline">Error</span>
                   ) : (
-                    <span className="text-stone-400 hover:text-stone-600">Click to Flag</span>
+                    <span className="text-stone-400">Flag</span>
                   )}
                 </div>
               </button>
@@ -96,22 +97,13 @@ export const FixTimelineView: React.FC<FixTimelineViewProps> = ({
         </div>
       </div>
 
-      {/* Selected Error Resolution Explanation Preview */}
-      {selectedWrongId && (
-        <div className="bg-teal-50/80 border border-teal-200 rounded-2xl p-4 flex items-center space-x-3 text-sm text-teal-900 animate-fadeIn">
-          <CheckCircle2 className="w-5 h-5 text-teal-700 shrink-0" />
-          <span>
-            You have flagged this item as the chronological error. Click <strong>Confirm Repair</strong> to test your historical deduction!
-          </span>
-        </div>
-      )}
-
       {/* Submit Button */}
-      <div className="flex justify-end pt-2">
+      <div className="flex justify-end pt-1">
         <button
+          type="button"
           onClick={handleSubmit}
           disabled={!selectedWrongId || disabled}
-          className={`px-8 py-3 rounded-2xl font-serif font-bold text-base tracking-wider transition-all shadow-md ${
+          className={`px-6 py-2 rounded-xl font-serif font-bold text-xs sm:text-sm tracking-wider transition-all shadow-sm ${
             selectedWrongId && !disabled
               ? 'bg-[#2B4C7E] hover:bg-[#1E3557] text-white hover:scale-105 active:scale-95 cursor-pointer'
               : 'bg-stone-200 text-stone-400 cursor-not-allowed'

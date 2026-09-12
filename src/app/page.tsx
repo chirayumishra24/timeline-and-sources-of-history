@@ -26,6 +26,8 @@ import { TeacherSettingsModal } from '@/components/TeacherSettingsModal';
 import { BackgroundVideo } from '@/components/BackgroundVideo';
 import HistoryWheel3D from '@/components/three/HistoryWheel3D';
 import MatchHistoryModal from '@/components/MatchHistoryModal';
+import { DiscoveryModal } from '@/components/DiscoveryModal';
+import { Team } from '@/types/team';
 
 export default function HistoryWheelApp() {
   const [state, setState] = useState<GameState>(INITIAL_GAME_STATE);
@@ -33,6 +35,7 @@ export default function HistoryWheelApp() {
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [reviewOpen, setReviewOpen] = useState(false);
   const [historyOpen, setHistoryOpen] = useState(false);
+  const [inspectArtifact, setInspectArtifact] = useState<{ artifact: DiscoveredArtifact; team: Team } | null>(null);
 
   // Restore game session on client mount
   useEffect(() => {
@@ -357,7 +360,7 @@ export default function HistoryWheelApp() {
   }
 
   return (
-    <div className="h-screen max-h-screen overflow-hidden flex flex-col justify-between relative select-none">
+    <div className="min-h-screen flex flex-col justify-between relative selection:bg-amber-200">
       {/* Historical Ambient Background Video */}
       <BackgroundVideo
         enabled={state.settings.videoBgEnabled}
@@ -384,7 +387,7 @@ export default function HistoryWheelApp() {
       />
 
       {/* Main Game Arena */}
-      <main className="flex-1 min-h-0 max-w-7xl w-full mx-auto p-1 sm:p-2 flex flex-col justify-center overflow-y-auto lg:overflow-hidden">
+      <main className="flex-1 w-full max-w-7xl mx-auto p-2 sm:p-4 flex flex-col justify-center">
         {/* Phase 1: Intro */}
         {state.phase === 'intro' && (
           <GameIntro onProceedToSetup={() => setState(p => ({ ...p, phase: 'setup' }))} />
@@ -411,24 +414,27 @@ export default function HistoryWheelApp() {
 
         {/* Phase 4: Spin the Wheel Arena */}
         {state.phase === 'spin' && (
-          <div className="w-full h-full flex flex-col justify-between animate-fadeIn py-0.5">
+          <div className="w-full flex-1 flex flex-col justify-between animate-fadeIn py-1">
             <TurnBanner
               activeTeam={activeTeam}
+              teamA={state.teams.teamA}
+              teamB={state.teams.teamB}
               round={state.currentRound}
               promptText={`${activeTeam.name} spins for topic`}
             />
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-2 lg:gap-4 items-center flex-1 min-h-0 px-2 my-auto">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-3 lg:gap-4 items-center flex-1 my-auto py-2">
               {/* Left Column: Team A Archives */}
-              <div className="hidden lg:flex lg:col-span-3 h-full max-h-[380px] flex-col justify-center">
+              <div className="hidden md:flex md:col-span-3 lg:col-span-3 h-full max-h-[420px] flex-col justify-center">
                 <HistoryArchiveTeamCard
                   team={state.teams.teamA}
                   isActive={state.currentTurn === 'teamA'}
+                  onInspect={(art, teamName) => setInspectArtifact({ artifact: art, team: teamName === state.teams.teamA.name ? state.teams.teamA : state.teams.teamB })}
                 />
               </div>
 
               {/* Center Column: Wheel & Balance */}
-              <div className="lg:col-span-6 flex flex-col items-center justify-center my-auto">
+              <div className="md:col-span-6 lg:col-span-6 flex flex-col items-center justify-center my-auto">
                 {state.settings.wheelMode === '3d' ? (
                   <HistoryWheel3D
                     onSpinComplete={handleSpinComplete}
@@ -444,15 +450,16 @@ export default function HistoryWheelApp() {
               </div>
 
               {/* Right Column: Team B Archives */}
-              <div className="hidden lg:flex lg:col-span-3 h-full max-h-[380px] flex-col justify-center">
+              <div className="hidden md:flex md:col-span-3 lg:col-span-3 h-full max-h-[420px] flex-col justify-center">
                 <HistoryArchiveTeamCard
                   team={state.teams.teamB}
                   isActive={state.currentTurn === 'teamB'}
+                  onInspect={(art, teamName) => setInspectArtifact({ artifact: art, team: teamName === state.teams.teamA.name ? state.teams.teamA : state.teams.teamB })}
                 />
               </div>
 
               {/* Mobile-only compact archive summary */}
-              <div className="flex lg:hidden justify-center w-full">
+              <div className="flex md:hidden justify-center w-full">
                 <HistoryArchive
                   teamA={state.teams.teamA}
                   teamB={state.teams.teamB}
@@ -546,6 +553,16 @@ export default function HistoryWheelApp() {
           isOpen={historyOpen}
           onClose={() => setHistoryOpen(false)}
         />
+
+        {/* Artifact Museum Inspection Modal */}
+        {inspectArtifact && (
+          <DiscoveryModal
+            artifact={inspectArtifact.artifact}
+            team={inspectArtifact.team}
+            onProceed={() => setInspectArtifact(null)}
+            autoProceedDelay={60000}
+          />
+        )}
       </main>
 
       {/* Footer */}
