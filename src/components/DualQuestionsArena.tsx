@@ -135,32 +135,32 @@ export const DualQuestionsArena: React.FC<DualQuestionsArenaProps> = ({
   };
 
   return (
-    <div className="w-full max-w-7xl mx-auto p-1 sm:p-2 space-y-2 animate-fadeIn">
+    <div className="w-full max-w-7xl 2xl:max-w-[1680px] mx-auto p-1 sm:p-2 2xl:p-4 space-y-2 2xl:space-y-4 animate-fadeIn">
       {/* Top Banner: Landed Topic & Round Info (Compact) */}
-      <div className="bg-white/95 rounded-2xl border-2 border-stone-300 shadow-sm p-2 sm:p-2.5 flex flex-row items-center justify-between gap-2">
+      <div className="bg-white/95 rounded-2xl border-2 border-stone-300 shadow-sm p-2 sm:p-2.5 2xl:p-4 flex flex-row items-center justify-between gap-2">
         {/* Topic Badge & Title */}
-        <div className="flex items-center space-x-2.5">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-stone-100 to-amber-100 border-2 border-amber-300 flex items-center justify-center text-xl shadow-xs shrink-0">
+        <div className="flex items-center space-x-2.5 2xl:space-x-4">
+          <div className="w-10 h-10 2xl:w-14 2xl:h-14 rounded-xl bg-gradient-to-tr from-stone-100 to-amber-100 border-2 border-amber-300 flex items-center justify-center text-xl 2xl:text-3xl shadow-xs shrink-0">
             {meta.icon}
           </div>
           <div>
             <div className="flex items-center space-x-2">
-              <span className="text-[10px] font-bold uppercase tracking-widest px-2 py-0.2 rounded-full bg-amber-100 text-amber-900 border border-amber-200">
+              <span className="text-[10px] 2xl:text-xs font-bold uppercase tracking-widest px-2 py-0.2 rounded-full bg-amber-100 text-amber-900 border border-amber-200">
                 Round {currentRound} of {maxRounds}
               </span>
-              <span className="text-[11px] font-semibold text-stone-500 hidden sm:inline">
+              <span className="text-[11px] 2xl:text-xs font-semibold text-stone-500 hidden sm:inline">
                 Simultaneous Challenges
               </span>
             </div>
-            <h2 className="text-sm sm:text-base font-serif font-black text-stone-900 tracking-wide leading-tight">
-              {meta.name} <span className="text-xs font-normal text-stone-500 font-sans hidden md:inline">&bull; {meta.tagline}</span>
+            <h2 className="text-sm sm:text-base 2xl:text-xl font-serif font-black text-stone-900 tracking-wide leading-tight">
+              {meta.name} <span className="text-xs 2xl:text-sm font-normal text-stone-500 font-sans hidden md:inline">&bull; {meta.tagline}</span>
             </h2>
           </div>
         </div>
 
         {/* Live Round Status */}
-        <div className="flex items-center space-x-1.5 text-[11px] font-bold">
-          <div className={`px-2.5 py-1 rounded-lg border flex items-center space-x-1 ${
+        <div className="flex items-center space-x-1.5 2xl:space-x-3 text-[11px] 2xl:text-sm font-bold">
+          <div className={`px-2.5 2xl:px-4 py-1 2xl:py-2 rounded-lg border flex items-center space-x-1 ${
             answerTeamA
               ? 'bg-emerald-50 text-emerald-800 border-emerald-300'
               : 'bg-blue-50 text-blue-800 border-blue-200 animate-pulse'
@@ -169,7 +169,7 @@ export const DualQuestionsArena: React.FC<DualQuestionsArenaProps> = ({
             <span>{answerTeamA ? '✓' : 'Thinking'}</span>
           </div>
 
-          <div className={`px-2.5 py-1 rounded-lg border flex items-center space-x-1 ${
+          <div className={`px-2.5 2xl:px-4 py-1 2xl:py-2 rounded-lg border flex items-center space-x-1 ${
             answerTeamB
               ? 'bg-emerald-50 text-emerald-800 border-emerald-300'
               : 'bg-orange-50 text-orange-800 border-orange-200 animate-pulse'
@@ -181,7 +181,7 @@ export const DualQuestionsArena: React.FC<DualQuestionsArenaProps> = ({
       </div>
 
       {/* Side-by-Side Dual Team Questions Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 sm:gap-3 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 sm:gap-3 2xl:gap-6 items-start">
         {/* Team A Column */}
         <div className="bg-white/95 rounded-2xl border-2 border-blue-300 shadow-sm p-3 sm:p-3.5 flex flex-col space-y-2 relative overflow-hidden">
           {/* Team A Header */}
@@ -320,7 +320,7 @@ export const DualQuestionsArena: React.FC<DualQuestionsArenaProps> = ({
           <button
             type="button"
             onClick={onProceedToNextSpin}
-            className="px-8 py-3 rounded-2xl bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 hover:from-amber-500 hover:to-amber-500 text-white font-serif font-bold text-sm sm:text-base tracking-wider transition-all shadow-xl hover:scale-105 active:scale-95 flex items-center space-x-2.5 border-2 border-amber-400 ring-4 ring-amber-400/25 animate-bounce"
+            className="px-8 py-3 2xl:px-12 2xl:py-4.5 rounded-2xl bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 hover:from-amber-500 hover:to-amber-500 text-white font-serif font-bold text-sm sm:text-base 2xl:text-xl tracking-wider transition-all shadow-xl hover:scale-105 active:scale-95 flex items-center space-x-2.5 border-2 border-amber-400 ring-4 ring-amber-400/25 animate-bounce select-none touch-manipulation"
           >
             <span>
               {isFinalRound

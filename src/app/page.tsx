@@ -387,7 +387,7 @@ export default function HistoryWheelApp() {
       />
 
       {/* Main Game Arena */}
-      <main className="flex-1 w-full max-w-7xl mx-auto p-2 sm:p-4 flex flex-col justify-center">
+      <main className="flex-1 w-full max-w-7xl 2xl:max-w-[1680px] mx-auto p-2 sm:p-4 2xl:p-6 flex flex-col justify-center">
         {/* Phase 1: Intro */}
         {state.phase === 'intro' && (
           <GameIntro onProceedToSetup={() => setState(p => ({ ...p, phase: 'setup' }))} />
@@ -423,9 +423,9 @@ export default function HistoryWheelApp() {
               promptText={`${activeTeam.name} spins for topic`}
             />
 
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-3 lg:gap-4 items-center flex-1 my-auto py-2">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-3 lg:gap-4 2xl:gap-6 items-center flex-1 my-auto py-2">
               {/* Left Column: Team A Archives */}
-              <div className="hidden md:flex md:col-span-3 lg:col-span-3 h-full max-h-[420px] flex-col justify-center">
+              <div className="hidden md:flex md:col-span-3 lg:col-span-3 h-full max-h-[420px] 2xl:max-h-[520px] flex-col justify-center">
                 <HistoryArchiveTeamCard
                   team={state.teams.teamA}
                   isActive={state.currentTurn === 'teamA'}
@@ -450,7 +450,7 @@ export default function HistoryWheelApp() {
               </div>
 
               {/* Right Column: Team B Archives */}
-              <div className="hidden md:flex md:col-span-3 lg:col-span-3 h-full max-h-[420px] flex-col justify-center">
+              <div className="hidden md:flex md:col-span-3 lg:col-span-3 h-full max-h-[420px] 2xl:max-h-[520px] flex-col justify-center">
                 <HistoryArchiveTeamCard
                   team={state.teams.teamB}
                   isActive={state.currentTurn === 'teamB'}
