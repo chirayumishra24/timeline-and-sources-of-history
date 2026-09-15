@@ -25,7 +25,7 @@ export default function WheelScene({
   forcedCategory,
 }: WheelSceneProps) {
   const wheelGroupRef = useRef<THREE.Group>(null);
-  const pointerRef = useRef<THREE.Mesh>(null);
+  const pointerRef = useRef<THREE.Group>(null);
   const [internalSpinning, setInternalSpinning] = useState(false);
   const [currentRotation, setCurrentRotation] = useState(0);
 
@@ -35,6 +35,31 @@ export default function WheelScene({
   // Audio tick tracking
   const lastTickAngleRef = useRef(0);
   const pointerWobbleRef = useRef(0);
+
+  // Sculpted 3D Arrow Needle pointing down at the active category segment
+  const { arrowShape, innerArrowShape } = useMemo(() => {
+    const s = new THREE.Shape();
+    s.moveTo(0, -0.34); // Sharp arrow tip pointing down
+    s.lineTo(0.16, -0.13); // Right barb
+    s.lineTo(0.08, -0.15); // Right neck notch
+    s.lineTo(0.07, 0.03);  // Right mounting base
+    s.lineTo(-0.07, 0.03); // Left mounting base
+    s.lineTo(-0.08, -0.15); // Left neck notch
+    s.lineTo(-0.16, -0.13); // Left barb
+    s.closePath();
+
+    const inner = new THREE.Shape();
+    inner.moveTo(0, -0.30);
+    inner.lineTo(0.12, -0.13);
+    inner.lineTo(0.04, -0.15);
+    inner.lineTo(0.03, 0.01);
+    inner.lineTo(-0.03, 0.01);
+    inner.lineTo(-0.04, -0.15);
+    inner.lineTo(-0.12, -0.13);
+    inner.closePath();
+
+    return { arrowShape: s, innerArrowShape: inner };
+  }, []);
 
   // Generate ultra-crisp procedural Canvas Texture for the astrolabe face
   const texture = useMemo(() => {
@@ -374,22 +399,80 @@ export default function WheelScene({
       </group>
 
       {/* 2. Top Mounted Brass Needle Pointer (Fixed at 12 o'clock) */}
-      <group position={[0, 2.7, 0.35]}>
-        <mesh ref={pointerRef} rotation={[Math.PI, 0, Math.PI / 4]} castShadow>
-          <coneGeometry args={[0.22, 0.65, 4]} />
+      <group position={[0, 2.46, 0.32]}>
+        {/* Pointer Rim Mount & Fastener Stud */}
+        <mesh position={[0, 0.04, -0.04]} rotation={[Math.PI / 2, 0, 0]}>
+          <cylinderGeometry args={[0.15, 0.15, 0.08, 24]} />
+          <meshStandardMaterial color="#B38A22" metalness={0.8} roughness={0.3} />
+        </mesh>
+        <mesh position={[0, 0.04, 0.02]}>
+          <sphereGeometry args={[0.08, 16, 16]} />
           <meshStandardMaterial
-            color="#E6C25B"
-            metalness={0.95}
-            roughness={0.15}
-            emissive="#7D5F18"
-            emissiveIntensity={0.2}
+            color="#FFD700"
+            emissive="#B8860B"
+            emissiveIntensity={0.6}
+            metalness={0.7}
+            roughness={0.2}
           />
         </mesh>
-        {/* Pointer Fastener Pin */}
-        <mesh position={[0, 0.28, 0]} rotation={[Math.PI / 2, 0, 0]}>
-          <cylinderGeometry args={[0.1, 0.1, 0.12, 16]} />
-          <meshStandardMaterial color="#8C6239" metalness={0.8} roughness={0.3} />
-        </mesh>
+
+        {/* Wobbling Arrow Needle Assembly */}
+        <group ref={pointerRef}>
+          {/* Beveled Golden Outer Arrow */}
+          <mesh castShadow receiveShadow position={[0, 0, 0]}>
+            <extrudeGeometry
+              args={[
+                arrowShape,
+                {
+                  depth: 0.04,
+                  bevelEnabled: true,
+                  bevelSegments: 2,
+                  steps: 1,
+                  bevelSize: 0.015,
+                  bevelThickness: 0.015,
+                },
+              ]}
+            />
+            <meshStandardMaterial
+              color="#FFDF00"
+              emissive="#D4AF37"
+              emissiveIntensity={0.35}
+              metalness={0.6}
+              roughness={0.25}
+            />
+          </mesh>
+
+          {/* High-Contrast Ruby/Crimson Central Inlay */}
+          <mesh position={[0, 0, 0.035]}>
+            <extrudeGeometry
+              args={[
+                innerArrowShape,
+                {
+                  depth: 0.02,
+                  bevelEnabled: false,
+                },
+              ]}
+            />
+            <meshStandardMaterial
+              color="#DC2626"
+              emissive="#7F1D1D"
+              emissiveIntensity={0.4}
+              metalness={0.3}
+              roughness={0.3}
+            />
+          </mesh>
+
+          {/* Glowing Tip Marker Gem */}
+          <mesh position={[0, -0.28, 0.06]}>
+            <sphereGeometry args={[0.032, 12, 12]} />
+            <meshStandardMaterial
+              color="#FFFFFF"
+              emissive="#FBBF24"
+              emissiveIntensity={0.9}
+              roughness={0.1}
+            />
+          </mesh>
+        </group>
       </group>
     </group>
   );

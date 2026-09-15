@@ -49,7 +49,7 @@ export default function HistoryWheel3D({
       {/* 3D Canvas Viewport */}
       <div className="relative w-[min(320px,34vh)] h-[min(320px,34vh)] 2xl:w-[min(440px,40vh)] 2xl:h-[min(440px,40vh)] aspect-square rounded-full p-2 bg-gradient-to-b from-amber-900/40 via-amber-950/20 to-black/50 shadow-[0_15px_35px_rgba(0,0,0,0.4)] border-4 border-amber-600/60 backdrop-blur-sm overflow-hidden select-none">
         <Canvas
-          camera={{ position: [0, 0, 5.7], fov: 48 }}
+          camera={{ position: [0, 0, 5.85], fov: 50 }}
           shadows
           gl={{ antialias: true, alpha: true }}
           className="w-full h-full cursor-pointer touch-manipulation"
@@ -65,8 +65,9 @@ export default function HistoryWheel3D({
           />
           {/* Soft Fill Light from opposite side */}
           <pointLight position={[-6, -4, 4]} intensity={0.5} color="#FFE6A3" />
-          {/* Subtle Golden Rim Accent */}
+          {/* Subtle Golden Rim Accent & Dedicated Top Pointer Key Light */}
           <pointLight position={[0, 3, 3]} intensity={0.4} color="#FFD700" />
+          <pointLight position={[0, 2.45, 1.0]} intensity={1.6} color="#FFF8E7" distance={4} />
 
           {/* Celestial Dust / Ambient Particles */}
           <DreiSparkles
