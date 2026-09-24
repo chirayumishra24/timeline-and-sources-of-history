@@ -4,7 +4,7 @@ import React from 'react';
 import { Question, MCQQuestion, OrderingQuestion, BeforeAfterQuestion, FixTimelineQuestion, SourceDetectiveQuestion, ConnectCluesQuestion, EvidenceEvalQuestion, BlitzQuestion, WheelCategory } from '@/types/question';
 import { Team, TeamId } from '@/types/team';
 import { TeamAnswerStatus } from '@/types/game';
-import { getCategoryMeta } from '@/data/questions';
+import { getCategoryMeta, getCorrectAnswerText } from '@/data/questions';
 import { EmblemIcon } from './EmblemIcon';
 import { HistoryBalance } from './HistoryBalance';
 import { MCQView } from './questions/MCQView';
@@ -253,6 +253,14 @@ export const DualQuestionsArena: React.FC<DualQuestionsArenaProps> = ({
                   )}
                 </div>
               </div>
+              <div className="mb-1.5 text-[11px] 2xl:text-xs font-semibold px-2.5 py-1.5 rounded-lg bg-white/90 border border-stone-300 flex items-start space-x-1.5 shadow-xs">
+                <span className="text-stone-500 uppercase tracking-wider text-[10px] font-bold shrink-0 mt-0.5">
+                  Correct Answer:
+                </span>
+                <span className="text-emerald-900 font-bold">
+                  {getCorrectAnswerText(questionTeamA)}
+                </span>
+              </div>
               <p className="text-[11px] font-medium text-stone-800 leading-relaxed">
                 <strong>Explanation:</strong> {answerTeamA.explanation}
               </p>
@@ -316,6 +324,14 @@ export const DualQuestionsArena: React.FC<DualQuestionsArenaProps> = ({
                     </>
                   )}
                 </div>
+              </div>
+              <div className="mb-1.5 text-[11px] 2xl:text-xs font-semibold px-2.5 py-1.5 rounded-lg bg-white/90 border border-stone-300 flex items-start space-x-1.5 shadow-xs">
+                <span className="text-stone-500 uppercase tracking-wider text-[10px] font-bold shrink-0 mt-0.5">
+                  Correct Answer:
+                </span>
+                <span className="text-emerald-900 font-bold">
+                  {getCorrectAnswerText(questionTeamB)}
+                </span>
               </div>
               <p className="text-[11px] font-medium text-stone-800 leading-relaxed">
                 <strong>Explanation:</strong> {answerTeamB.explanation}

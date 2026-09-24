@@ -56,6 +56,7 @@ export const FixTimelineView: React.FC<FixTimelineViewProps> = ({
         <div className="grid grid-cols-2 gap-2">
           {question.timeline.map((event, index) => {
             const isSelected = selectedWrongId === event.id;
+            const isActualError = disabled && event.id === question.wrongEventId;
 
             return (
               <button
@@ -64,19 +65,25 @@ export const FixTimelineView: React.FC<FixTimelineViewProps> = ({
                 onClick={() => handleSelectEvent(event.id)}
                 disabled={disabled}
                 className={`p-2.5 rounded-xl border-2 text-left transition-all duration-150 flex flex-col justify-between relative shadow-xs ${
-                  isSelected
+                  isActualError
+                    ? 'bg-emerald-50 border-emerald-500 ring-2 ring-emerald-300 scale-[1.01] shadow-xs'
+                    : isSelected
                     ? 'bg-teal-50 border-teal-500 ring-2 ring-teal-300 scale-[1.01] shadow-xs'
                     : 'bg-white hover:bg-stone-50 border-stone-300 hover:border-teal-400'
-                } ${disabled ? 'cursor-not-allowed opacity-80' : ''}`}
+                } ${disabled ? 'cursor-not-allowed opacity-90' : ''}`}
               >
                 <div>
                   <div className="flex items-center justify-between mb-1">
                     <span className="text-[10px] font-bold text-stone-500 uppercase tracking-wider bg-stone-100 px-1.5 py-0.2 rounded">
                       Pos {index + 1}
                     </span>
-                    {isSelected && (
+                    {isActualError ? (
+                      <span className="text-[10px] font-bold text-emerald-800 bg-emerald-100 px-1.5 py-0.5 rounded border border-emerald-300">
+                        Out of Order
+                      </span>
+                    ) : isSelected ? (
                       <AlertCircle className="w-3.5 h-3.5 text-teal-600 animate-pulse" />
-                    )}
+                    ) : null}
                   </div>
                   <h4 className="text-xs sm:text-sm font-bold text-stone-900 font-serif leading-snug">
                     {event.label}
@@ -85,8 +92,10 @@ export const FixTimelineView: React.FC<FixTimelineViewProps> = ({
 
                 <div className="mt-2 pt-1 border-t border-stone-100 flex items-center justify-between text-[10px] font-semibold text-teal-800">
                   <span>{event.era}</span>
-                  {isSelected ? (
-                    <span className="text-teal-700 font-bold underline">Error</span>
+                  {isActualError ? (
+                    <span className="text-emerald-700 font-bold">✓ True Error</span>
+                  ) : isSelected ? (
+                    <span className="text-teal-700 font-bold underline">Selected</span>
                   ) : (
                     <span className="text-stone-400">Flag</span>
                   )}

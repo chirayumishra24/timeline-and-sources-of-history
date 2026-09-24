@@ -98,6 +98,7 @@ export const BlitzView: React.FC<BlitzViewProps> = ({
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
         {question.options.map((option, idx) => {
           const isSelected = selected === option;
+          const isCorrect = disabled && option === question.correctAnswer;
 
           return (
             <button
@@ -105,14 +106,18 @@ export const BlitzView: React.FC<BlitzViewProps> = ({
               onClick={() => handleSelect(option)}
               disabled={disabled}
               className={`p-3.5 sm:p-4 rounded-xl border-2 font-serif text-sm sm:text-base font-bold text-left transition-all duration-150 shadow-sm flex items-center justify-between ${
-                isSelected
+                isCorrect
+                  ? 'bg-emerald-600 text-white border-emerald-700 ring-2 ring-emerald-300 scale-[1.01]'
+                  : isSelected
                   ? 'bg-amber-500 text-white border-amber-600 scale-[1.01]'
                   : 'bg-white hover:bg-amber-50 text-stone-800 border-stone-200 hover:border-amber-400 active:scale-95'
-              } ${disabled ? 'cursor-not-allowed opacity-80' : 'cursor-pointer'}`}
+              } ${disabled ? 'cursor-not-allowed opacity-90' : 'cursor-pointer'}`}
             >
               <span>{option}</span>
-              <span className="text-xs font-mono opacity-50 px-2 py-0.5 rounded bg-stone-100 text-stone-700 ml-2 shrink-0">
-                #{idx + 1}
+              <span className={`text-xs font-mono px-2 py-0.5 rounded ml-2 shrink-0 ${
+                isCorrect ? 'bg-emerald-800 text-white font-bold' : 'opacity-50 bg-stone-100 text-stone-700'
+              }`}>
+                {isCorrect ? '✓ Correct' : `#${idx + 1}`}
               </span>
             </button>
           );

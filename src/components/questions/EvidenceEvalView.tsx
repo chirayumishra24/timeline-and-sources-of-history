@@ -71,19 +71,25 @@ export const EvidenceEvalView: React.FC<EvidenceEvalViewProps> = ({
             onClick={() => handleSelect('Supported by the Evidence')}
             disabled={disabled}
             className={`p-3.5 sm:p-4 rounded-xl border-2 text-left transition-all duration-200 flex flex-col justify-between relative shadow-sm ${
-              selected === 'Supported by the Evidence'
+              disabled && question.correctAnswer === 'Supported by the Evidence'
+                ? 'bg-emerald-50 border-emerald-600 ring-2 ring-emerald-300 font-semibold'
+                : selected === 'Supported by the Evidence'
                 ? 'bg-emerald-50 border-emerald-600 ring-2 ring-emerald-300 scale-[1.01] shadow-md'
                 : 'bg-white hover:bg-stone-50 border-stone-200 hover:border-emerald-400'
-            } ${disabled ? 'cursor-not-allowed opacity-80' : ''}`}
+            } ${disabled ? 'cursor-not-allowed opacity-90' : ''}`}
           >
             <div>
               <div className="flex items-center justify-between mb-1.5">
-                <span className="text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-900 border border-emerald-300">
-                  Option A
+                <span className={`text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border ${
+                  disabled && question.correctAnswer === 'Supported by the Evidence'
+                    ? 'bg-emerald-200 text-emerald-950 border-emerald-400'
+                    : 'bg-emerald-100 text-emerald-900 border-emerald-300'
+                }`}>
+                  Option A {disabled && question.correctAnswer === 'Supported by the Evidence' && '✓ Correct'}
                 </span>
-                {selected === 'Supported by the Evidence' && (
+                {(disabled && question.correctAnswer === 'Supported by the Evidence') || selected === 'Supported by the Evidence' ? (
                   <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                )}
+                ) : null}
               </div>
               <h4 className="text-sm sm:text-base font-serif font-bold text-stone-900">
                 SUPPORTED BY THE EVIDENCE
@@ -99,19 +105,27 @@ export const EvidenceEvalView: React.FC<EvidenceEvalViewProps> = ({
             onClick={() => handleSelect('Not Established by the Evidence')}
             disabled={disabled}
             className={`p-3.5 sm:p-4 rounded-xl border-2 text-left transition-all duration-200 flex flex-col justify-between relative shadow-sm ${
-              selected === 'Not Established by the Evidence'
+              disabled && question.correctAnswer === 'Not Established by the Evidence'
+                ? 'bg-emerald-50 border-emerald-600 ring-2 ring-emerald-300 font-semibold'
+                : selected === 'Not Established by the Evidence'
                 ? 'bg-amber-50 border-amber-600 ring-2 ring-amber-300 scale-[1.01] shadow-md'
                 : 'bg-white hover:bg-stone-50 border-stone-200 hover:border-amber-400'
-            } ${disabled ? 'cursor-not-allowed opacity-80' : ''}`}
+            } ${disabled ? 'cursor-not-allowed opacity-90' : ''}`}
           >
             <div>
               <div className="flex items-center justify-between mb-1.5">
-                <span className="text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-amber-100 text-amber-900 border border-amber-300">
-                  Option B
+                <span className={`text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border ${
+                  disabled && question.correctAnswer === 'Not Established by the Evidence'
+                    ? 'bg-emerald-200 text-emerald-950 border-emerald-400'
+                    : 'bg-amber-100 text-amber-900 border-amber-300'
+                }`}>
+                  Option B {disabled && question.correctAnswer === 'Not Established by the Evidence' && '✓ Correct'}
                 </span>
-                {selected === 'Not Established by the Evidence' && (
+                {disabled && question.correctAnswer === 'Not Established by the Evidence' ? (
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                ) : selected === 'Not Established by the Evidence' ? (
                   <CheckCircle2 className="w-4 h-4 text-amber-600" />
-                )}
+                ) : null}
               </div>
               <h4 className="text-sm sm:text-base font-serif font-bold text-stone-900">
                 NOT ESTABLISHED BY EVIDENCE

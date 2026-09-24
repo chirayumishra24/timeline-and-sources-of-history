@@ -45,6 +45,7 @@ export const BeforeAfterView: React.FC<BeforeAfterViewProps> = ({
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
         {question.options.map((optionText, idx) => {
           const isSelected = selected === optionText;
+          const isCorrect = disabled && optionText === question.correctAnswer;
           const isOptionA = idx === 0;
           const eventData = isOptionA ? question.eventA : question.eventB;
 
@@ -55,17 +56,27 @@ export const BeforeAfterView: React.FC<BeforeAfterViewProps> = ({
               onClick={() => handleSelect(optionText)}
               disabled={disabled}
               className={`p-3 sm:p-3.5 rounded-2xl border-2 text-left transition-all duration-150 shadow-xs flex flex-col justify-between relative ${
-                isSelected
+                isCorrect
+                  ? 'bg-emerald-50 border-emerald-500 ring-2 ring-emerald-300 font-semibold'
+                  : isSelected
                   ? 'bg-rose-50/90 border-rose-500 ring-2 ring-rose-300 scale-[1.01]'
                   : 'bg-white hover:bg-stone-50 border-stone-200 hover:border-rose-300'
-              } ${disabled ? 'cursor-not-allowed opacity-80' : ''}`}
+              } ${disabled ? 'cursor-not-allowed opacity-90' : ''}`}
             >
               <div>
                 <div className="flex items-center justify-between mb-1.5">
-                  <span className="text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full bg-stone-100 text-stone-700 border border-stone-200">
-                    Option {idx === 0 ? 'A' : 'B'}
+                  <span className={`text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full border ${
+                    isCorrect
+                      ? 'bg-emerald-100 text-emerald-800 border-emerald-300'
+                      : 'bg-stone-100 text-stone-700 border-stone-200'
+                  }`}>
+                    Option {idx === 0 ? 'A' : 'B'} {isCorrect && '✓ Correct'}
                   </span>
-                  {isSelected && <CheckCircle2 className="w-4 h-4 text-rose-600" />}
+                  {isCorrect ? (
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                  ) : isSelected ? (
+                    <CheckCircle2 className="w-4 h-4 text-rose-600" />
+                  ) : null}
                 </div>
 
                 <h4 className="text-xs sm:text-sm font-serif font-bold text-stone-900 leading-snug">

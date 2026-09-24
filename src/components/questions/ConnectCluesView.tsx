@@ -84,6 +84,7 @@ export const ConnectCluesView: React.FC<ConnectCluesViewProps> = ({
         <div className="grid grid-cols-1 gap-2 sm:gap-2.5">
           {question.options.map((option, idx) => {
             const isSelected = selected === option;
+            const isCorrect = disabled && option === question.correctAnswer;
             const letter = optionLetters[idx];
 
             return (
@@ -92,14 +93,18 @@ export const ConnectCluesView: React.FC<ConnectCluesViewProps> = ({
                 onClick={() => handleSelect(option)}
                 disabled={disabled}
                 className={`w-full text-left p-2.5 sm:p-3 rounded-xl border-2 transition-all duration-200 flex items-center space-x-3 shadow-sm ${
-                  isSelected
+                  isCorrect
+                    ? 'bg-emerald-50 border-emerald-500 text-emerald-950 ring-2 ring-emerald-300 font-semibold'
+                    : isSelected
                     ? 'bg-emerald-50 border-emerald-500 shadow-emerald-500/15 scale-[1.01]'
                     : 'bg-white hover:bg-stone-50 border-stone-200 hover:border-emerald-300'
-                } ${disabled ? 'cursor-not-allowed opacity-80' : ''}`}
+                } ${disabled ? 'cursor-not-allowed opacity-90' : ''}`}
               >
                 <div
                   className={`w-9 h-9 rounded-xl flex items-center justify-center font-serif font-bold text-sm shrink-0 transition-colors ${
-                    isSelected
+                    isCorrect
+                      ? 'bg-emerald-700 text-white'
+                      : isSelected
                       ? 'bg-emerald-600 text-white'
                       : 'bg-stone-100 text-stone-700 border border-stone-300'
                   }`}
@@ -109,9 +114,11 @@ export const ConnectCluesView: React.FC<ConnectCluesViewProps> = ({
                 <span className="text-sm sm:text-base font-medium text-stone-800 flex-1">
                   {option}
                 </span>
-                {isSelected && (
+                {isCorrect ? (
                   <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
-                )}
+                ) : isSelected ? (
+                  <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
+                ) : null}
               </button>
             );
           })}

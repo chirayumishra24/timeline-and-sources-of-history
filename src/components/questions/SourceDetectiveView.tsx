@@ -99,6 +99,7 @@ export const SourceDetectiveView: React.FC<SourceDetectiveViewProps> = ({
         <div className="grid grid-cols-1 gap-1.5 mt-2">
           {question.options.map((option, idx) => {
             const isSelected = selected === option;
+            const isCorrect = disabled && option === question.correctAnswer;
             const letter = optionLetters[idx];
 
             return (
@@ -108,14 +109,18 @@ export const SourceDetectiveView: React.FC<SourceDetectiveViewProps> = ({
                 onClick={() => handleSelect(option)}
                 disabled={disabled}
                 className={`w-full text-left p-2.5 rounded-xl border-2 transition-all duration-150 flex items-center space-x-2.5 shadow-xs ${
-                  isSelected
+                  isCorrect
+                    ? 'bg-emerald-50 border-emerald-500 text-emerald-950 ring-2 ring-emerald-300 font-semibold'
+                    : isSelected
                     ? 'bg-blue-50 border-blue-500 shadow-blue-500/15 scale-[1.01]'
                     : 'bg-white hover:bg-stone-50 border-stone-200 hover:border-blue-300'
-                } ${disabled ? 'cursor-not-allowed opacity-80' : ''}`}
+                } ${disabled ? 'cursor-not-allowed opacity-90' : ''}`}
               >
                 <div
                   className={`w-6 h-6 rounded-lg flex items-center justify-center font-serif font-bold text-xs shrink-0 transition-colors ${
-                    isSelected
+                    isCorrect
+                      ? 'bg-emerald-700 text-white'
+                      : isSelected
                       ? 'bg-blue-700 text-white'
                       : 'bg-stone-100 text-stone-700 border border-stone-300'
                   }`}
@@ -125,9 +130,11 @@ export const SourceDetectiveView: React.FC<SourceDetectiveViewProps> = ({
                 <span className="text-xs sm:text-sm font-medium text-stone-800 flex-1">
                   {option}
                 </span>
-                {isSelected && (
+                {isCorrect ? (
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                ) : isSelected ? (
                   <CheckCircle2 className="w-4 h-4 text-blue-700 shrink-0" />
-                )}
+                ) : null}
               </button>
             );
           })}

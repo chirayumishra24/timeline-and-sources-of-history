@@ -1,6 +1,6 @@
 import React from 'react';
 import { AnswerLog } from '@/types/game';
-import { getCategoryMeta } from '@/data/questions';
+import { getCategoryMeta, getCorrectAnswerText } from '@/data/questions';
 import { BookOpen, CheckCircle2, XCircle, ChevronRight } from 'lucide-react';
 
 interface HistoryReviewModalProps {
@@ -115,7 +115,7 @@ export const HistoryReviewModal: React.FC<HistoryReviewModalProps> = ({
                         Correct Answer:
                       </span>
                       <span className="font-semibold text-emerald-950">
-                        {'correctAnswer' in log.question ? log.question.correctAnswer : ('correctOrder' in log.question ? log.question.correctOrder.join(' → ') : 'Verified Sequence')}
+                        {getCorrectAnswerText(log.question)}
                       </span>
                     </div>
                   </div>

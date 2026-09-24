@@ -125,3 +125,33 @@ export const WHEEL_CATEGORIES: WheelCategoryMeta[] = [
 export function getCategoryMeta(category: WheelCategory): WheelCategoryMeta {
   return WHEEL_CATEGORIES.find(c => c.id === category) || WHEEL_CATEGORIES[0];
 }
+
+export function getCorrectAnswerText(question: Question): string {
+  switch (question.type) {
+    case 'mcq':
+    case 'before-after':
+    case 'source-detective':
+    case 'connect-clues':
+    case 'evidence-eval':
+    case 'blitz':
+      return question.correctAnswer;
+    case 'ordering': {
+      const orderQ = question as import('@/types/question').OrderingQuestion;
+      return orderQ.correctOrder
+        .map(id => orderQ.items.find(item => item.id === id)?.label || id)
+        .join(' → ');
+    }
+    case 'fix-timeline': {
+      const fixQ = question as import('@/types/question').FixTimelineQuestion;
+      const index = fixQ.timeline.findIndex(e => e.id === fixQ.wrongEventId);
+      const wrongEvent = fixQ.timeline[index];
+      if (wrongEvent) {
+        return `Pos ${index + 1}: ${wrongEvent.label} (${wrongEvent.era})`;
+      }
+      return fixQ.wrongEventId;
+    }
+    default:
+      return '';
+  }
+}
+
