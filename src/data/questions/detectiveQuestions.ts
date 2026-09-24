@@ -8,23 +8,23 @@ export const DETECTIVE_QUESTIONS: SourceDetectiveQuestion[] = [
     difficulty: "easy",
     points: 15,
     source: {
-      title: "Ancient Silver Coin with a Royal Portrait and Greek Inscriptions",
-      sourceType: "Coin",
-      icon: "🪙",
-      eraOrContext: "Northwest India, c. 150 BCE (Indo-Greek King Menander)",
-      visualDescription: "A circular silver coin featuring the helmeted bust of a king on the obverse, surrounded by Greek letters, and an image of Goddess Athena holding a thunderbolt with Kharosthi script on the reverse.",
-      badgeColor: "border-amber-400 bg-amber-50"
+      title: "Ashokan Rock Inscription",
+      sourceType: "Inscription",
+      icon: "📜",
+      eraOrContext: "Gujarat, about 2300 years ago (c. 250 BCE)",
+      visualDescription: "Carefully carved lines of Brahmi script cut into the smooth surface of a huge rock boulder, talking about Dhamma, kindness to animals, and planting shade trees along roads.",
+      badgeColor: "border-stone-400 bg-stone-50"
     },
-    question: "What does this coin most directly prove to a historian studying this era?",
+    question: "Why did Emperor Ashoka carve his messages on rocks along public highways?",
     options: [
-      "There was cultural and political contact between Greek and Indian traditions in the northwest",
-      "All citizens in ancient India spoke only ancient Greek as their home language",
-      "Silver was the only metal ever mined on the entire Indian subcontinent",
-      "The ancient people had electronic banking machines in their city squares"
+      "So that travelers and common people passing by could easily read his message of Dhamma and peace",
+      "Because he ran out of paper and palm leaves in his kingdom",
+      "To hide his messages so no one could find them",
+      "To decorate the mountain for an athletic tournament"
     ],
-    correctAnswer: "There was cultural and political contact between Greek and Indian traditions in the northwest",
-    explanation: "The presence of both Greek and Kharosthi scripts alongside Greek and Indian motifs on official currency directly proves intercultural interaction and bilingual administrative rule.",
-    deductionGuide: "Look at the dual scripts and artistic symbols on opposite faces of the coin."
+    correctAnswer: "So that travelers and common people passing by could easily read his message of Dhamma and peace",
+    explanation: "Ashoka wanted his message of peace, non-violence, and kindness to reach everyone, so he had edicts carved on permanent rocks and pillars where travelers could see them.",
+    deductionGuide: "Think about why kings place messages on big rocks beside busy roads."
   },
   {
     id: "det_002",
@@ -33,73 +33,73 @@ export const DETECTIVE_QUESTIONS: SourceDetectiveQuestion[] = [
     difficulty: "medium",
     points: 15,
     source: {
-      title: "Ashokan Rock Edict Carved on a Mountain Cliff",
-      sourceType: "Inscription",
-      icon: "📜",
-      eraOrContext: "Junagadh, Gujarat, c. 250 BCE",
-      visualDescription: "Deeply chiselled lines of Brahmi script cut into the smooth granite face of a massive boulder, speaking directly of Dhamma, medical treatment for humans and animals, and planting shade trees along roads.",
-      badgeColor: "border-stone-400 bg-stone-50"
+      title: "The Great Bath of Mohenjo-daro",
+      sourceType: "Monument",
+      icon: "🏛️",
+      eraOrContext: "Indus Valley, about 4700 years ago (c. 2500 BCE)",
+      visualDescription: "A large rectangular pool built of baked bricks, coated with plaster, and made water-tight with a layer of natural tar (bitumen), with steps leading down from two sides.",
+      badgeColor: "border-teal-500 bg-teal-50"
     },
-    question: "Why would an emperor carve proclamations into solid rock cliffs beside major travel highways?",
+    question: "What does the construction of the Great Bath prove about Harappan builders?",
     options: [
-      "To ensure royal messages remained permanent and visible to travelers and merchants passing through",
-      "Because the emperor ran out of all tree leaves and animal skins in the empire",
-      "To secretly hide the messages so no ordinary person could ever read them",
-      "To decorate the mountain for an athletic tournament"
+      "They were skilled engineers who knew how to make waterproof brick tanks for special bathing rituals",
+      "They had modern electric swimming pool pumps",
+      "They never used water and kept the tank completely empty",
+      "The tank was built by visiting space aliens"
     ],
-    correctAnswer: "To ensure royal messages remained permanent and visible to travelers and merchants passing through",
-    explanation: "Carving into rock along busy trade routes guaranteed high public visibility, durability against weathering, and widespread communication across imperial provinces.",
-    deductionGuide: "Think about the durability of stone and the location of major roads."
+    correctAnswer: "They were skilled engineers who knew how to make waterproof brick tanks for special bathing rituals",
+    explanation: "As described in NCERT Class 6, the Great Bath was lined with bricks, coated with plaster, and sealed with natural tar (bitumen) to hold water for special ritual baths.",
+    deductionGuide: "Notice the baked bricks and natural tar used to make the pool waterproof."
   },
   {
     id: "det_003",
     category: "source-detective",
     type: "source-detective",
-    difficulty: "medium",
+    difficulty: "easy",
     points: 15,
     source: {
-      title: "Terracotta Female Figurine with Elaborate Headgear",
-      sourceType: "Artifact",
-      icon: "🏺",
-      eraOrContext: "Mohenjo-daro, Indus Valley, c. 2400 BCE",
-      visualDescription: "Hand-modelled baked clay figure adorned with heavy bead necklaces, a fan-shaped headdress with pannier cups, and bangles covering both arms.",
-      badgeColor: "border-orange-400 bg-orange-50"
+      title: "Square Harappan Seal with a Humped Bull",
+      sourceType: "Seal",
+      icon: "🦬",
+      eraOrContext: "Harappa, about 4700 years ago (c. 2500 BCE)",
+      visualDescription: "A small square stone seal showing a carved humped bull and a line of pictographic signs along the top edge.",
+      badgeColor: "border-amber-400 bg-amber-50"
     },
-    question: "What can a historian reasonably infer from this small terracotta sculpture?",
+    question: "How did Harappan merchants use seals according to NCERT Class 6?",
     options: [
-      "Harappan craftspeople had skilled pottery techniques and wore distinctive ornaments and hairstyles",
-      "The figurine records the exact constitution and written laws of the city",
-      "The Indus Valley people only worshipped modern deities whose names we know",
-      "Every single citizen in Harappa was required to wear identical terracotta hats"
+      "They pressed seals onto wet clay on bags of goods to ensure they were not opened or tampered with during travel",
+      "They used them as coins to buy sweets in school canteens",
+      "They wore them as glasses to see in the dark",
+      "They ate them as food during long journeys"
     ],
-    correctAnswer: "Harappan craftspeople had skilled pottery techniques and wore distinctive ornaments and hairstyles",
-    explanation: "Sculptures and figurines illustrate attire, jewelry styles, personal adornment, and the kiln-firing mastery of ancient craft communities.",
-    deductionGuide: "Observe the clay craftsmanship, ornaments, and headdress."
+    correctAnswer: "They pressed seals onto wet clay on bags of goods to ensure they were not opened or tampered with during travel",
+    explanation: "NCERT Class 6 explains that seals were stamped onto wet clay (sealings) tied to bags of goods. If the seal impression remained intact, the buyer knew the goods were safe.",
+    deductionGuide: "Think about how we stamp or seal packages today to keep them safe."
   },
   {
     id: "det_004",
     category: "source-detective",
     type: "source-detective",
-    difficulty: "challenge",
+    difficulty: "easy",
     points: 15,
     source: {
-      title: "Excavated Tidal Dockyard Basin with Sluice Gates",
-      sourceType: "Monument",
-      icon: "⚓",
-      eraOrContext: "Lothal, Gujarat, c. 2200 BCE",
-      visualDescription: "A massive trapezoidal brick basin measuring 214 x 36 meters, engineered with a water inlet channel connected to the ancient Sabarmati river, overflow spillways, and kiln-burnt waterproof bricks.",
-      badgeColor: "border-blue-400 bg-blue-50"
+      title: "Birch-Bark Manuscript from Kashmir",
+      sourceType: "Manuscript",
+      icon: "📑",
+      eraOrContext: "Ancient India (Himalayan region)",
+      visualDescription: "Thin, dried layers of Himalayan birch bark (bhurjapatra) with neat rows of handwritten Sanskrit text written using black ink.",
+      badgeColor: "border-amber-200 bg-amber-50"
     },
-    question: "What does this monumental dockyard prove about the Indus Valley civilization?",
+    question: "What does this manuscript teach us about ancient Indian books?",
     options: [
-      "They possessed sophisticated civil engineering knowledge and engaged in overseas maritime trade",
-      "They built the first steam-powered passenger cruise ships in world history",
-      "The city had no access to rivers or oceans and was located in the high Himalayas",
-      "They only grew rice and never traded with any outside regions"
+      "Before paper was available, ancient books were written by hand on specially prepared tree bark and palm leaves",
+      "Ancient people only used printed newspapers",
+      "All books in ancient India were made of plastic",
+      "People never wrote down any poems or stories"
     ],
-    correctAnswer: "They possessed sophisticated civil engineering knowledge and engaged in overseas maritime trade",
-    explanation: "A brick-lined tidal dockyard with locks and sluices demonstrates understanding of tides, hydro-engineering, and active sea trade connecting with the Persian Gulf.",
-    deductionGuide: "Analyze the connection between the brick basin, tidal water, and merchant shipping."
+    correctAnswer: "Before paper was available, ancient books were written by hand on specially prepared tree bark and palm leaves",
+    explanation: "NCERT Class 6 Chapter 1 explains that manuscripts were handwritten books written on palm leaves or birch bark (bhurjapatra) from the Himalayas.",
+    deductionGuide: "Look at the natural tree bark and handwritten ink letters."
   },
   {
     id: "det_005",
@@ -108,23 +108,23 @@ export const DETECTIVE_QUESTIONS: SourceDetectiveQuestion[] = [
     difficulty: "easy",
     points: 15,
     source: {
-      title: "A Rusted Iron Ploughshare Unearthed in a Gangetic Settlement",
+      title: "Cave Wall Painting at Bhimbetka",
       sourceType: "Artifact",
-      icon: "⛏️",
-      eraOrContext: "Atranjikhera, c. 800 BCE",
-      visualDescription: "A heavy, pointed triangular wedge made of smelted iron, designed to be fitted onto a wooden plough to turn heavy, alluvial soils.",
-      badgeColor: "border-stone-500 bg-stone-100"
+      icon: "🎨",
+      eraOrContext: "Madhya Pradesh, Old Stone Age (Palaeolithic)",
+      visualDescription: "A painting drawn on cave rock using red ochre and white mineral paint, showing stick-figure hunters with spears chasing running wild animals.",
+      badgeColor: "border-red-400 bg-red-50"
     },
-    question: "How did the introduction of iron ploughshares transform ancient societies in the Ganga Valley?",
+    question: "What do the paintings inside Bhimbetka caves tell us about early humans?",
     options: [
-      "It enabled farmers to break hard clay soil and clear dense forests, dramatically increasing agricultural food production",
-      "It caused all farming to stop completely as people switched to stone hunting",
-      "It was used exclusively as musical instruments during royal banquets",
-      "It proved that electricity was used to power farm tractors in 800 BCE"
+      "They lived in natural rock shelters and hunted wild animals for food, drawing their daily life on cave walls",
+      "They drove automobiles and lived in modern apartments",
+      "They grew crops using modern farm tractors",
+      "They lived only in deep ocean waters"
     ],
-    correctAnswer: "It enabled farmers to break hard clay soil and clear dense forests, dramatically increasing agricultural food production",
-    explanation: "Iron tools were harder and sharper than bronze or stone. Iron axes cleared dense forests, and iron ploughshares cut deep into fertile soil, producing crop surpluses that supported towns.",
-    deductionGuide: "Connect the strength of iron metal to farming productivity."
+    correctAnswer: "They lived in natural rock shelters and hunted wild animals for food, drawing their daily life on cave walls",
+    explanation: "NCERT Class 6 describes Bhimbetka as rock shelters where early hunter-gatherers lived to escape rain, heat, and wind, painting scenes of animals and hunts on the walls.",
+    deductionGuide: "Look at the wild animals and the simple tools used by the painted hunters."
   },
   {
     id: "det_006",
@@ -133,48 +133,48 @@ export const DETECTIVE_QUESTIONS: SourceDetectiveQuestion[] = [
     difficulty: "medium",
     points: 15,
     source: {
-      title: "Steatite Seal Depicting a Bull and Harappan Symbols",
-      sourceType: "Seal",
-      icon: "🦬",
-      eraOrContext: "Harappa, c. 2300 BCE",
-      visualDescription: "A 3x3 cm polished stone seal with a relief carving of a humped zebu bull standing before a manger, topped by a row of distinct pictographic signs.",
-      badgeColor: "border-yellow-500 bg-yellow-50"
+      title: "Terracotta Toy Plough from Banawali",
+      sourceType: "Artifact",
+      icon: "🚜",
+      eraOrContext: "Indus Valley (Haryana), about 4500 years ago",
+      visualDescription: "A small baked clay toy model shaped like a wooden farming plough with a beam, handle, and curved ploughshare.",
+      badgeColor: "border-orange-400 bg-orange-50"
     },
-    question: "Why do historians believe these seals were pressed into wet clay stamped onto merchant cargo bundles?",
+    question: "Why is this little clay toy plough important to archaeologists?",
     options: [
-      "Clay impressions with seal marks on one side and woven rope marks on the reverse have been excavated",
-      "The ancient seals contain English instructions explaining how to mail packages",
-      "Seals were made to be eaten as food during long ocean voyages",
-      "Kings used seals only to play board games with their children"
+      "Real wooden ploughs rotted away in the soil, so this clay toy proves Harappan farmers used ploughs to till the land",
+      "It proves that Harappans had electric robotic tractors",
+      "It was used as money to pay taxes to the king",
+      "It was an instrument used by musicians in concerts"
     ],
-    correctAnswer: "Clay impressions with seal marks on one side and woven rope marks on the reverse have been excavated",
-    explanation: "Archaeologists found clay tags (sealings) bearing the impression of the seal on one side and the texture of hemp cloth/ropes on the other, proving they authenticated cargo packages.",
-    deductionGuide: "Notice the physical evidence of clay tags attached to sacks."
+    correctAnswer: "Real wooden ploughs rotted away in the soil, so this clay toy proves Harappan farmers used ploughs to till the land",
+    explanation: "NCERT Class 6 Chapter 3 notes that while real wooden ploughs have decayed, toy plough models found in excavations show that ploughs were used for farming.",
+    deductionGuide: "Wood rots over thousands of years, but baked clay toys survive to show us what ancient tools looked like."
   },
   {
     id: "det_007",
     category: "source-detective",
     type: "source-detective",
-    difficulty: "challenge",
+    difficulty: "medium",
     points: 15,
     source: {
-      title: "Burial Site with Pottery Pots and Polished Stone Axes",
-      sourceType: "Artifact",
-      icon: "🏺",
-      eraOrContext: "Burzahom, Kashmir, c. 2500 BCE",
-      visualDescription: "An excavated subterranean pit burial where a human skeleton was laid with grey pottery vessels containing grains and polished stone celts.",
-      badgeColor: "border-stone-400 bg-stone-50"
+      title: "Gold Coin of King Samudragupta Playing the Veena",
+      sourceType: "Coin",
+      icon: "🪙",
+      eraOrContext: "Gupta Empire, about 1650 years ago (c. 350 CE)",
+      visualDescription: "A golden coin showing King Samudragupta sitting comfortably on a couch and playing a stringed musical instrument called the veena.",
+      badgeColor: "border-yellow-400 bg-yellow-50"
     },
-    question: "What conclusion about the community's beliefs does this archaeological burial most strongly support?",
+    question: "What does this coin reveal about King Samudragupta?",
     options: [
-      "They believed in an afterlife and provided provisions and tools for the deceased person's journey",
-      "They had no respect for the deceased and disposed of everyday trash in graves",
-      "They used stone pots as currency to buy land in other countries",
-      "The deceased was an astronomer who studied meteor showers"
+      "Besides being a mighty warrior and ruler, he was fond of music and skilled at playing the veena",
+      "He was banned from ever ruling his kingdom",
+      "Music was illegal throughout his empire",
+      "The king could not afford to make any metal swords"
     ],
-    correctAnswer: "They believed in an afterlife and provided provisions and tools for the deceased person's journey",
-    explanation: "Placing food pots, ornaments, and essential working tools inside graves shows ancient people conceived of some form of existence or journey after death.",
-    deductionGuide: "Think about why precious food and tools would be intentionally buried with human remains."
+    correctAnswer: "Besides being a mighty warrior and ruler, he was fond of music and skilled at playing the veena",
+    explanation: "NCERT Class 6 Chapter 10 highlights this famous coin, showing that Samudragupta was celebrated not only as a conqueror but also as an accomplished musician and poet.",
+    deductionGuide: "Notice the king seated on a couch playing the musical instrument."
   },
   {
     id: "det_008",
@@ -183,23 +183,23 @@ export const DETECTIVE_QUESTIONS: SourceDetectiveQuestion[] = [
     difficulty: "medium",
     points: 15,
     source: {
-      title: "Gold Coin Depicting King Samudragupta Playing the Veena",
-      sourceType: "Coin",
-      icon: "🪙",
-      eraOrContext: "Gupta Empire, c. 350 CE",
-      visualDescription: "An exquisite gold dinara showing the ruler seated comfortably on a high-backed couch, playing a multi-stringed musical harp (veena).",
-      badgeColor: "border-amber-400 bg-amber-50"
+      title: "Bead-Making Remains at Lothal",
+      sourceType: "Artifact",
+      icon: "💎",
+      eraOrContext: "Gujarat, about 4500 years ago",
+      visualDescription: "An excavated room containing chunks of red carnelian stone, stone drills, half-drilled beads, and finished shiny necklaces.",
+      badgeColor: "border-rose-400 bg-rose-50"
     },
-    question: "What historical insight does this unique coin provide beyond the king's military power?",
+    question: "What was this building in Lothal used for?",
     options: [
-      "The emperor patronized arts and music, and wished to be remembered as an accomplished cultural figure",
-      "The emperor was forbidden from ever commanding an army in battle",
-      "Music was completely illegal for everyone except the royal family",
-      "The empire had run out of metal to forge swords and shields"
+      "It was a workshop where craftspersons shaped, drilled, and polished stone beads for jewelry",
+      "It was a kitchen where soldiers baked bread",
+      "It was a stadium for wrestling matches",
+      "It was a stable for keeping royal horses"
     ],
-    correctAnswer: "The emperor patronized arts and music, and wished to be remembered as an accomplished cultural figure",
-    explanation: "Coins reveal not just political control, but royal ideology and cultural values. Samudragupta celebrated himself as both a mighty conqueror and a master musician.",
-    deductionGuide: "Observe the musical instrument and the king's calm artistic posture."
+    correctAnswer: "It was a workshop where craftspersons shaped, drilled, and polished stone beads for jewelry",
+    explanation: "NCERT Class 6 describes Lothal as an important center for making objects out of stone, shell, and metal, where raw carnelian stones, drills, and finished beads were found together.",
+    deductionGuide: "Finding raw stones, drills, and half-finished beads shows it was a craft workshop."
   },
   {
     id: "det_009",
@@ -208,23 +208,23 @@ export const DETECTIVE_QUESTIONS: SourceDetectiveQuestion[] = [
     difficulty: "easy",
     points: 15,
     source: {
-      title: "Microliths: Tiny Sharp Stone Blades Embedded in Wood or Bone",
+      title: "Neolithic Burial with a Goat at Mehrgarh",
       sourceType: "Artifact",
-      icon: "🏹",
-      eraOrContext: "Mesolithic (Middle Stone Age), c. 10,000 BCE",
-      visualDescription: "Geometrically shaped flint flakes (1 to 5 cm long) fixed into wooden handles with tree resin to create composite serrated sickles and arrowheads.",
-      badgeColor: "border-emerald-400 bg-emerald-50"
+      icon: "🏺",
+      eraOrContext: "Near Bolan Pass (Pakistan), about 8000 years ago",
+      visualDescription: "An ancient grave pit where a human skeleton was buried alongside skeletons of goats and clay pots containing food grains.",
+      badgeColor: "border-stone-400 bg-stone-50"
     },
-    question: "What technological breakthrough do 'Microliths' represent in human prehistory?",
+    question: "Why did the people of Mehrgarh bury goats with dead people according to NCERT Class 6?",
     options: [
-      "The invention of composite multi-part tools that were lighter, sharper, and more versatile",
-      "The development of electrical laser cutters for rock quarrying",
-      "The abandonment of stone in favor of plastic materials",
-      "The beginning of heavy industrial steel manufacturing"
+      "They believed in life after death and buried food to serve the dead person in the next world",
+      "They had no other place to throw garbage",
+      "They used dried goats as pillows for sleeping",
+      "They accidentally dropped animals into the pit"
     ],
-    correctAnswer: "The invention of composite multi-part tools that were lighter, sharper, and more versatile",
-    explanation: "Microliths were hafted onto bone or wood to make spears, arrows, and harvesting sickles — representing efficient, portable composite tool design.",
-    deductionGuide: "Notice how tiny stone blades were fitted into wooden handles to create composite tools."
+    correctAnswer: "They believed in life after death and buried food to serve the dead person in the next world",
+    explanation: "NCERT Class 6 Chapter 2 explains that several burial sites were found at Mehrgarh where dead persons were buried with goats, probably meant to serve as food in the next world.",
+    deductionGuide: "Think about why valuable domestic animals and food pots were placed inside graves."
   },
   {
     id: "det_010",
@@ -233,48 +233,48 @@ export const DETECTIVE_QUESTIONS: SourceDetectiveQuestion[] = [
     difficulty: "medium",
     points: 15,
     source: {
-      title: "Copper Plate Inscription with a Royal Seal Ring",
-      sourceType: "Inscription",
-      icon: "📜",
-      eraOrContext: "Deccan Plateau, c. 5th Century CE",
-      visualDescription: "Two rectangular copper plates engraved with Sanskrit text, joined by a heavy bronze ring sealed with the royal emblem of a charging boar (Varaha).",
-      badgeColor: "border-amber-600 bg-amber-50"
+      title: "Ancient Iron Axe and Ploughshare",
+      sourceType: "Artifact",
+      icon: "⛏️",
+      eraOrContext: "Northern India, about 2500 years ago (c. 500 BCE)",
+      visualDescription: "Heavy iron axe heads used for chopping wood and sharp iron ploughshares fitted onto wooden ploughs.",
+      badgeColor: "border-stone-600 bg-stone-100"
     },
-    question: "What was the legal purpose of binding engraved copper plates with a sealed metal ring?",
+    question: "How did iron tools help the kingdoms of the Ganga Valley (like Magadha) grow so powerful?",
     options: [
-      "To prevent unauthorized tampering or separation of legal land ownership and tax exemption records",
-      "To make the plates float if they fell into a river",
-      "To serve as wearable jewelry necklaces for royal bodyguards",
-      "To melt the copper into soup bowls during famines"
+      "Iron axes cleared dense forests for farmland, and iron ploughshares dug deep into heavy soil to produce more grain",
+      "Iron tools were used as musical instruments in village bands",
+      "People stopped farming and only collected wild roots",
+      "Iron was used only to build toy dollhouses"
     ],
-    correctAnswer: "To prevent unauthorized tampering or separation of legal land ownership and tax exemption records",
-    explanation: "Copper plates were durable legal title deeds (Tamra-shasana). The soldered royal seal guaranteed authenticity so no one could forge, add, or remove pages of the grant.",
-    deductionGuide: "Consider how legal contracts prevent forgery."
+    correctAnswer: "Iron axes cleared dense forests for farmland, and iron ploughshares dug deep into heavy soil to produce more grain",
+    explanation: "NCERT Class 6 explains that around 2500 years ago, iron axes helped clear forests and iron ploughshares increased crop yields, leading to surplus food and powerful kingdoms.",
+    deductionGuide: "Connect the hardness of iron to clearing forests and tilling hard soil."
   },
   {
     id: "det_011",
     category: "source-detective",
     type: "source-detective",
-    difficulty: "challenge",
+    difficulty: "medium",
     points: 15,
     source: {
-      title: "Excavated Granary with Raised Air-Ventilated Platforms",
+      title: "Brick Drainage System of Mohenjo-daro",
       sourceType: "Monument",
-      icon: "🌾",
-      eraOrContext: "Mohenjo-daro & Harappa, c. 2400 BCE",
-      visualDescription: "Massive brick foundation divided into rectangular blocks with air ducts beneath the floorboards to keep grain dry and prevent insect rot.",
-      badgeColor: "border-yellow-600 bg-yellow-50"
+      icon: "🚰",
+      eraOrContext: "Indus Valley, about 4700 years ago",
+      visualDescription: "Covered brick drains running along straight streets, connecting private house bathrooms and kitchens to main street drains with inspection holes.",
+      badgeColor: "border-teal-600 bg-teal-50"
     },
-    question: "What does this large municipal granary demonstrate about the administration of Harappan cities?",
+    question: "What does this underground drainage network prove about Harappan cities?",
     options: [
-      "The city had centralized civic planning to collect, store, and distribute grain against seasonal shortages",
-      "Each family cooked food for the entire city on a single fireplace",
-      "Citizens were not allowed to eat grain or bread",
-      "The city had no farmers and imported all grain from Europe"
+      "The cities were very carefully planned with high standards of cleanliness, health, and sanitation",
+      "The citizens drank dirty drain water every day",
+      "Nobody in the city ever bathed or washed dishes",
+      "The houses were built without any walls or roofs"
     ],
-    correctAnswer: "The city had centralized civic planning to collect, store, and distribute grain against seasonal shortages",
-    explanation: "Large public storage structures with humidity control require municipal organization, collection of grain as taxes or surplus, and redistribution to urban craftspeople.",
-    deductionGuide: "Think about why a large city needs central storage for surplus food."
+    correctAnswer: "The cities were very carefully planned with high standards of cleanliness, health, and sanitation",
+    explanation: "NCERT Class 6 notes that Harappan houses, drains, and streets were planned and built at the same time, with covered drains and inspection holes for cleaning.",
+    deductionGuide: "Notice how covered drains with inspection covers show careful city planning."
   },
   {
     id: "det_012",
@@ -283,23 +283,23 @@ export const DETECTIVE_QUESTIONS: SourceDetectiveQuestion[] = [
     difficulty: "easy",
     points: 15,
     source: {
-      title: "Prehistoric Rock Painting of a Group Animal Hunt",
-      sourceType: "Artifact",
-      icon: "🎨",
-      eraOrContext: "Bhimbetka Rock Shelters, Madhya Pradesh, c. 10,000 BCE",
-      visualDescription: "Stick figures with bows, spears, and sticks surrounding running bisons and deer, painted with red ochre and white mineral pigments inside a natural sandstone shelter.",
-      badgeColor: "border-red-400 bg-red-50"
+      title: "Punch-Marked Silver Coin",
+      sourceType: "Coin",
+      icon: "🪙",
+      eraOrContext: "Ancient India, about 2500 years ago (c. 500 BCE)",
+      visualDescription: "A small, irregularly shaped silver piece stamped with symbols of a sun, a tree in railing, and hills.",
+      badgeColor: "border-amber-400 bg-amber-50"
     },
-    question: "What can historians learn about prehistoric hunter-gatherers from these cave paintings?",
+    question: "Why are these ancient coins called 'punch-marked' coins in NCERT Class 6?",
     options: [
-      "The types of wildlife present, weapons used, and cooperative group hunting strategies",
-      "The exact names and telephone numbers of the hunters",
-      "The prices of goods sold in modern supermarkets",
-      "The dates when iron trains were manufactured"
+      "Because symbols were punched or stamped into the metal surface using dies",
+      "Because people had to punch each other to win them",
+      "Because they were made out of fruit punch juice",
+      "Because they had round holes punched through their centers"
     ],
-    correctAnswer: "The types of wildlife present, weapons used, and cooperative group hunting strategies",
-    explanation: "Rock art offers an eyewitness snapshot of prehistoric fauna, communal teamwork in hunting, weapons, rituals, and the creative expression of early humans.",
-    deductionGuide: "Observe the animals being surrounded and the hunting tools shown in red ochre."
+    correctAnswer: "Because symbols were punched or stamped into the metal surface using dies",
+    explanation: "NCERT Class 6 Chapter 8 states that punch-marked coins were so called because designs were punched onto the metal (silver or copper).",
+    deductionGuide: "Look at the stamped symbols punched onto the silver metal."
   },
   {
     id: "det_013",
@@ -308,72 +308,72 @@ export const DETECTIVE_QUESTIONS: SourceDetectiveQuestion[] = [
     difficulty: "medium",
     points: 15,
     source: {
-      title: "Pillar Inscription in Prakrit Language and Brahmi Script",
-      sourceType: "Inscription",
-      icon: "🏛️",
-      eraOrContext: "Sarnath, c. 250 BCE",
-      visualDescription: "Carefully aligned, evenly spaced letters incised onto polished chunar sandstone, issued by 'Devanampiya Piyadasi' (Beloved of the Gods).",
-      badgeColor: "border-teal-500 bg-teal-50"
+      title: "Megalith Grave Circle with Gold Beads",
+      sourceType: "Artifact",
+      icon: "🪨",
+      eraOrContext: "Deccan (Karnataka), about 3000 years ago",
+      visualDescription: "A burial site encircled by big boulders (megaliths). One skeleton was buried with 33 gold beads and copper bangles, while other skeletons nearby had only a few clay pots.",
+      badgeColor: "border-stone-500 bg-stone-50"
     },
-    question: "Why did Emperor Ashoka compose his inscriptions in local dialects like Prakrit rather than complex court Sanskrit?",
+    question: "What did archaeologists learn from the difference in items found in these graves?",
     options: [
-      "So ordinary townspeople and villagers could easily understand the message without needing scholars",
-      "Because no other language existed on earth at that time",
-      "To trick people into thinking the emperor was from a different continent",
-      "Because royal stone carvers refused to chisel any Sanskrit letters"
+      "There was a difference in social status and wealth; some people were rich chiefs while others were poor",
+      "All people in the village were treated exactly the same",
+      "People buried their gold only to play hide-and-seek",
+      "The dead person with gold was a visiting Roman sailor"
     ],
-    correctAnswer: "So ordinary townspeople and villagers could easily understand the message without needing scholars",
-    explanation: "Prakrit was the spoken language of the common people. Ashoka chose it deliberately so his moral teachings (Dhamma) reached everyone, not just an elite priesthood.",
-    deductionGuide: "Consider the target audience of a public message."
+    correctAnswer: "There was a difference in social status and wealth; some people were rich chiefs while others were poor",
+    explanation: "NCERT Class 6 Chapter 4 explains that at Brahmagiri, one skeleton had 33 gold beads while others had only pots, showing differences in status between the rich and the poor.",
+    deductionGuide: "Notice the difference between a grave with 33 gold beads vs one with only clay pots."
   },
   {
     id: "det_014",
     category: "source-detective",
     type: "source-detective",
-    difficulty: "medium",
+    difficulty: "easy",
     points: 15,
     source: {
-      title: "Hoard of Roman Gold Coins Found in South Indian Coastal Villages",
-      sourceType: "Coin",
-      icon: "🪙",
-      eraOrContext: "Kaveripattinam, Tamil Nadu, c. 1st Century CE",
-      visualDescription: "Over 200 gold aurei minted in Rome under Emperors Augustus and Tiberius, discovered in an earthenware pot buried near an ancient port.",
-      badgeColor: "border-amber-400 bg-amber-50"
+      title: "Neolithic Pit-House in Kashmir",
+      sourceType: "Monument",
+      icon: "🏠",
+      eraOrContext: "Burzahom (Kashmir), about 4500 years ago",
+      visualDescription: "A round room dug deep into the earth with dirt steps leading down, featuring cooking hearths both inside the pit and outside on the surface.",
+      badgeColor: "border-emerald-600 bg-emerald-50"
     },
-    question: "What does this discovery prove about the economy of ancient South India?",
+    question: "Why did the people of Burzahom build pit-houses dug into the ground?",
     options: [
-      "South Indian kingdoms had flourishing oceanic trade exporting spices (like pepper) and receiving Roman gold in payment",
-      "The Roman army invaded and ruled all of southern India for 500 years",
-      "Ancient Indians were not capable of manufacturing their own local coins",
-      "Coins were carried across the ocean accidentally by migratory sea turtles"
+      "To protect themselves from the freezing cold weather of Kashmir",
+      "Because they did not know how to walk on flat ground",
+      "To hide from swimming fish in the river",
+      "Because they were afraid of sunlight"
     ],
-    correctAnswer: "South Indian kingdoms had flourishing oceanic trade exporting spices (like pepper) and receiving Roman gold in payment",
-    explanation: "The Roman writer Pliny the Elder even complained about the massive drain of Roman gold to India to buy black pepper ('black gold'), beryl gems, and fine cotton textiles.",
-    deductionGuide: "Connect the foreign coins to trade goods and maritime shipping."
+    correctAnswer: "To protect themselves from the freezing cold weather of Kashmir",
+    explanation: "NCERT Class 6 Chapter 2 describes pit-houses dug into the ground at Burzahom, which may have provided shelter in cold weather, with hearths for cooking.",
+    deductionGuide: "Think about how being underground protects against biting winter winds."
   },
   {
     id: "det_015",
     category: "source-detective",
     type: "source-detective",
-    difficulty: "challenge",
+    difficulty: "medium",
     points: 15,
     source: {
-      title: "Charred Barley Grains and Cattle Bone Marks in an Excavation Layer",
-      sourceType: "Artifact",
-      icon: "🌾",
-      eraOrContext: "Mehrgarh, Balochistan, c. 7000 BCE",
-      visualDescription: "Microscopic analysis reveals domesticated two-row barley seeds and cattle bones showing tell-tale cut marks from flint knives rather than predator tooth bites.",
-      badgeColor: "border-amber-600 bg-amber-50"
+      title: "Roman Wine Amphora Shards at Arikamedu",
+      sourceType: "Pottery",
+      icon: "🏺",
+      eraOrContext: "Near Puducherry, about 2000 years ago",
+      visualDescription: "Broken pieces of tall, two-handled clay jars (amphorae) that originally held wine or olive oil imported from the Mediterranean Sea.",
+      badgeColor: "border-rose-400 bg-rose-50"
     },
-    question: "What momentous transition in human history does this botanical and zoological evidence establish?",
+    question: "What does finding Roman wine jars at the Indian port of Arikamedu prove?",
     options: [
-      "The shift from nomadic foraging to settled agricultural food production and animal domestication",
-      "The sudden collapse of all human settlements in the region",
-      "The discovery of frozen food refrigeration techniques",
-      "That prehistoric humans never consumed grains or meat"
+      "Indian coastal ports had active sea trade with the Roman Empire across the ocean",
+      "The Roman army conquered and ruled all of southern India",
+      "Indian potters had to copy Roman pots because they had no clay",
+      "The jars were carried across the ocean by flying birds"
     ],
-    correctAnswer: "The shift from nomadic foraging to settled agricultural food production and animal domestication",
-    explanation: "Cultivated grain seeds and butchery marks on domestic cattle bones are classic bioarchaeological proof of the Neolithic revolution — the dawn of farming and animal husbandry.",
-    deductionGuide: "Notice the difference between wild vs domesticated plants and animal bones."
+    correctAnswer: "Indian coastal ports had active sea trade with the Roman Empire across the ocean",
+    explanation: "NCERT Class 6 Chapter 8 highlights Arikamedu as a coastal port where Roman amphorae (wine jars) and Arretine pottery were found, proving vibrant trade with Rome.",
+    deductionGuide: "Two-handled Mediterranean wine jars found in an Indian port point to ocean trade."
   }
 ];

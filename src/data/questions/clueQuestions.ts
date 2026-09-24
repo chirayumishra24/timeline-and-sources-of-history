@@ -5,196 +5,196 @@ export const CLUE_QUESTIONS: ConnectCluesQuestion[] = [
     id: "clue_001",
     category: "connect-the-clues",
     type: "connect-clues",
-    difficulty: "medium",
+    difficulty: "easy",
     points: 15,
-    title: "The Mystery of the Ancient Maritime Route",
-    scenario: "Archaeologists working at an ancient coastal site uncover three distinct pieces of evidence:",
+    title: "The Lost Port of Lothal",
+    scenario: "Archaeologists excavating the ancient Harappan town of Lothal in Gujarat uncover three intriguing finds:",
     clues: [
       {
-        label: "Clue A: Ceramic Shards",
-        category: "Artifact",
-        finding: "Fragments of Roman double-handled wine amphorae and fine red-glazed Arretine pottery.",
-        icon: "🏺"
+        label: "Clue 1: Tidal Dockyard Tank",
+        category: "Architecture",
+        finding: "A massive brick basin connected by a channel to the river where boats and ships could enter from the sea.",
+        icon: "⚓"
       },
       {
-        label: "Clue B: Monetary Hoard",
-        category: "Coin",
-        finding: "Hundreds of Roman gold and silver denarii bearing portraits of Emperor Augustus and Tiberius.",
-        icon: "🪙"
+        label: "Clue 2: Bead Factory",
+        category: "Crafts",
+        finding: "A workshop containing raw carnelian stones, stone drills, and half-made bead necklaces.",
+        icon: "💎"
       },
       {
-        label: "Clue C: Classical Greek Text",
-        category: "Literary Record",
-        finding: "The 'Periplus of the Erythraean Sea' describes Greek sailors waiting for seasonal monsoon winds to sail to Indian ports.",
-        icon: "📜"
+        label: "Clue 3: Clay Sealings",
+        category: "Trade Evidence",
+        finding: "Clay tags with seal impressions stamped over knotted ropes used on cargo sacks.",
+        icon: "🏷️"
       }
     ],
-    question: "Which conclusion is best supported when all three clues are connected?",
+    question: "What overall conclusion is proven when these three clues are connected?",
     options: [
-      "There was a well-organized, direct maritime trade network between the Mediterranean Roman world and ancient Indian coasts",
-      "Roman armies marched on foot across the Himalayas to conquer southern Indian kingdoms",
-      "Ancient Indian pottery styles were secretly copied from Greek pirate ships",
-      "The Roman coins were merely dropped accidentally by a lost Roman tourist"
+      "Lothal was a bustling port and craft center where goods were manufactured and shipped across the sea",
+      "Lothal was a mountain fortress where people hid from rain",
+      "The city had no access to any rivers or oceans",
+      "The people of Lothal never made any crafts or jewelry"
     ],
-    correctAnswer: "There was a well-organized, direct maritime trade network between the Mediterranean Roman world and ancient Indian coasts",
-    explanation: "Connecting pottery (imports), coinage (payments), and navigational literature (trade routes) provides comprehensive proof of organized trans-oceanic commerce.",
-    synthesisSummary: "Physical imports + currency hoards + contemporary sailing manuals = Flourishing oceanic trade."
+    correctAnswer: "Lothal was a bustling port and craft center where goods were manufactured and shipped across the sea",
+    explanation: "The dockyard allowed ships to dock, the workshop produced beads, and clay sealings secured cargo for sea trade.",
+    synthesisSummary: "Dockyard basin + bead workshop + cargo sealings = Busy maritime port and manufacturing hub."
   },
   {
     id: "clue_002",
     category: "connect-the-clues",
     type: "connect-clues",
-    difficulty: "medium",
+    difficulty: "easy",
     points: 15,
-    title: "Urban Planning in the Indus Basin",
-    scenario: "Excavations across multiple Harappan cities hundreds of kilometers apart reveal:",
+    title: "Life in the Old Stone Age",
+    scenario: "Archaeologists investigating early human sites in central and southern India discover:",
     clues: [
       {
-        label: "Clue 1: Standardized Masonry",
-        category: "Architecture",
-        finding: "Baked bricks found in Mohenjo-daro, Harappa, and Kalibangan all have an identical ratio of 4:2:1 (length : breadth : thickness).",
-        icon: "🧱"
+        label: "Clue 1: Rock Shelters at Bhimbetka",
+        category: "Shelter",
+        finding: "Natural sandstone caves overlooking the Narmada Valley that protected people from rain and wind.",
+        icon: "🏞️"
       },
       {
-        label: "Clue 2: Street Layout",
-        category: "Urban Design",
-        finding: "Main avenues run precisely north-south and east-west, intersecting at clean 90-degree right angles in a grid system.",
-        icon: "📐"
+        label: "Clue 2: Cave Wall Paintings",
+        category: "Art",
+        finding: "Paintings in red and white pigments showing running deer, wild animals, and hunters with spears.",
+        icon: "🎨"
       },
       {
-        label: "Clue 3: Covered Sanitation",
-        category: "Public Health",
-        finding: "Every private house connects to an underground brick drain system equipped with inspection manholes and soak pits.",
-        icon: "🚰"
+        label: "Clue 3: Ash Traces at Kurnool",
+        category: "Fire",
+        finding: "Traces of wood ash found inside caves, proving early humans used and controlled fire.",
+        icon: "🔥"
       }
     ],
-    question: "What overall conclusion can historians draw from synthesizing these three clues?",
+    question: "Connecting these clues proves that early humans in the Old Stone Age:",
     options: [
-      "Harappan society had centralized municipal administration, strict civic codes, and standardized measurement standards",
-      "The cities were built by independent nomadic wanderers who never communicated with each other",
-      "Every house in Harappa was designed by a different foreign king",
-      "The cities were flooded and rebuilt every single month"
+      "Lived as hunter-gatherers using caves for shelter, fire for warmth and light, and painted their daily life on rock walls",
+      "Lived in modern concrete apartment buildings",
+      "Grew wheat and rice on large farms with iron tractors",
+      "Could not survive in the wild and stayed only on boats"
     ],
-    correctAnswer: "Harappan society had centralized municipal administration, strict civic codes, and standardized measurement standards",
-    explanation: "Standardized brick dimensions across 1,000 km, strict grid plans, and unified drainage systems demonstrate remarkable central governance and municipal discipline.",
-    synthesisSummary: "Universal brick ratio + grid street plan + citywide drainage = Centralized civic administration."
+    correctAnswer: "Lived as hunter-gatherers using caves for shelter, fire for warmth and light, and painted their daily life on rock walls",
+    explanation: "Bhimbetka provided natural shelter, Kurnool ash proves the mastery of fire, and cave paintings depict wild hunting.",
+    synthesisSummary: "Rock shelters + hunting paintings + ash traces = Nomadic hunter-gatherer life using fire and cave shelters."
   },
   {
     id: "clue_003",
     category: "connect-the-clues",
     type: "connect-clues",
-    difficulty: "challenge",
+    difficulty: "medium",
     points: 15,
-    title: "The Emergence of Early Territorial Kingdoms (Janapadas)",
-    scenario: "Historians investigating northern India around 600 BCE assemble several lines of evidence:",
+    title: "The First Farmers of Mehrgarh",
+    scenario: "Near the Bolan Pass in Balochistan, archaeologists excavating the ancient site of Mehrgarh find:",
     clues: [
       {
-        label: "Clue A: Metallurgy",
-        category: "Artifact",
-        finding: "Dense clusters of iron axes, ploughshares, and sickle blades found at archaeological sites in Bihar and Uttar Pradesh.",
-        icon: "⛏️"
+        label: "Clue 1: Food Grains",
+        category: "Agriculture",
+        finding: "Charred seeds of wheat and barley preserved in ancient soil layers.",
+        icon: "🌾"
       },
       {
-        label: "Clue B: Fortifications",
-        category: "Monuments",
-        finding: "Massive mud-brick ramparts and moats surrounding capital cities like Rajgir, Kaushambi, and Ujjain.",
-        icon: "🏰"
+        label: "Clue 2: Animal Bones",
+        category: "Herding",
+        finding: "Bones of domesticated sheep, goats, and cattle showing animals were tamed for milk and meat.",
+        icon: "🐐"
       },
       {
-        label: "Clue C: Early Coins",
-        category: "Numismatics",
-        finding: "Punch-marked silver pieces used to pay professional standing armies and state officials.",
-        icon: "🪙"
+        label: "Clue 3: Mud-Brick Houses",
+        category: "Architecture",
+        finding: "Square and rectangular houses made of mud-bricks, with rooms used for storing grain.",
+        icon: "🏠"
       }
     ],
-    question: "Connecting these clues reveals which major historical transformation?",
+    question: "What major turning point in human history do these clues reveal?",
     options: [
-      "Agricultural surpluses enabled by iron tools allowed powerful rulers to build fortified capitals, collect taxes, and maintain standing armies",
-      "People abandoned cities and returned to living as isolated cave-dwellers",
-      "All kingdoms in India agreed to dissolve their borders and stop using tools",
-      "Warfare was permanently abolished throughout the subcontinent"
+      "Humans stopped wandering and began settled farming, animal herding, and living in village homes",
+      "People abandoned all food and lived only on drinking water",
+      "All animals in ancient India were wild and never tamed",
+      "Farming was invented in the 21st century"
     ],
-    correctAnswer: "Agricultural surpluses enabled by iron tools allowed powerful rulers to build fortified capitals, collect taxes, and maintain standing armies",
-    explanation: "Iron tools created surplus grain, surplus grain allowed states to collect taxes, and taxes paid for monumental fort walls and professional armies recorded in coinage.",
-    synthesisSummary: "Iron technology + agricultural surplus + fortifications + coinage = Rise of powerful territorial states."
+    correctAnswer: "Humans stopped wandering and began settled farming, animal herding, and living in village homes",
+    explanation: "Mehrgarh is one of the earliest known farming villages where people grew wheat and barley, herded animals, and lived in permanent houses.",
+    synthesisSummary: "Wheat/barley seeds + sheep/goat bones + mud houses = Transition to settled agriculture and village life."
   },
   {
     id: "clue_004",
     category: "connect-the-clues",
     type: "connect-clues",
-    difficulty: "easy",
+    difficulty: "medium",
     points: 15,
-    title: "The Craft Workshop of Lothal",
-    scenario: "In an excavated quarter of the Harappan port town of Lothal, archaeologists find:",
+    title: "Urban Planning in Harappan Cities",
+    scenario: "Excavations across Harappan cities like Mohenjo-daro and Harappa reveal:",
     clues: [
       {
-        label: "Clue 1: Raw Materials",
-        category: "Minerals",
-        finding: "Lumps of raw carnelian stone, jasper, and lapis lazuli shipped from distant mines.",
-        icon: "💎"
+        label: "Clue 1: Citadel and Lower Town",
+        category: "Town Layout",
+        finding: "Cities divided into two parts: a higher Citadel in the west and a larger Lower Town in the east.",
+        icon: "🏰"
       },
       {
-        label: "Clue 2: Specialized Tools",
-        category: "Technology",
-        finding: "Fine micro-drills made of tough chert stone and circular clay kilns with heating ash.",
-        icon: "🔧"
+        label: "Clue 2: Grid Street Pattern",
+        category: "Streets",
+        finding: "Wide, straight avenues that crossed each other at neat right angles like a chessboard.",
+        icon: "📐"
       },
       {
-        label: "Clue 3: Discarded Debris",
-        category: "Workshop Waste",
-        finding: "Half-drilled beads, chipped rock flakes, and broken bead blanks swept into a corner pile.",
-        icon: "📿"
+        label: "Clue 3: Covered Brick Drains",
+        category: "Sanitation",
+        finding: "Straight brick-lined drains running along streets with removable stone covers for cleaning.",
+        icon: "🚰"
       }
     ],
-    question: "Which conclusion is unequivocally proven by these three clues?",
+    question: "What does this evidence prove about Harappan cities?",
     options: [
-      "The excavated structure was an active bead-manufacturing workshop where specialized artisans shaped jewelry",
-      "The building was a royal throne room where emperors gave speeches",
-      "The beads were naturally formed by ocean waves and required no human labor",
-      "Lothal did not have any skilled craftsmen or trading connections"
+      "Harappan cities were carefully planned by skilled engineers and managed by an organized municipal government",
+      "The cities were built by accident without any plan",
+      "People lived in huts that were knocked down every week",
+      "The cities had no rulers or public workers"
     ],
-    correctAnswer: "The excavated structure was an active bead-manufacturing workshop where specialized artisans shaped jewelry",
-    explanation: "Finding raw materials, precision manufacturing tools, and manufacturing waste in the same room is definitive archaeological proof of a bead factory.",
-    synthesisSummary: "Raw stone + drills and kilns + workshop debris = Bead manufacturing center."
+    correctAnswer: "Harappan cities were carefully planned by skilled engineers and managed by an organized municipal government",
+    explanation: "Standardized city divisions, grid streets, and citywide covered drainage demonstrate advanced urban planning.",
+    synthesisSummary: "Two-part city division + grid streets + covered drainage = Highly organized city planning."
   },
   {
     id: "clue_005",
     category: "connect-the-clues",
     type: "connect-clues",
-    difficulty: "challenge",
+    difficulty: "easy",
     points: 15,
-    title: "Deciphering Ancient Royal Ideology",
-    scenario: "Historians studying Emperor Ashoka compare multiple sources across vast territories:",
+    title: "The Emperor Who Gave Up War (Ashoka)",
+    scenario: "Historians studying Emperor Ashoka discover three unique pieces of historical evidence:",
     clues: [
       {
-        label: "Clue A: Rock Edict XIII",
-        category: "Epigraphy",
-        finding: "Expresses profound sorrow and remorse over the slaughter, death, and deportation during the Kalinga war.",
+        label: "Clue 1: Rock Edict XIII",
+        category: "War Inscription",
+        finding: "Ashoka expresses deep sorrow over the bloodshed, suffering, and deaths caused by the Kalinga war.",
         icon: "📜"
       },
       {
-        label: "Clue B: Pillar Edict VII",
-        category: "Civic Projects",
-        finding: "Lists banyan trees planted along roads, mango groves, wells dug every half-kos, and rest houses for travelers and animals.",
+        label: "Clue 2: Pillar Edicts on Public Welfare",
+        category: "Good Works",
+        finding: "Ashoka describes building hospitals for humans and animals, digging roadside wells, and planting shade trees.",
         icon: "🌳"
       },
       {
-        label: "Clue C: Buddhist Chronicles (Mahavamsa)",
-        category: "Literature",
-        finding: "Records the emperor's patronage of the Third Buddhist Council at Pataliputra and dispatching peace emissaries to Sri Lanka and Greece.",
-        icon: "🕊️"
+        label: "Clue 3: Language for the People",
+        category: "Script & Language",
+        finding: "Edicts were written in simple Prakrit and Brahmi script so common people could understand them.",
+        icon: "✍️"
       }
     ],
-    question: "What overarching historical conclusion emerges when these sources are connected?",
+    question: "Connecting these clues reveals which remarkable change in Emperor Ashoka?",
     options: [
-      "Ashoka underwent a moral transformation, turning away from military expansion toward the welfare of all living beings and ethical governance",
-      "Ashoka lost all his territory and was forced into exile by his neighbors",
-      "The emperor banned all religions and ordered monuments destroyed",
-      "The inscriptions were written hundreds of years after the empire ceased to exist"
+      "He gave up war and conquest, dedicating his rule to peace, moral duty (Dhamma), and the welfare of all living beings",
+      "He decided to conquer every country in the world",
+      "He retired to a jungle and stopped caring about his people",
+      "He banned all languages except Greek"
     ],
-    correctAnswer: "Ashoka underwent a moral transformation, turning away from military expansion toward the welfare of all living beings and ethical governance",
-    explanation: "Edict remorse + public welfare infrastructure + peace missions in chronicles corroborate a documented shift from conquest by force (Bherighosha) to conquest by moral duty (Dhammaghosha).",
-    synthesisSummary: "Remorse over war + public welfare works + ethical missions = Shift to moral governance."
+    correctAnswer: "He gave up war and conquest, dedicating his rule to peace, moral duty (Dhamma), and the welfare of all living beings",
+    explanation: "Horrified by the violence in Kalinga, Ashoka gave up military conquest and chose conquest by Dhamma (righteousness).",
+    synthesisSummary: "Sorrow over Kalinga + roadside welfare + edicts in common language = Ashoka's devotion to peace and Dhamma."
   },
   {
     id: "clue_006",
@@ -202,38 +202,38 @@ export const CLUE_QUESTIONS: ConnectCluesQuestion[] = [
     type: "connect-clues",
     difficulty: "medium",
     points: 15,
-    title: "Investigating Ancient Climate and Agriculture",
-    scenario: "Environmental archaeologists examining sediment cores near an ancient riverbed find:",
+    title: "Indo-Roman Trade at Arikamedu",
+    scenario: "Archaeologists excavating the coastal site of Arikamedu near Puducherry find:",
     clues: [
       {
-        label: "Clue 1: Pollen Grains",
-        category: "Palaeobotany",
-        finding: "Fossilized pollen belonging to cultivated wheat and barley found trapped in soil layers dated to 2500 BCE.",
-        icon: "🌾"
+        label: "Clue 1: Amphorae Pottery",
+        category: "Mediterranean Import",
+        finding: "Shards of tall two-handled clay jars used in Rome for holding wine and olive oil.",
+        icon: "🏺"
       },
       {
-        label: "Clue 2: Terracotta Model",
-        category: "Artifact",
-        finding: "A miniature clay toy plough excavated at Banawali, showing a beam, handle, and ploughshare.",
-        icon: "🚜"
+        label: "Clue 2: Arretine Ware",
+        category: "Stamped Ceramics",
+        finding: "Red-glazed luxury pottery made in Italy stamped with maker designs.",
+        icon: "🍽️"
       },
       {
-        label: "Clue 3: Furrow Marks",
-        category: "Archaeology",
-        finding: "A preserved ploughed field surface at Kalibangan showing two sets of criss-cross grid furrows.",
-        icon: "🌱"
+        label: "Clue 3: Roman Coin Hoards",
+        category: "Currency",
+        finding: "Gold and silver Roman coins bearing portraits of Roman emperors found in coastal Tamil Nadu.",
+        icon: "🪙"
       }
     ],
-    question: "Connecting these clues proves that the ancient farmers:",
+    question: "What does this evidence tell us about ancient Indian traders?",
     options: [
-      "Used wooden ploughs pulled by draft animals and planted two different crops simultaneously in intersecting furrows",
-      "Only gathered wild weeds from riverbanks and never understood farming",
-      "Used metal airplanes to drop chemical pesticides on their crops",
-      "Imported all their food from faraway foreign planets"
+      "Indian coastal ports had active sea trade with the Roman Empire, exchanging spices and cloth for Roman gold and wine",
+      "Rome invaded and ruled all of southern India",
+      "Indian merchants were afraid of sailing into the sea",
+      "Ancient ships could not carry pottery across water"
     ],
-    correctAnswer: "Used wooden ploughs pulled by draft animals and planted two different crops simultaneously in intersecting furrows",
-    explanation: "Pollen confirms crop types; the clay toy models the tool; and grid furrows show the farming practice of growing two crops together with different water needs.",
-    synthesisSummary: "Crop pollen + plough model + ploughed furrow field = Advanced systematic agriculture."
+    correctAnswer: "Indian coastal ports had active sea trade with the Roman Empire, exchanging spices and cloth for Roman gold and wine",
+    explanation: "Arikamedu was a bustling port where Roman merchants sailed across the Arabian Sea to buy Indian spices, gems, and textiles.",
+    synthesisSummary: "Wine amphorae + stamped Italian pottery + Roman gold coins = Active Indo-Roman maritime commerce."
   },
   {
     id: "clue_007",
@@ -241,155 +241,155 @@ export const CLUE_QUESTIONS: ConnectCluesQuestion[] = [
     type: "connect-clues",
     difficulty: "medium",
     points: 15,
-    title: "The Mystery of the Buried Skeleton",
-    scenario: "At Inamgaon (Maharashtra), archaeologists excavating an early farming settlement uncover a unique burial:",
+    title: "Secrets of Megalith Burials",
+    scenario: "At Megalith sites like Brahmagiri and Adichanallur in South India, archaeologists discover:",
     clues: [
       {
-        label: "Clue A: Burial Position & House",
-        category: "Excavation",
-        finding: "The body was buried inside a five-room house in the center of the settlement, seated cross-legged in a large four-legged clay jar.",
-        icon: "🏠"
+        label: "Clue 1: Stone Boulders",
+        category: "Burial Marker",
+        finding: "Huge stone boulders placed in circles around underground grave pits (cists).",
+        icon: "🪨"
       },
       {
-        label: "Clue B: Associated Grave Goods",
+        label: "Clue 2: Iron Tools & Weapons",
         category: "Artifacts",
-        finding: "Accompanied by a granary in the same courtyard, copper chisels, and terracotta figurines.",
-        icon: "🏺"
+        finding: "Iron daggers, swords, axes, and horse equipment buried alongside human skeletons.",
+        icon: "⚔️"
       },
       {
-        label: "Clue C: Comparison with Other Graves",
-        category: "Social Hierarchy",
-        finding: "Most other skeletons were buried in plain pits in the earth with only a few simple pots.",
-        icon: "⚖️"
+        label: "Clue 3: Differences in Wealth",
+        category: "Grave Goods",
+        finding: "One grave contained 33 gold beads and copper bangles, while other nearby graves had only simple clay pots.",
+        icon: "💍"
       }
     ],
-    question: "What social reality of this ancient community does this contrast in evidence reveal?",
+    question: "What do these clues show about Megalithic society?",
     options: [
-      "There was social differentiation and hierarchy; this individual was likely an important village chief or leader",
-      "Every single citizen was treated identically with equal resources",
-      "The buried person was a foreign invader who accidentally fell into a jar",
-      "The villagers had no concept of leadership or family homes"
+      "They used iron tools and weapons, and there were differences in wealth and power between chiefs and ordinary people",
+      "Everyone in the community had identical wealth and status",
+      "They had never seen or used any metal tools",
+      "The dead were always buried in deep ocean water"
     ],
-    correctAnswer: "There was social differentiation and hierarchy; this individual was likely an important village chief or leader",
-    explanation: "A massive central home, a courtyard granary, and an elaborate burial jar compared to modest pit graves for others indicates significant differences in social status and authority.",
-    synthesisSummary: "Central mansion burial + abundant grave goods + contrast with simple graves = Social stratification."
+    correctAnswer: "They used iron tools and weapons, and there were differences in wealth and power between chiefs and ordinary people",
+    explanation: "Megaliths were marked by large stone boulders. Rich graves with gold and weapons show that chiefs held higher status than poor villagers.",
+    synthesisSummary: "Stone circle graves + iron weapons + unequal grave goods = Iron Age society with social hierarchy."
   },
   {
     id: "clue_008",
     category: "connect-the-clues",
     type: "connect-clues",
-    difficulty: "challenge",
+    difficulty: "medium",
     points: 15,
-    title: "Tracing the Spread of Writing (Scripts)",
-    scenario: "Epigraphists comparing ancient scripts across South Asia and Central Asia notice:",
+    title: "How Magadha Became the Most Powerful Kingdom",
+    scenario: "Historians investigating why Magadha became the leading Mahajanapada find three geographical advantages:",
     clues: [
       {
-        label: "Clue 1: Brahmi Script on Inscriptions",
-        category: "Epigraphy",
-        finding: "Found across India in 3rd Century BCE edicts; letters represent phonetic syllables (aksharas).",
-        icon: "✍️"
+        label: "Clue 1: River Highways",
+        category: "Water & Transport",
+        finding: "Rivers Ganga and Son flowed through Magadha, providing drinking water, water for crops, and easy boat transport.",
+        icon: "🌊"
       },
       {
-        label: "Clue 2: Devanagari & Dravidian Scripts",
-        category: "Palaeography",
-        finding: "Modern Indian alphabets (Devanagari, Tamil, Kannada, Bengali) share letter structures traceable directly to ancient Brahmi.",
-        icon: "🔤"
+        label: "Clue 2: Iron Ore Mines",
+        category: "Metal Resources",
+        finding: "Rich deposits of iron ore in nearby hills provided metal to forge sharp weapons and iron ploughshares.",
+        icon: "⛏️"
       },
       {
-        label: "Clue 3: James Prinsep's Breakthrough",
-        category: "Historiography",
-        finding: "In 1837, James Prinsep deciphered Brahmi by comparing bilingual coins and matching repeated royal titles.",
-        icon: "🔍"
+        label: "Clue 3: Forest Resources",
+        category: "Army & Building",
+        finding: "Dense forests provided timber for building houses and carts, as well as wild elephants trained for the king's army.",
+        icon: "🐘"
       }
     ],
-    question: "Connecting these clues explains which major insight about historical scripts?",
+    question: "Connecting these three clues explains why:",
     options: [
-      "Brahmi is the ancestral mother script from which most modern Indian writing systems evolved over centuries",
-      "Ancient Indians never wrote down their thoughts until the 19th century",
-      "All world languages were originally invented by Greek sailors",
-      "Scripts can never change their shape once invented"
+      "Magadha had great natural advantages that helped its rulers build a wealthy kingdom and a mighty army",
+      "Magadha was completely deserted because people disliked rivers",
+      "The people of Magadha refused to use iron or elephants",
+      "Magadha was conquered by early cave-dwellers"
     ],
-    correctAnswer: "Brahmi is the ancestral mother script from which most modern Indian writing systems evolved over centuries",
-    explanation: "James Prinsep's decipherment unlocked the family tree of writing: Ashokan Brahmi gradually branched and evolved into nearly all major modern indigenous Indian scripts.",
-    synthesisSummary: "Ancient Brahmi + script evolution + decipherment = Parentage of modern Indian scripts."
+    correctAnswer: "Magadha had great natural advantages that helped its rulers build a wealthy kingdom and a mighty army",
+    explanation: "NCERT Class 6 Chapter 5 highlights rivers for water and transport, iron ore for weapons, and forest elephants as key reasons for Magadha's power.",
+    synthesisSummary: "River transport/water + iron mines + timber and war elephants = Rise of Magadha as the greatest kingdom."
   },
   {
     id: "clue_009",
     category: "connect-the-clues",
     type: "connect-clues",
-    difficulty: "easy",
+    difficulty: "medium",
     points: 15,
-    title: "Identifying a Prehistoric Factory Site",
-    scenario: "Archaeologists surveying a hillside near a flint outcrop in Karnataka discover:",
+    title: "How Scholars Deciphered Ashoka's Inscriptions",
+    scenario: "In the 1830s, scholars trying to read ancient Indian stone inscriptions gathered three clues:",
     clues: [
       {
-        label: "Clue A: Raw Material Nodules",
-        category: "Geology",
-        finding: "Large natural boulders of high-quality quartzite stone with hammer-impact marks.",
-        icon: "🪨"
+        label: "Clue 1: Bilingual Coins",
+        category: "Numismatics",
+        finding: "Coins had the same king's name written in Greek letters on one side and Brahmi letters on the other.",
+        icon: "🪙"
       },
       {
-        label: "Clue B: Heavy Hammerstones",
-        category: "Tools",
-        finding: "Rounded river stones with battered edges used to strike and shape cores.",
-        icon: "🔨"
+        label: "Clue 2: Matching Letters & Sounds",
+        category: "Script Analysis",
+        finding: "Scholars compared Greek letters with Brahmi letters to figure out the sound of each letter (like 'A' for king Apollodotus).",
+        icon: "🔤"
       },
       {
-        label: "Clue C: Piles of Discarded Flakes",
-        category: "Debris",
-        finding: "Thousands of chipped stone flakes and unfinished handaxes covering the hillside.",
-        icon: "🪓"
+        label: "Clue 3: James Prinsep's Discovery",
+        category: "Breakthrough",
+        finding: "In 1837, James Prinsep matched the letters and successfully read the name 'Piyadasi' on Ashoka's pillars.",
+        icon: "🔍"
       }
     ],
-    question: "Historians classify this archaeological location as a:",
+    question: "What historical breakthrough was achieved when these clues came together?",
     options: [
-      "Factory-cum-habitation site where prehistoric toolmakers quarried stone and manufactured tools",
-      "Modern iron ore processing plant",
-      "Temple dedicated to ancient mountain gods",
-      "Natural landslide area where humans never set foot"
+      "Scholars deciphered the ancient Brahmi script and could finally read Ashoka's royal edicts across India",
+      "Scholars proved that Ashoka never existed",
+      "All ancient stone inscriptions were found to be modern fakes",
+      "It was discovered that ancient Indians wrote backwards"
     ],
-    correctAnswer: "Factory-cum-habitation site where prehistoric toolmakers quarried stone and manufactured tools",
-    explanation: "Abundant raw stone cores, heavy hammerstones for striking, and thousands of discarded waste flakes define a prehistoric stone tool manufacturing factory.",
-    synthesisSummary: "Quarry rocks + striking hammers + heaps of chipped waste = Tool manufacturing site."
+    correctAnswer: "Scholars deciphered the ancient Brahmi script and could finally read Ashoka's royal edicts across India",
+    explanation: "By matching known Greek names with unknown Brahmi letters on coins, James Prinsep unlocked the Brahmi script in 1837.",
+    synthesisSummary: "Bilingual coins + comparing letters + James Prinsep = Decipherment of Brahmi script and Ashokan edicts."
   },
   {
     id: "clue_010",
     category: "connect-the-clues",
     type: "connect-clues",
-    difficulty: "medium",
+    difficulty: "easy",
     points: 15,
-    title: "The Mystery of the River Saraswati",
-    scenario: "Geological and archaeological mapping across northwestern India and Pakistan reveals:",
+    title: "Living in Cold Kashmir: The Burzahom Pit-Houses",
+    scenario: "Archaeologists digging at Burzahom in Kashmir uncover an unusual village layout:",
     clues: [
       {
-        label: "Clue 1: Dry River Paleochannels",
-        category: "Satellite Imagery",
-        finding: "Radar imagery shows an immense dried river valley (the Ghaggar-Hakra) running parallel to the Indus.",
-        icon: "🛰️"
+        label: "Clue 1: Dug-Out Pit Rooms",
+        category: "Shelter",
+        finding: "Circular rooms dug deep into the ground with steps leading down inside.",
+        icon: "🕳️"
       },
       {
-        label: "Clue 2: Settlement Density",
-        category: "Archaeological Surveys",
-        finding: "Hundreds of Mature Harappan sites (like Kalibangan, Rakhigarhi, and Ganweriwala) are clustered along this dry channel.",
-        icon: "📍"
+        label: "Clue 2: Double Cooking Hearths",
+        category: "Daily Life",
+        finding: "Fireplaces for cooking found both inside the pit-house and outside on the surface ground.",
+        icon: "🍲"
       },
       {
-        label: "Clue 3: Rigvedic Hymns",
-        category: "Literary Memory",
-        finding: "Vedic hymns celebrate the Saraswati as a mighty, perennial river flowing 'from the mountains to the sea'.",
-        icon: "📜"
+        label: "Clue 3: Stone and Bone Tools",
+        category: "Work",
+        finding: "Polished stone axes and sharp animal-bone needles found on the dirt floor.",
+        icon: "🦴"
       }
     ],
-    question: "Connecting these geological, archaeological, and literary clues suggests that:",
+    question: "Connecting these clues explains how the people of Burzahom lived:",
     options: [
-      "A once-mighty river supported dense ancient settlements before geological shifts and tectonic movements dried up its flow",
-      "The Harappans lived exclusively in wooden houseboats and never built cities on dry land",
-      "Satellite maps are always completely inaccurate when studying geography",
-      "Ancient rivers had no relationship to where human beings decided to live"
+      "They dug pit-houses to stay warm in freezing winters, cooking indoors when cold and outdoors in pleasant weather",
+      "They were trapped underground and could never climb out",
+      "They lived only in the ocean and ate only seaweed",
+      "They built pit-houses to store sports cars"
     ],
-    correctAnswer: "A once-mighty river supported dense ancient settlements before geological shifts and tectonic movements dried up its flow",
-    explanation: "Satellite dry channels + hundreds of settlements along the banks + literary praise in ancient poetry confirm a major lost river system that sustained Bronze Age urban centers.",
-    synthesisSummary: "Satellite dry beds + dense urban ruins + ancient poetry = Lost river basin and environmental change."
+    correctAnswer: "They dug pit-houses to stay warm in freezing winters, cooking indoors when cold and outdoors in pleasant weather",
+    explanation: "Pit-houses dug into the soil insulated people against bitter Himalayan cold, while hearths both inside and outside showed seasonal cooking.",
+    synthesisSummary: "Underground pits + indoor/outdoor hearths + bone tools = Adaptation to cold climate in Neolithic Kashmir."
   },
   {
     id: "clue_011",
@@ -397,76 +397,76 @@ export const CLUE_QUESTIONS: ConnectCluesQuestion[] = [
     type: "connect-clues",
     difficulty: "medium",
     points: 15,
-    title: "International Seal Exchange",
-    scenario: "Archaeologists working at Ur and Kish in ancient Mesopotamia (modern Iraq) make a startling discovery:",
+    title: "The Music-Loving Emperor Samudragupta",
+    scenario: "Historians studying the Gupta Empire examine different pieces of evidence about King Samudragupta:",
     clues: [
       {
-        label: "Clue A: Mesopotamian Excavation",
-        category: "Artifact",
-        finding: "Square steatite seals engraved with Indus humped bulls and Indus script discovered in Mesopotamian warehouses.",
-        icon: "🏷️"
-      },
-      {
-        label: "Clue B: Cuneiform Clay Tablets",
-        category: "Writing",
-        finding: "Sumerian records mention trading ships arriving from a distant eastern maritime land called 'Meluhha'.",
+        label: "Clue 1: The Prayag Prashasti (Allahabad Pillar)",
+        category: "Inscription",
+        finding: "A long poem in classical Sanskrit by Harishena praising the king as an undefeated warrior and poet.",
         icon: "📜"
       },
       {
-        label: "Clue C: Persian Gulf Island Seals",
-        category: "Trade Depot",
-        finding: "Circular seals found on Bahrain (ancient Dilmun) combining both Mesopotamian and Indus iconography.",
-        icon: "🏝️"
+        label: "Clue 2: Gold Coins Playing Veena",
+        category: "Coinage",
+        finding: "Gold coins depicting the king sitting on a couch and playing a stringed musical instrument called the veena.",
+        icon: "🪙"
+      },
+      {
+        label: "Clue 3: Title of Kaviraja",
+        category: "Court Literature",
+        finding: "Titles in inscriptions praising the king for composing poetry and enjoying fine arts.",
+        icon: "👑"
       }
     ],
-    question: "Synthesizing these clues provides undeniable evidence that:",
+    question: "Connecting these clues proves what about King Samudragupta?",
     options: [
-      "The Indus Valley civilization ('Meluhha') conducted long-distance maritime trade with Mesopotamian cities through Persian Gulf middlemen",
-      "Mesopotamian kings conquered Harappa and ruled it as a military colony",
-      "The Indus people only traded with cities within a 5-kilometer walking radius",
-      "Ancient ships were unable to sail in ocean salt water"
+      "He was a multifaceted ruler who was both a courageous military conqueror and a cultured artist who loved music",
+      "He was defeated in every battle and only knew how to play songs",
+      "He forbade all his subjects from listening to music",
+      "The coins were made by enemies to make fun of him"
     ],
-    correctAnswer: "The Indus Valley civilization ('Meluhha') conducted long-distance maritime trade with Mesopotamian cities through Persian Gulf middlemen",
-    explanation: "Harappan seals in Iraqi cities + Sumerian trade texts mentioning Meluhha + intermediate trade seals on Bahrain prove long-distance maritime trading networks.",
-    synthesisSummary: "Indus seals in Mesopotamia + cuneiform trade records + Bahrain transit seals = International Bronze Age trade."
+    correctAnswer: "He was a multifaceted ruler who was both a courageous military conqueror and a cultured artist who loved music",
+    explanation: "Samudragupta was famous both for expanding the Gupta Empire and for his love of poetry and music, as depicted on his gold coins.",
+    synthesisSummary: "Harishena's pillar inscription + veena-playing gold coins + artistic titles = Warrior-king with high cultural talent."
   },
   {
     id: "clue_012",
     category: "connect-the-clues",
     type: "connect-clues",
-    difficulty: "challenge",
+    difficulty: "medium",
     points: 15,
-    title: "The Iron Pillar's Metallurgical Mystery",
-    scenario: "Scientists and historians analyze the famous 4th-century CE Iron Pillar standing at Mehrauli, Delhi:",
+    title: "How We Know What Harappans Ate",
+    scenario: "Archaeologists piecing together daily life in Harappan cities find:",
     clues: [
       {
-        label: "Clue 1: Chemical Composition",
-        category: "Metallurgy",
-        finding: "Made of wrought iron with an unusually high phosphorus content and low sulphur and manganese.",
-        icon: "🔬"
+        label: "Clue 1: Plant Seeds",
+        category: "Botany",
+        finding: "Burnt grains of wheat, barley, pulses, peas, rice, and sesame seeds found in kitchen jars.",
+        icon: "🌾"
       },
       {
-        label: "Clue 2: Protective Film",
-        category: "Preservation",
-        finding: "A thin microscopic passive film of iron hydrogen phosphate hydrate (misawite) shields the core iron from atmospheric rust.",
-        icon: "🛡️"
+        label: "Clue 2: Farming Tools",
+        category: "Farming",
+        finding: "Clay toy models of ploughs and real ploughed furrow marks found on farm fields at Kalibangan.",
+        icon: "🚜"
       },
       {
-        label: "Clue 3: Sanskrit Inscription",
-        category: "Epigraphy",
-        finding: "A poetic eulogy dedicated to King Chandra carved in Brahmi script, standing exposed to rains for over 1,600 years without corroding away.",
-        icon: "📜"
+        label: "Clue 3: Animal Bones",
+        category: "Food",
+        finding: "Bones of cattle, sheep, goats, buffalo, and fish found in residential trash heaps.",
+        icon: "🥩"
       }
     ],
-    question: "What conclusion does this multi-disciplinary investigation prove?",
+    question: "What complete picture of Harappan diet and food production emerges?",
     options: [
-      "Ancient Indian metallurgists possessed advanced technical mastery in forge-welding corrosion-resistant wrought iron",
-      "The pillar was brought from the planet Mars by futuristic visitors",
-      "The pillar was actually manufactured out of painted plastic in 1950",
-      "Rainwater in ancient times was completely incapable of causing iron to rust"
+      "Harappans ploughed fields to grow crops, kept domestic animals for milk and meat, and enjoyed a varied, nutritious diet",
+      "Harappans ate only raw wild grass and had no farmed food",
+      "Harappans did not know how to cook or prepare food",
+      "Harappans bought all their food from modern supermarkets"
     ],
-    correctAnswer: "Ancient Indian metallurgists possessed advanced technical mastery in forge-welding corrosion-resistant wrought iron",
-    explanation: "Scientific metallurgy combined with epigraphy proves that 4th-century artisans mastered deliberate chemical composition and forge-welding that resisted rust for over 16 centuries.",
-    synthesisSummary: "Phosphorus-rich wrought iron + protective misawite barrier + 1600-year exposure = High metallurgical mastery."
+    correctAnswer: "Harappans ploughed fields to grow crops, kept domestic animals for milk and meat, and enjoyed a varied, nutritious diet",
+    explanation: "Plant seeds prove crop varieties; ploughed fields and toy ploughs prove agricultural methods; and animal bones prove herding and meat consumption.",
+    synthesisSummary: "Grains + ploughed fields + domestic animal bones = Advanced farming, animal rearing, and balanced diet."
   }
 ];

@@ -11,12 +11,12 @@ export const BLITZ_QUESTIONS: BlitzQuestion[] = [
     question: "Which of the following is an ARCHAEOLOGICAL source of history?",
     options: [
       "An excavated bronze coin",
-      "A 2024 school encyclopedia",
+      "A modern encyclopedia",
       "A future prediction",
-      "A modern printed comic book"
+      "A printed comic book"
     ],
     correctAnswer: "An excavated bronze coin",
-    explanation: "Excavated coins are primary material remains studied in archaeology."
+    explanation: "Excavated coins and tools are archaeological sources dug up from the earth."
   },
   {
     id: "blitz_002",
@@ -25,10 +25,10 @@ export const BLITZ_QUESTIONS: BlitzQuestion[] = [
     difficulty: "easy",
     points: 5,
     timeLimitSeconds: 15,
-    question: "What does the abbreviation 'BCE' stand for?",
+    question: "What does the abbreviation 'BCE' stand for in history?",
     options: [
       "Before Common Era",
-      "Before Century Earth",
+      "Before Century Ended",
       "British Colonial Era",
       "Basic Calendar Epoch"
     ],
@@ -42,7 +42,7 @@ export const BLITZ_QUESTIONS: BlitzQuestion[] = [
     difficulty: "easy",
     points: 5,
     timeLimitSeconds: 15,
-    question: "What does 'CE' stand for in modern timeline dating?",
+    question: "What does 'CE' stand for in historical dates?",
     options: [
       "Common Era",
       "Central Epoch",
@@ -76,15 +76,15 @@ export const BLITZ_QUESTIONS: BlitzQuestion[] = [
     difficulty: "easy",
     points: 5,
     timeLimitSeconds: 15,
-    question: "How many years make up a MILLENNIUM?",
+    question: "How many years make up a CENTURY?",
     options: [
-      "1,000 years",
       "100 years",
       "10 years",
+      "1,000 years",
       "500 years"
     ],
-    correctAnswer: "1,000 years",
-    explanation: "A millennium equals 1,000 years."
+    correctAnswer: "100 years",
+    explanation: "A century equals 100 years."
   },
   {
     id: "blitz_006",
@@ -93,7 +93,7 @@ export const BLITZ_QUESTIONS: BlitzQuestion[] = [
     difficulty: "easy",
     points: 5,
     timeLimitSeconds: 15,
-    question: "Which of these came EARLIER in human history?",
+    question: "Which of these dates happened EARLIER in history?",
     options: [
       "500 BCE",
       "200 BCE",
@@ -101,7 +101,7 @@ export const BLITZ_QUESTIONS: BlitzQuestion[] = [
       "500 CE"
     ],
     correctAnswer: "500 BCE",
-    explanation: "500 BCE occurred earlier than 200 BCE or any CE date."
+    explanation: "In BCE, larger numbers represent earlier dates in history: 500 BCE is earlier than 200 BCE."
   },
   {
     id: "blitz_007",
@@ -110,15 +110,15 @@ export const BLITZ_QUESTIONS: BlitzQuestion[] = [
     difficulty: "easy",
     points: 5,
     timeLimitSeconds: 15,
-    question: "The study of ancient inscriptions is called:",
+    question: "Writings engraved on relatively hard surfaces like stone or metal are called:",
     options: [
-      "Epigraphy",
-      "Numismatics",
-      "Ecology",
-      "Botany"
+      "Inscriptions",
+      "Manuscripts",
+      "Newspapers",
+      "Drawings"
     ],
-    correctAnswer: "Epigraphy",
-    explanation: "Epigraphy is the study of carved inscriptions."
+    correctAnswer: "Inscriptions",
+    explanation: "Inscriptions are words carved on hard stone or metal."
   },
   {
     id: "blitz_008",
@@ -131,7 +131,7 @@ export const BLITZ_QUESTIONS: BlitzQuestion[] = [
     options: [
       "Numismatics",
       "Epigraphy",
-      "Genealogy",
+      "Calligraphy",
       "Geology"
     ],
     correctAnswer: "Numismatics",
@@ -144,15 +144,15 @@ export const BLITZ_QUESTIONS: BlitzQuestion[] = [
     difficulty: "easy",
     points: 5,
     timeLimitSeconds: 15,
-    question: "Which metal was used FIRST by ancient humans to forge tools?",
+    question: "Which metal was used FIRST by ancient humans to make tools?",
     options: [
       "Copper",
       "Iron",
       "Stainless Steel",
-      "Titanium"
+      "Aluminium"
     ],
     correctAnswer: "Copper",
-    explanation: "Copper was the earliest metal smelted by humans, marking the Chalcolithic age."
+    explanation: "Copper was the earliest metal used by humans, followed by bronze."
   },
   {
     id: "blitz_010",
@@ -161,32 +161,32 @@ export const BLITZ_QUESTIONS: BlitzQuestion[] = [
     difficulty: "easy",
     points: 5,
     timeLimitSeconds: 15,
-    question: "What is an ancient handwritten document or book called?",
+    question: "An ancient book written by hand on palm leaves or birch bark is called a:",
     options: [
       "Manuscript",
-      "Podcast",
-      "E-book",
+      "Printed book",
+      "Newspaper",
       "Microchip"
     ],
     correctAnswer: "Manuscript",
-    explanation: "Manuscript comes from Latin 'manu scriptus' (written by hand)."
+    explanation: "Manuscript comes from Latin 'manu' (hand) and means written by hand."
   },
   {
     id: "blitz_011",
     category: "history-blitz",
     type: "blitz",
-    difficulty: "medium",
+    difficulty: "easy",
     points: 5,
     timeLimitSeconds: 15,
-    question: "Which of these is a PRIMARY source for studying the Mauryan Empire?",
+    question: "In which modern Indian state are the famous Bhimbetka cave paintings located?",
     options: [
-      "An Ashokan rock pillar inscription",
-      "A modern video game set in ancient India",
-      "A 2025 newspaper article",
-      "A movie poster from 1990"
+      "Madhya Pradesh",
+      "Kerala",
+      "Punjab",
+      "Assam"
     ],
-    correctAnswer: "An Ashokan rock pillar inscription",
-    explanation: "The Ashokan inscription was created during the Mauryan period itself."
+    correctAnswer: "Madhya Pradesh",
+    explanation: "Bhimbetka is in Madhya Pradesh, famous for its prehistoric rock shelters and paintings."
   },
   {
     id: "blitz_012",
@@ -195,49 +195,49 @@ export const BLITZ_QUESTIONS: BlitzQuestion[] = [
     difficulty: "easy",
     points: 5,
     timeLimitSeconds: 15,
-    question: "What is a scientist or researcher who excavates past human remains called?",
+    question: "What is a person who digs under the earth to find ancient remains called?",
     options: [
       "Archaeologist",
       "Astrologer",
       "Meteorologist",
-      "Zoologist"
+      "Doctor"
     ],
     correctAnswer: "Archaeologist",
-    explanation: "Archaeologists excavate and analyze material remains of human societies."
+    explanation: "Archaeologists excavate and study physical remains of past civilizations."
   },
   {
     id: "blitz_013",
     category: "history-blitz",
     type: "blitz",
-    difficulty: "medium",
+    difficulty: "easy",
     points: 5,
     timeLimitSeconds: 15,
-    question: "In which millennium BCE did the Mature Harappan civilization build its cities?",
+    question: "Which is the OLDEST of the four Vedas in Indian history?",
     options: [
-      "3rd Millennium BCE (c. 2600–1900 BCE)",
-      "1st Millennium CE",
-      "21st Century CE",
-      "10th Millennium CE"
+      "Rigveda",
+      "Samaveda",
+      "Yajurveda",
+      "Atharvaveda"
     ],
-    correctAnswer: "3rd Millennium BCE (c. 2600–1900 BCE)",
-    explanation: "The Mature Harappan phase flourished in the 3rd millennium BCE."
+    correctAnswer: "Rigveda",
+    explanation: "The Rigveda was composed about 3500 years ago and is the oldest of the four Vedas."
   },
   {
     id: "blitz_014",
     category: "history-blitz",
     type: "blitz",
     difficulty: "easy",
-    points: 5,
+    points: 15,
     timeLimitSeconds: 15,
-    question: "Which of the following would NOT be a historical source?",
+    question: "On the banks of which river did the earliest planned cities of India develop?",
     options: [
-      "A crystal ball claiming to see the future",
-      "An ancient terracotta pot",
-      "A bronze ceremonial dagger",
-      "An inscribed temple wall"
+      "Indus River",
+      "Ganga River",
+      "Yamuna River",
+      "Kaveri River"
     ],
-    correctAnswer: "A crystal ball claiming to see the future",
-    explanation: "History studies evidence from the human past, not magical predictions of the future."
+    correctAnswer: "Indus River",
+    explanation: "The earliest cities in India (Harappa and Mohenjo-daro) developed along the Indus River about 4700 years ago."
   },
   {
     id: "blitz_015",
@@ -246,15 +246,15 @@ export const BLITZ_QUESTIONS: BlitzQuestion[] = [
     difficulty: "easy",
     points: 5,
     timeLimitSeconds: 15,
-    question: "What is the period before the invention of written scripts called?",
+    question: "What was the period before people learned how to write called?",
     options: [
       "Prehistory",
-      "Medieval era",
       "Modern age",
-      "Renaissance"
+      "Medieval period",
+      "Space age"
     ],
     correctAnswer: "Prehistory",
-    explanation: "Prehistory is the era before written documents existed."
+    explanation: "Prehistory is the era before writing was invented."
   },
   {
     id: "blitz_016",
@@ -263,14 +263,14 @@ export const BLITZ_QUESTIONS: BlitzQuestion[] = [
     difficulty: "easy",
     points: 5,
     timeLimitSeconds: 15,
-    question: "Which script was used in the majority of Emperor Ashoka's edicts across northern India?",
+    question: "Which script was used in most of Emperor Ashoka's rock and pillar edicts?",
     options: [
       "Brahmi script",
       "Latin script",
-      "Cuneiform script",
-      "Egyptian hieroglyphs"
+      "English alphabet",
+      "Chinese script"
     ],
     correctAnswer: "Brahmi script",
-    explanation: "Most Ashokan edicts were written in the Brahmi script."
+    explanation: "Most of Ashoka's inscriptions were written in the Prakrit language using the Brahmi script."
   }
 ];

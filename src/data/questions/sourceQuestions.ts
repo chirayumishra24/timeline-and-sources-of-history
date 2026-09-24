@@ -7,15 +7,15 @@ export const SOURCE_QUESTIONS: MCQQuestion[] = [
     type: "mcq",
     difficulty: "easy",
     points: 10,
-    question: "What is a 'Primary Source' in historical inquiry?",
+    question: "What is a 'Primary Source' in the study of history?",
     options: [
-      "Evidence or documentation created by someone who witnessed or lived during the time being studied",
-      "A chapter summary written in a modern school textbook",
-      "A fictional historical movie made by modern filmmakers",
-      "An article written on the internet last week"
+      "Evidence or objects made by people who actually lived during that time in the past",
+      "A summary chapter written in a modern school textbook",
+      "A fictional movie made by a filmmaker today",
+      "An article written on the internet this year"
     ],
-    correctAnswer: "Evidence or documentation created by someone who witnessed or lived during the time being studied",
-    explanation: "Primary sources are direct, firsthand evidence from the time period under study, such as royal inscriptions, letters, tools, pottery, and contemporary diaries."
+    correctAnswer: "Evidence or objects made by people who actually lived during that time in the past",
+    explanation: "Primary sources are direct evidence from the past, such as Harappan clay pots, Ashoka's rock pillars, ancient coins, and original palm-leaf manuscripts."
   },
   {
     id: "src_002",
@@ -25,45 +25,45 @@ export const SOURCE_QUESTIONS: MCQQuestion[] = [
     points: 10,
     question: "Which of the following is considered an ARCHAEOLOGICAL source of history?",
     options: [
-      "Excavated terracotta pottery and stone tools",
-      "A modern printed biography of an emperor",
-      "A fictional story about mythical creatures",
-      "A recent television documentary about ancient monuments"
+      "Excavated pottery, stone tools, and ancient coins",
+      "A modern printed storybook about ancient kings",
+      "A poem written by a student in class today",
+      "A television news report about tomorrow's weather"
     ],
-    correctAnswer: "Excavated terracotta pottery and stone tools",
-    explanation: "Archaeological sources are physical remains left behind by past people, such as buildings, bones, tools, pottery, coins, and ornaments unearthed by archaeologists."
+    correctAnswer: "Excavated pottery, stone tools, and ancient coins",
+    explanation: "Archaeological sources are physical objects left behind by past people, such as tools, weapons, pots, pans, ornaments, and coins dug out of the earth."
   },
   {
     id: "src_003",
     category: "sources",
     type: "mcq",
-    difficulty: "medium",
+    difficulty: "easy",
     points: 10,
-    question: "The specialized study of ancient inscriptions engraved on stone, metal plates, or pillars is called:",
+    question: "What is an 'Inscription' according to Class 6 NCERT?",
     options: [
-      "Epigraphy",
-      "Numismatics",
-      "Cartography",
-      "Meteorology"
+      "Writings engraved on relatively hard surfaces like stone or metal",
+      "Stories printed in modern daily newspapers",
+      "Drawings made with crayons on paper sheets",
+      "Songs memorized and sung at village festivals"
     ],
-    correctAnswer: "Epigraphy",
-    explanation: "Epigraphy is the scientific study of inscriptions engraved on hard surfaces like rocks, pillars, temple walls, and copper plates."
+    correctAnswer: "Writings engraved on relatively hard surfaces like stone or metal",
+    explanation: "Inscriptions are words carved onto hard surfaces like rock cliffs, stone pillars, and metal plates so that people could read and obey royal orders."
   },
   {
     id: "src_004",
     category: "sources",
     type: "mcq",
-    difficulty: "medium",
+    difficulty: "easy",
     points: 10,
-    question: "The scientific study and collection of ancient coins, medals, and currency is known as:",
+    question: "What is a 'Manuscript' in ancient history?",
     options: [
-      "Numismatics",
-      "Chronology",
-      "Anthropology",
-      "Palaeontology"
+      "An ancient book written by hand, often on palm leaves or birch bark",
+      "A printing machine that produces hundreds of books a minute",
+      "A computer document saved on an electronic hard drive",
+      "A statue carved out of solid bronze"
     ],
-    correctAnswer: "Numismatics",
-    explanation: "Numismatics is the study of coins and tokens. Coins tell historians about rulers, dates, metallurgy, trade routes, and economic prosperity."
+    correctAnswer: "An ancient book written by hand, often on palm leaves or birch bark",
+    explanation: "The word manuscript comes from the Latin word 'manu', meaning hand. In ancient India, manuscripts were written by hand on dried palm leaves or birch bark."
   },
   {
     id: "src_005",
@@ -71,15 +71,15 @@ export const SOURCE_QUESTIONS: MCQQuestion[] = [
     type: "mcq",
     difficulty: "easy",
     points: 10,
-    question: "Before paper was widely available in ancient India, which natural materials were frequently used to write manuscripts?",
+    question: "Before paper was widely used, which tree bark was specially prepared in the Himalayas to write manuscripts?",
     options: [
-      "Palm leaves (Tadapatra) and birch bark (Bhurjapatra)",
-      "Plastic sheets and synthetic fibers",
-      "Rubber tree latex and glass plates",
-      "Cellophane and aluminium foil"
+      "Birch bark (Bhurjapatra)",
+      "Neem tree bark",
+      "Banyan tree bark",
+      "Coconut tree bark"
     ],
-    correctAnswer: "Palm leaves (Tadapatra) and birch bark (Bhurjapatra)",
-    explanation: "Ancient scribes dried and treated palm leaves and prepared the inner bark of Himalayan birch trees to write texts by hand using ink and metal styluses."
+    correctAnswer: "Birch bark (Bhurjapatra)",
+    explanation: "As explained in NCERT Class 6, manuscripts were written on dried palm leaves or on the bark of the birch tree (bhurja) that grows in the Himalayas."
   },
   {
     id: "src_006",
@@ -87,15 +87,15 @@ export const SOURCE_QUESTIONS: MCQQuestion[] = [
     type: "mcq",
     difficulty: "medium",
     points: 10,
-    question: "Why do historians classify an ancient temple or fortress as a 'monument' source?",
+    question: "The scientific study of ancient coins and currency is known as:",
     options: [
-      "It provides direct architectural, religious, and engineering evidence from the society that built it",
-      "It proves that people had modern electric cranes thousands of years ago",
-      "It serves only as a tourist destination with no educational value",
-      "It is always written in books rather than built of stone or brick"
+      "Numismatics",
+      "Chronology",
+      "Epigraphy",
+      "Geography"
     ],
-    correctAnswer: "It provides direct architectural, religious, and engineering evidence from the society that built it",
-    explanation: "Monuments are architectural structures that preserve information about technological capability, artistic styles, religious traditions, and political power of an era."
+    correctAnswer: "Numismatics",
+    explanation: "Numismatics is the study of coins and medals. Coins tell historians about rulers, dates, trade, and metals used in the past."
   },
   {
     id: "src_007",
@@ -103,47 +103,47 @@ export const SOURCE_QUESTIONS: MCQQuestion[] = [
     type: "mcq",
     difficulty: "medium",
     points: 10,
-    question: "Which of the following would be classified as a SECONDARY source?",
+    question: "The study of ancient inscriptions carved on stone or metal is called:",
     options: [
-      "A modern historian's book analyzing trade routes based on ancient artifacts",
-      "An actual clay seal found at Mohenjo-daro",
-      "A royal decree inscribed on a rock pillar in 250 BCE",
-      "A bronze coin issued by a Gupta emperor in 380 CE"
+      "Epigraphy",
+      "Numismatics",
+      "Calligraphy",
+      "Cartography"
     ],
-    correctAnswer: "A modern historian's book analyzing trade routes based on ancient artifacts",
-    explanation: "A secondary source interprets, synthesizes, and analyzes primary sources. The modern book was written long after the events occurred, using primary sources as evidence."
+    correctAnswer: "Epigraphy",
+    explanation: "Epigraphy is the study of inscriptions carved on hard surfaces like rocks, pillars, temple walls, and copper plates."
   },
   {
     id: "src_008",
     category: "sources",
     type: "mcq",
-    difficulty: "challenge",
+    difficulty: "medium",
     points: 10,
-    question: "Why are rock inscriptions often considered more reliable by historians than handwritten manuscripts copied centuries later?",
+    question: "Why did ancient kings like Emperor Ashoka carve orders and messages on stone rocks and pillars?",
     options: [
-      "Inscriptions were carved directly at the time and could not be altered by scribal copying errors later",
-      "Inscriptions are always written by kings and kings never exaggerate",
-      "Manuscripts were never written in real languages",
-      "Rock carvings decay much faster than paper"
+      "So that the messages would last for a long time and travelers passing by could read and follow them",
+      "Because there were no stones anywhere else in the empire",
+      "To keep the messages secret so nobody could find them",
+      "To use up leftover chisel tools before they rusted"
     ],
-    correctAnswer: "Inscriptions were carved directly at the time and could not be altered by scribal copying errors later",
-    explanation: "Because stone inscriptions are fixed in physical rock, they escape the gradual accidental alterations or omissions that can occur when manuscripts are recopied by scribes over centuries."
+    correctAnswer: "So that the messages would last for a long time and travelers passing by could read and follow them",
+    explanation: "Stone does not easily rot or burn like paper. Carving on pillars along busy highways ensured royal orders remained visible for centuries."
   },
   {
     id: "src_009",
     category: "sources",
     type: "mcq",
-    difficulty: "medium",
+    difficulty: "easy",
     points: 10,
-    question: "Travelogues written by foreign visitors like Megasthenes, Xuanzang (Hiuen Tsang), or Faxian are valuable because:",
+    question: "Which of the following would be considered a SECONDARY source?",
     options: [
-      "They provide an outside eyewitness perspective on the towns, customs, and universities of ancient India",
-      "They were written in modern English for Grade 6 students",
-      "They are the only sources of history that exist in the world",
-      "They only describe mythical dragons and magical creatures"
+      "A modern school textbook explaining ancient Indian kingdoms",
+      "A clay seal discovered at Harappa",
+      "A real rock edict carved by Emperor Ashoka in 250 BCE",
+      "A gold coin issued by King Samudragupta in 350 CE"
     ],
-    correctAnswer: "They provide an outside eyewitness perspective on the towns, customs, and universities of ancient India",
-    explanation: "Travelers recorded what they observed with fresh eyes — including administration, social customs, monastic universities like Nalanda, and trade routes."
+    correctAnswer: "A modern school textbook explaining ancient Indian kingdoms",
+    explanation: "A secondary source is written long after the events happened by someone who studied primary sources, like your school history textbook."
   },
   {
     id: "src_010",
@@ -153,13 +153,13 @@ export const SOURCE_QUESTIONS: MCQQuestion[] = [
     points: 10,
     question: "What is an 'Artifact' in archaeology?",
     options: [
-      "Any portable object made, modified, or used by humans in the past",
-      "A naturally formed river pebble that humans never touched",
-      "A modern computer program simulating ancient weather",
-      "A cloud formation observed in the sky"
+      "Any object made, shaped, or used by humans in the past, such as tools, pottery, and beads",
+      "A wild animal living in the jungle",
+      "A cloud in the sky during a thunderstorm",
+      "A modern plastic toy bought in a shopping mall"
     ],
-    correctAnswer: "Any portable object made, modified, or used by humans in the past",
-    explanation: "An artifact is an object shaped or used by human culture, such as a pottery pot, an arrow tip, an iron needle, a bead necklace, or a clay toy."
+    correctAnswer: "Any object made, shaped, or used by humans in the past, such as tools, pottery, and beads",
+    explanation: "Artifacts are objects crafted or used by people of the past, like stone knives, terracotta pots, clay toys, and bead jewelry."
   },
   {
     id: "src_011",
@@ -167,31 +167,31 @@ export const SOURCE_QUESTIONS: MCQQuestion[] = [
     type: "mcq",
     difficulty: "medium",
     points: 10,
-    question: "Which of the following is an example of a LITERARY source?",
+    question: "Why are travel accounts written by foreign visitors like Megasthenes and Xuanzang (Hiuen Tsang) important to historians?",
     options: [
-      "Kautilya's Arthashastra written on manuscripts",
-      "A broken brick wall of a Harappan granary",
-      "A rusted copper axe head unearthed in a trench",
-      "A gold necklace found in a royal burial chamber"
+      "They give an outsider's eyewitness view of cities, kings, and daily life in ancient India",
+      "They are the only books that ever existed in ancient times",
+      "They were written in modern English for school examinations",
+      "They only describe mythical dragons and magical creatures"
     ],
-    correctAnswer: "Kautilya's Arthashastra written on manuscripts",
-    explanation: "Literary sources comprise all written texts, including epics, poems, treaties, biographies, religious scriptures, and court records."
+    correctAnswer: "They give an outsider's eyewitness view of cities, kings, and daily life in ancient India",
+    explanation: "Foreign visitors traveled across India and recorded what they saw with their own eyes — including kings' courts, towns, and monasteries like Nalanda."
   },
   {
     id: "src_012",
     category: "sources",
     type: "mcq",
-    difficulty: "challenge",
+    difficulty: "medium",
     points: 10,
-    question: "When historians examine a royal court biography written by an emperor's personal poet, what caution must they take?",
+    question: "What is a 'Prashasti' in ancient Indian history (such as the Allahabad Pillar inscription for King Samudragupta)?",
     options: [
-      "Recognize that court poets often exaggerated royal achievements to flatter their patrons",
-      "Assume the entire book is completely false and throw it away",
-      "Treat it as pure scientific data with zero human perspective",
-      "Believe everything without comparing it to other archaeological evidence"
+      "An inscription written in praise of a king, celebrating his victories and noble qualities",
+      "A grocery shopping list written by a palace cook",
+      "A fictional story about talking birds and animals",
+      "A warning written on a fort gate to scare away forest animals"
     ],
-    correctAnswer: "Recognize that court poets often exaggerated royal achievements to flatter their patrons",
-    explanation: "Historians cross-examine sources for bias. Court biographers (Prashastis) praised their royal patrons, so historians check them against coins, inscriptions, and archaeological findings."
+    correctAnswer: "An inscription written in praise of a king, celebrating his victories and noble qualities",
+    explanation: "Prashasti is a Sanskrit word meaning 'in praise of'. Court poets wrote prashastis to praise their kings, such as Harishena's inscription praising Samudragupta."
   },
   {
     id: "src_013",
@@ -199,31 +199,31 @@ export const SOURCE_QUESTIONS: MCQQuestion[] = [
     type: "mcq",
     difficulty: "easy",
     points: 10,
-    question: "Oral traditions — such as folk songs, legends, and memorized genealogical poems — are important because:",
+    question: "What does an 'Archaeologist' do to find clues about how people lived thousands of years ago?",
     options: [
-      "They pass down memories of communities that may not have kept extensive written records",
-      "They are exactly 100% scientifically accurate down to the exact second",
-      "They can be downloaded from ancient internet servers",
-      "They replace the need for ever digging an archaeological trench"
+      "Digs into the earth (excavates) to uncover old buildings, tools, coins, pottery, and animal bones",
+      "Travels into outer space in a rocket to study distant stars",
+      "Designs modern computer video games for children",
+      "Writes fictional superhero comic books"
     ],
-    correctAnswer: "They pass down memories of communities that may not have kept extensive written records",
-    explanation: "Oral traditions preserve cultural values, tribal histories, folklore, and migrations across generations before or alongside written scripts."
+    correctAnswer: "Digs into the earth (excavates) to uncover old buildings, tools, coins, pottery, and animal bones",
+    explanation: "Archaeologists explore and excavate (dig beneath the soil) to uncover physical remains left behind by early humans and ancient civilizations."
   },
   {
     id: "src_014",
     category: "sources",
     type: "mcq",
-    difficulty: "medium",
+    difficulty: "easy",
     points: 10,
-    question: "Which scientific technique is used by archaeologists to date organic remains like wood, charcoal, and ancient bones?",
+    question: "Which of the following is an example of a LITERARY (written) source of history?",
     options: [
-      "Radiocarbon (Carbon-14) Dating",
-      "Thermometer calibration",
-      "Barometric pressure indexing",
-      "Satellite GPS triangulation"
+      "The Rigveda and ancient religious texts",
+      "A broken brick wall from a Harappan street",
+      "A copper axe head found buried in mud",
+      "A stone bead necklace found in an ancient grave"
     ],
-    correctAnswer: "Radiocarbon (Carbon-14) Dating",
-    explanation: "Carbon-14 dating measures the radioactive decay of carbon isotopes in organic matter to determine how long ago an organism died."
+    correctAnswer: "The Rigveda and ancient religious texts",
+    explanation: "Literary sources are written texts and books, including the Vedas, epics like the Mahabharata and Ramayana, and books like the Arthashastra."
   },
   {
     id: "src_015",
@@ -231,14 +231,14 @@ export const SOURCE_QUESTIONS: MCQQuestion[] = [
     type: "mcq",
     difficulty: "easy",
     points: 10,
-    question: "What is the primary role of a 'Historian'?",
+    question: "Why did many ancient palm-leaf manuscripts not survive to modern times?",
     options: [
-      "To investigate, question, cross-examine evidence, and reconstruct stories of the human past",
-      "To write fantasy novels about fictional magical realms",
-      "To predict next week's weather forecast",
-      "To design new high-speed electric automobiles"
+      "They were eaten by insects or rotted over time, though many survived in temples and monasteries",
+      "They were made of solid steel and melted in the rain",
+      "Ancient people threw all their books into rivers",
+      "They were turned into wooden boats"
     ],
-    correctAnswer: "To investigate, question, cross-examine evidence, and reconstruct stories of the human past",
-    explanation: "Historians act like detectives: they gather primary evidence, evaluate sources, and carefully reconstruct how past societies lived, thought, and developed."
+    correctAnswer: "They were eaten by insects or rotted over time, though many survived in temples and monasteries",
+    explanation: "As mentioned in NCERT Class 6, palm leaves and tree bark easily get damaged by insects and damp weather, but fortunate copies were preserved in temples and monasteries."
   }
 ];

@@ -7,22 +7,22 @@ export const BEFORE_AFTER_QUESTIONS: BeforeAfterQuestion[] = [
     type: "before-after",
     difficulty: "easy",
     points: 10,
-    prompt: "Compare these two technological breakthroughs in human prehistory:",
+    prompt: "Compare these two major discoveries in early human history:",
     eventA: {
-      label: "Discovery and controlled use of Fire",
-      detail: "Early Stone Age (Palaeolithic)"
+      label: "Discovery and use of Fire",
+      detail: "Old Stone Age (Palaeolithic)"
     },
     eventB: {
-      label: "Invention of the Potter's Wheel",
-      detail: "New Stone Age / Bronze Age"
+      label: "Making pots on the Potter's Wheel",
+      detail: "New Stone Age (Neolithic)"
     },
     question: "Which milestone occurred EARLIER in human history?",
     options: [
-      "Discovery and controlled use of Fire",
-      "Invention of the Potter's Wheel"
+      "Discovery and use of Fire",
+      "Making pots on the Potter's Wheel"
     ],
-    correctAnswer: "Discovery and controlled use of Fire",
-    explanation: "Controlled fire was mastered by early humans hundreds of thousands of years ago in the Palaeolithic era, whereas the potter's wheel emerged much later in the Neolithic/Bronze Age."
+    correctAnswer: "Discovery and use of Fire",
+    explanation: "Traces of ash found in Kurnool caves show early humans discovered fire hundreds of thousands of years ago, long before the potter's wheel was invented."
   },
   {
     id: "ba_002",
@@ -30,45 +30,45 @@ export const BEFORE_AFTER_QUESTIONS: BeforeAfterQuestion[] = [
     type: "before-after",
     difficulty: "easy",
     points: 10,
-    prompt: "Consider these two major historical periods on the Indian subcontinent:",
+    prompt: "Consider these two major historical periods from Class 6 NCERT:",
     eventA: {
-      label: "The Indus Valley (Harappan) Civilization",
-      detail: "c. 2600 BCE – 1900 BCE (Bronze Age)"
+      label: "The Indus Valley (Harappan) Cities",
+      detail: "About 4700 years ago (c. 2500 BCE)"
     },
     eventB: {
       label: "The Reign of Emperor Ashoka",
-      detail: "c. 268 BCE – 232 BCE (Mauryan Empire)"
+      detail: "About 2300 years ago (c. 250 BCE)"
     },
     question: "Which of these took place EARLIER in time?",
     options: [
-      "The Indus Valley (Harappan) Civilization",
+      "The Indus Valley (Harappan) Cities",
       "The Reign of Emperor Ashoka"
     ],
-    correctAnswer: "The Indus Valley (Harappan) Civilization",
-    explanation: "The Indus Valley Civilization flourished around 2500 BCE, more than two thousand years before Emperor Ashoka ruled in the 3rd century BCE."
+    correctAnswer: "The Indus Valley (Harappan) Cities",
+    explanation: "The Harappan civilization flourished around 2500 BCE, more than two thousand years before Emperor Ashoka ruled the Mauryan Empire."
   },
   {
     id: "ba_003",
     category: "before-or-after",
     type: "before-after",
-    difficulty: "medium",
+    difficulty: "easy",
     points: 10,
-    prompt: "Compare two human subsistence methods:",
+    prompt: "Compare two ways of finding food in human history:",
     eventA: {
-      label: "Nomadic Hunting and Wild Plant Gathering",
-      detail: "Foraging in natural habitats"
+      label: "Hunting wild animals and gathering fruits and roots",
+      detail: "Nomadic life of early humans"
     },
     eventB: {
-      label: "Settled Agriculture and Grain Storage in Villages",
-      detail: "Farming domesticated wheat & barley"
+      label: "Growing crops and living in settled farming villages (like Mehrgarh)",
+      detail: "Beginning of agriculture"
     },
-    question: "Which way of living came FIRST for human ancestors?",
+    question: "Which way of living came FIRST for humans?",
     options: [
-      "Nomadic Hunting and Wild Plant Gathering",
-      "Settled Agriculture and Grain Storage in Villages"
+      "Hunting wild animals and gathering fruits and roots",
+      "Growing crops and living in settled farming villages (like Mehrgarh)"
     ],
-    correctAnswer: "Nomadic Hunting and Wild Plant Gathering",
-    explanation: "Humans lived exclusively as nomadic hunter-gatherers for over 95% of human history before agriculture was invented around 10,000–8,000 BCE in the Neolithic."
+    correctAnswer: "Hunting wild animals and gathering fruits and roots",
+    explanation: "Early humans lived as hunter-gatherers for thousands of years before they learned to farm wheat and barley and settle in villages."
   },
   {
     id: "ba_004",
@@ -76,22 +76,22 @@ export const BEFORE_AFTER_QUESTIONS: BeforeAfterQuestion[] = [
     type: "before-after",
     difficulty: "medium",
     points: 10,
-    prompt: "Compare these two writing and recording materials:",
+    prompt: "Compare these two ways of producing books:",
     eventA: {
-      label: "Inscribing on Stone Slabs and Wet Clay Tablets",
-      detail: "Ancient Epigraphy & Cuneiform"
+      label: "Writing manuscripts by hand on palm leaves and birch bark",
+      detail: "Ancient India"
     },
     eventB: {
-      label: "Printing Books using Wooden Movable Type / Modern Presses",
-      detail: "Early Modern Era"
+      label: "Printing books using modern printing presses",
+      detail: "Modern era"
     },
-    question: "Which writing surface was developed EARLIER?",
+    question: "Which method of bookmaking was used EARLIER?",
     options: [
-      "Inscribing on Stone Slabs and Wet Clay Tablets",
-      "Printing Books using Wooden Movable Type / Modern Presses"
+      "Writing manuscripts by hand on palm leaves and birch bark",
+      "Printing books using modern printing presses"
     ],
-    correctAnswer: "Inscribing on Stone Slabs and Wet Clay Tablets",
-    explanation: "Ancient scribes carved on stone and pressed reeds into wet clay millennia before movable type printing was invented."
+    correctAnswer: "Writing manuscripts by hand on palm leaves and birch bark",
+    explanation: "Ancient Indians wrote manuscripts by hand on palm leaves and birch bark centuries before modern printing presses were invented."
   },
   {
     id: "ba_005",
@@ -99,22 +99,22 @@ export const BEFORE_AFTER_QUESTIONS: BeforeAfterQuestion[] = [
     type: "before-after",
     difficulty: "easy",
     points: 10,
-    prompt: "Examine two dates on the calendar timeline:",
+    prompt: "Examine two dates on the timeline:",
     eventA: {
-      label: "300 BCE",
-      detail: "Early Mauryan Empire"
+      label: "500 BCE",
+      detail: "Time of the Mahajanapadas and the Buddha"
     },
     eventB: {
-      label: "100 BCE",
-      detail: "Shunga & Satavahana Era"
+      label: "200 BCE",
+      detail: "Post-Mauryan era"
     },
     question: "Which date is FURTHEST in the past (happened EARLIER)?",
     options: [
-      "300 BCE",
-      "100 BCE"
+      "500 BCE",
+      "200 BCE"
     ],
-    correctAnswer: "300 BCE",
-    explanation: "In BCE (Before Common Era), higher numbers are further in the past. 300 BCE occurred 200 years before 100 BCE."
+    correctAnswer: "500 BCE",
+    explanation: "In BCE (Before Common Era), larger numbers happened earlier in time. 500 BCE occurred 300 years before 200 BCE."
   },
   {
     id: "ba_006",
@@ -122,30 +122,30 @@ export const BEFORE_AFTER_QUESTIONS: BeforeAfterQuestion[] = [
     type: "before-after",
     difficulty: "medium",
     points: 10,
-    prompt: "Compare these two metallurgy milestones in human technology:",
+    prompt: "Compare these two tool materials used by early humans:",
     eventA: {
-      label: "Copper and Bronze Smelting (Bronze Age)",
-      detail: "Alloying copper with tin"
+      label: "Using stone tools (like handaxes, scrapers, and microliths)",
+      detail: "Stone Age"
     },
     eventB: {
-      label: "Widespread Iron Smelting and Forging (Iron Age)",
-      detail: "High-temperature kilns for iron ore"
+      label: "Using iron ploughshares and iron axes to farm",
+      detail: "Iron Age (c. 500 BCE)"
     },
-    question: "Which metal technology did human civilizations master EARLIER?",
+    question: "Which tool technology did humans use EARLIER?",
     options: [
-      "Copper and Bronze Smelting (Bronze Age)",
-      "Widespread Iron Smelting and Forging (Iron Age)"
+      "Using stone tools (like handaxes, scrapers, and microliths)",
+      "Using iron ploughshares and iron axes to farm"
     ],
-    correctAnswer: "Copper and Bronze Smelting (Bronze Age)",
-    explanation: "Copper and bronze melt at lower temperatures than iron and were worked in the Chalcolithic and Bronze Ages centuries before the Iron Age."
+    correctAnswer: "Using stone tools (like handaxes, scrapers, and microliths)",
+    explanation: "Humans relied on stone tools for hunting and chopping during the Stone Age, thousands of years before they discovered how to smelt iron."
   },
   {
     id: "ba_007",
     category: "before-or-after",
     type: "before-after",
-    difficulty: "challenge",
+    difficulty: "medium",
     points: 10,
-    prompt: "Compare two historic events across the Common Era divide:",
+    prompt: "Compare two dates across the BCE and CE boundary:",
     eventA: {
       label: "50 BCE",
       detail: "1st Century BCE"
@@ -168,22 +168,22 @@ export const BEFORE_AFTER_QUESTIONS: BeforeAfterQuestion[] = [
     type: "before-after",
     difficulty: "medium",
     points: 10,
-    prompt: "Compare two famous ancient travelers to India:",
+    prompt: "Compare two famous travelers who visited ancient India:",
     eventA: {
       label: "Megasthenes (Greek ambassador to Chandragupta Maurya)",
-      detail: "c. 300 BCE"
+      detail: "About 2300 years ago (c. 300 BCE)"
     },
     eventB: {
-      label: "Xuanzang / Hiuen Tsang (Chinese Buddhist pilgrim to Harsha's court)",
-      detail: "c. 630 CE"
+      label: "Xuanzang / Hiuen Tsang (Chinese pilgrim to King Harsha's court)",
+      detail: "About 1400 years ago (c. 630 CE)"
     },
-    question: "Who visited the Indian subcontinent EARLIER?",
+    question: "Who visited India EARLIER?",
     options: [
       "Megasthenes",
       "Xuanzang / Hiuen Tsang"
     ],
     correctAnswer: "Megasthenes",
-    explanation: "Megasthenes arrived around 300 BCE during the Mauryan period, almost a thousand years before Xuanzang arrived in the 7th century CE."
+    explanation: "Megasthenes visited the Mauryan capital Pataliputra around 300 BCE, more than 900 years before Xuanzang traveled to India in the 7th century CE."
   },
   {
     id: "ba_009",
@@ -191,14 +191,14 @@ export const BEFORE_AFTER_QUESTIONS: BeforeAfterQuestion[] = [
     type: "before-after",
     difficulty: "easy",
     points: 10,
-    prompt: "Compare these two periods of human history:",
+    prompt: "Compare these two periods of the human past:",
     eventA: {
       label: "Prehistory",
-      detail: "Period before written records were invented"
+      detail: "The period before written records were invented"
     },
     eventB: {
       label: "History",
-      detail: "Period studied using written records and literature"
+      detail: "The period studied using written records and books"
     },
     question: "Which period occurred FIRST in time?",
     options: [
@@ -206,53 +206,53 @@ export const BEFORE_AFTER_QUESTIONS: BeforeAfterQuestion[] = [
       "History"
     ],
     correctAnswer: "Prehistory",
-    explanation: "Prehistory is the long era before written records. Once written scripts developed and survive for historians to read, the historical period begins."
+    explanation: "Prehistory is the long era before writing was invented. Once people began writing and records survived, the period is called History."
   },
   {
     id: "ba_010",
     category: "before-or-after",
     type: "before-after",
-    difficulty: "medium",
+    difficulty: "easy",
     points: 10,
-    prompt: "Compare two developments in ancient transportation:",
+    prompt: "Compare these two forms of transport:",
     eventA: {
-      label: "Solid Wooden Wheeled Carts pulled by Oxen",
-      detail: "Harappan & Mesopotamian Bronze Age"
+      label: "Bullock carts with wooden wheels",
+      detail: "Harappan civilization (clay toy carts found)"
     },
     eventB: {
-      label: "Steam-powered Railway Locomotives",
-      detail: "Industrial Revolution (19th Century CE)"
+      label: "Steam-powered railway trains",
+      detail: "Modern era"
     },
-    question: "Which transportation invention appeared EARLIER?",
+    question: "Which vehicle was invented EARLIER?",
     options: [
-      "Solid Wooden Wheeled Carts pulled by Oxen",
-      "Steam-powered Railway Locomotives"
+      "Bullock carts with wooden wheels",
+      "Steam-powered railway trains"
     ],
-    correctAnswer: "Solid Wooden Wheeled Carts pulled by Oxen",
-    explanation: "Animal-drawn wheeled carts were used over 4,000 years ago in Bronze Age civilizations, whereas steam locomotives were invented in the 1800s CE."
+    correctAnswer: "Bullock carts with wooden wheels",
+    explanation: "Clay toy carts found in Harappan cities prove that wooden wheeled carts pulled by oxen were used over 4,000 years ago, long before trains existed."
   },
   {
     id: "ba_011",
     category: "before-or-after",
     type: "before-after",
-    difficulty: "challenge",
+    difficulty: "medium",
     points: 10,
-    prompt: "Compare two ancient Indian urban phases:",
+    prompt: "Compare two ancient city regions in India from Class 6 NCERT:",
     eventA: {
-      label: "First Urbanization (The Indus Valley Cities)",
-      detail: "c. 2600 BCE – 1900 BCE (Northwest)"
+      label: "The Indus Valley Cities (Mohenjo-daro & Harappa)",
+      detail: "About 4700 years ago (c. 2500 BCE)"
     },
     eventB: {
-      label: "Second Urbanization (The Ganga Valley Mahajanapada Cities)",
-      detail: "c. 600 BCE – 300 BCE (Northern India)"
+      label: "The Ganga Valley Cities (like Rajagriha and Pataliputra in Magadha)",
+      detail: "About 2500 years ago (c. 500 BCE)"
     },
-    question: "Which urbanization took place EARLIER in time?",
+    question: "Which cities were built EARLIER in Indian history?",
     options: [
-      "First Urbanization (The Indus Valley Cities)",
-      "Second Urbanization (The Ganga Valley Mahajanapada Cities)"
+      "The Indus Valley Cities (Mohenjo-daro & Harappa)",
+      "The Ganga Valley Cities (like Rajagriha and Pataliputra in Magadha)"
     ],
-    correctAnswer: "First Urbanization (The Indus Valley Cities)",
-    explanation: "The Bronze Age cities of the Indus (Mohenjo-daro, Harappa) represent the First Urbanization, roughly 2,000 years before the Second Urbanization in the Ganga Valley."
+    correctAnswer: "The Indus Valley Cities (Mohenjo-daro & Harappa)",
+    explanation: "The earliest cities in India grew on the banks of the Indus River about 4700 years ago, more than 2000 years before cities developed along the River Ganga."
   },
   {
     id: "ba_012",
@@ -260,21 +260,21 @@ export const BEFORE_AFTER_QUESTIONS: BeforeAfterQuestion[] = [
     type: "before-after",
     difficulty: "medium",
     points: 10,
-    prompt: "Compare these two currency systems:",
+    prompt: "Compare these two methods of trade:",
     eventA: {
-      label: "Barter System (Direct exchange of goods like grain or cattle for cloth)",
-      detail: "Pre-monetary communities"
+      label: "Barter system (exchanging grain or cattle directly for pots or cloth)",
+      detail: "Before metallic coins were invented"
     },
     eventB: {
-      label: "Standardized Metallic Coins stamped by State Authorities",
-      detail: "Punch-marked coins & royal coinage"
+      label: "Punch-marked coins (stamped silver and copper pieces)",
+      detail: "About 2500 years ago"
     },
-    question: "Which method of commerce was practiced EARLIER?",
+    question: "Which method of trade was used EARLIER?",
     options: [
-      "Barter System (Direct exchange of goods like grain or cattle for cloth)",
-      "Standardized Metallic Coins stamped by State Authorities"
+      "Barter system (exchanging grain or cattle directly for pots or cloth)",
+      "Punch-marked coins (stamped silver and copper pieces)"
     ],
-    correctAnswer: "Barter System (Direct exchange of goods like grain or cattle for cloth)",
-    explanation: "Before metallic coins were minted in the 1st millennium BCE, people exchanged cattle, grain, salt, and crafted goods directly through the barter system."
+    correctAnswer: "Barter system (exchanging grain or cattle directly for pots or cloth)",
+    explanation: "Before metal coins were minted, people traded through the barter system, directly exchanging cows, grain, and handmade goods."
   }
 ];

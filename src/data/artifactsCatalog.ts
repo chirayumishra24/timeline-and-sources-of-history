@@ -19,16 +19,16 @@ export const ARTIFACTS_CATALOG: ArtifactDefinition[] = [
     era: "c. 250 BCE",
     categoryTag: "sources",
     icon: "📜",
-    description: "Carved into solid rock in Brahmi script, delivering royal moral edicts and administrative messages directly to the populace."
+    description: "Carved into solid rock in Brahmi script, delivering Emperor Ashoka's royal message of Dhamma and peace directly to the people."
   },
   {
     id: "art_02",
-    name: "Punch-Marked Silver Karshapana",
+    name: "Punch-Marked Silver Coin",
     type: "Coin",
     era: "c. 400 BCE",
     categoryTag: "source-detective",
     icon: "🪙",
-    description: "Ancient metallic trade currency stamped with sun, tree, and hill symbols, revealing market exchange and metallurgical skills."
+    description: "Ancient silver trade coin stamped with sun, tree, and hill symbols, showing early market exchange and metal skills."
   },
   {
     id: "art_03",
@@ -37,16 +37,16 @@ export const ARTIFACTS_CATALOG: ArtifactDefinition[] = [
     era: "c. 2500 BCE",
     categoryTag: "sources",
     icon: "🏺",
-    description: "Square steatite seal engraved with a one-horned animal and undeciphered script, used to seal cargo bundles in ancient trade."
+    description: "Square stone seal engraved with an animal and Harappan script, used by merchants to stamp bags of goods."
   },
   {
     id: "art_04",
-    name: "Birch-Bark Buddhist Manuscript",
+    name: "Birch-Bark Manuscript",
     type: "Manuscript",
     era: "c. 1st Century CE",
     categoryTag: "sources",
     icon: "📑",
-    description: "Carefully inscribed on layers of Himalayan birch bark (Bhurjapatra), preserving philosophical discourses across generations."
+    description: "Ancient book carefully written by hand on layers of Himalayan birch bark (Bhurjapatra) with ink."
   },
   {
     id: "art_05",
@@ -55,7 +55,7 @@ export const ARTIFACTS_CATALOG: ArtifactDefinition[] = [
     era: "Ancient Mesopotamia",
     categoryTag: "timeline",
     icon: "🧱",
-    description: "Baked cuneiform tablet chronicling dynastic rulers, foundation years, and astronomical observations in exact chronological order."
+    description: "Baked clay tablet recording historical events, kings, and dates in chronological order."
   },
   {
     id: "art_06",
@@ -64,7 +64,7 @@ export const ARTIFACTS_CATALOG: ArtifactDefinition[] = [
     era: "c. 1st Century BCE",
     categoryTag: "connect-the-clues",
     icon: "🏺",
-    description: "Ceramic Mediterranean wine jar shards unearthed on the Coromandel Coast, concrete proof of bustling Indo-Roman maritime commerce."
+    description: "Broken pieces of a Roman wine jar found on the South Indian coast, proving sea trade with Rome."
   },
   {
     id: "art_07",
@@ -73,7 +73,7 @@ export const ARTIFACTS_CATALOG: ArtifactDefinition[] = [
     era: "c. 2300 BCE",
     categoryTag: "source-detective",
     icon: "🗽",
-    description: "Cast using the lost-wax technique in Mohenjo-daro, displaying sophisticated metallurgy and artistic posture."
+    description: "Famous bronze statue found at Mohenjo-daro, showing skilled metal-casting and artistic talent."
   },
   {
     id: "art_08",
@@ -82,25 +82,25 @@ export const ARTIFACTS_CATALOG: ArtifactDefinition[] = [
     era: "c. 400 CE",
     categoryTag: "sources",
     icon: "🏛️",
-    description: "Rust-resistant metallurgical marvel bearing Sanskrit poetic inscriptions dedicated to King Chandra."
+    description: "Over 1500-year-old iron pillar at Delhi that has stood in rain and sun without rusting away."
   },
   {
     id: "art_09",
-    name: "Ptolemaic World Map Scroll",
+    name: "Ancient World Map Scroll",
     type: "Map",
     era: "c. 150 CE",
     categoryTag: "what-can-we-know",
     icon: "🗺️",
-    description: "Early cartographic projection showing how Mediterranean geographers visualized oceans, mountain ranges, and trade ports."
+    description: "Ancient world map showing how ancient travelers imagined continents, seas, and trade ports."
   },
   {
     id: "art_10",
-    name: "Palm-Leaf Astronomical Treatise",
+    name: "Palm-Leaf Manuscript",
     type: "Manuscript",
     era: "c. 500 CE",
     categoryTag: "timeline",
     icon: "🌿",
-    description: "Dried palm leaves bound with cord, recording solar eclipses and planetary alignments calculated by ancient astronomers."
+    description: "Dried palm leaves tied with string, containing handwritten ancient knowledge and astronomical calculations."
   },
   {
     id: "art_11",
@@ -109,7 +109,7 @@ export const ARTIFACTS_CATALOG: ArtifactDefinition[] = [
     era: "c. 380 CE",
     categoryTag: "source-detective",
     icon: "🪙",
-    description: "Pure gold coin depicting the emperor holding a bow with Goddess Lakshmi seated on a lotus on the reverse."
+    description: "Pure gold coin showing Emperor Chandragupta II holding a bow, with Goddess Lakshmi on the reverse."
   },
   {
     id: "art_12",
@@ -118,7 +118,7 @@ export const ARTIFACTS_CATALOG: ArtifactDefinition[] = [
     era: "c. 1000 BCE",
     categoryTag: "before-or-after",
     icon: "🥣",
-    description: "Fine grey tableware with geometric black painted designs, used by early Iron Age farming communities in the Indo-Gangetic divide."
+    description: "Fine grey clay bowl with painted black lines, used by early farming communities in northern India."
   },
   {
     id: "art_13",
@@ -127,7 +127,7 @@ export const ARTIFACTS_CATALOG: ArtifactDefinition[] = [
     era: "c. 600 CE",
     categoryTag: "connect-the-clues",
     icon: "📜",
-    description: "Engraved copper plates fastened with a royal seal ring, recording village boundaries, tax exemptions, and dynastic lineage."
+    description: "Engraved copper plates joined with a royal seal ring, recording land grants and gifts from kings."
   },
   {
     id: "art_14",
@@ -136,7 +136,7 @@ export const ARTIFACTS_CATALOG: ArtifactDefinition[] = [
     era: "c. 2400 BCE",
     categoryTag: "sources",
     icon: "💎",
-    description: "Ergonomic chert drill used in Lothal workshops to perforate delicate carnelian and agate gemstone beads."
+    description: "Small stone drill used by craftspersons in Lothal to bore holes through shiny gemstone beads."
   },
   {
     id: "art_15",
@@ -145,7 +145,7 @@ export const ARTIFACTS_CATALOG: ArtifactDefinition[] = [
     era: "c. 2200 BCE",
     categoryTag: "fix-the-timeline",
     icon: "📏",
-    description: "Graduated measuring ruler with millimeter-level divisions, demonstrating standardized weights and measures in urban planning."
+    description: "Graduated measuring ruler made of ivory found at Lothal, showing standardized measurement units."
   },
   {
     id: "art_16",
@@ -154,7 +154,7 @@ export const ARTIFACTS_CATALOG: ArtifactDefinition[] = [
     era: "c. 2100 BCE",
     categoryTag: "history-blitz",
     icon: "🔷",
-    description: "Brilliant ultramarine gemstone mined in Badakhshan and traded across Zagros mountains to Sumerian temples."
+    description: "Bright blue gemstone bead traded from distant mines across ancient trade routes to royal cities."
   },
   {
     id: "art_17",
@@ -163,16 +163,16 @@ export const ARTIFACTS_CATALOG: ArtifactDefinition[] = [
     era: "c. 100 BCE",
     categoryTag: "source-detective",
     icon: "⛩️",
-    description: "Intricately sculpted sandstone Torana depicting continuous narrative scenes of daily life, pilgrims, and flora."
+    description: "Intricately carved stone gateway of a Buddhist stupa showing scenes of ancient daily life and festivals."
   },
   {
     id: "art_18",
-    name: "Royal Chronicler's Inkpot & Stylus",
+    name: "Royal Scribe's Inkpot & Stylus",
     type: "Artifact",
     era: "c. 700 CE",
     categoryTag: "timeline",
     icon: "🖋️",
-    description: "Stone inkwell and reed stylus used by court scribes to record genealogies and royal administrative decrees."
+    description: "Stone inkpot and reed pen used by ancient scribes to write royal chronicles and letters."
   },
   {
     id: "art_19",
@@ -181,7 +181,7 @@ export const ARTIFACTS_CATALOG: ArtifactDefinition[] = [
     era: "c. 2600 BCE",
     categoryTag: "what-can-we-know",
     icon: "🧱",
-    description: "Kiln-baked brick fired with strict 4:2:1 ratio proportions, illustrating disciplined civic masonry and grain management."
+    description: "Baked brick made with a standard ratio of 4:2:1, used to build granaries and planned houses in Harappa."
   },
   {
     id: "art_20",
@@ -190,7 +190,7 @@ export const ARTIFACTS_CATALOG: ArtifactDefinition[] = [
     era: "c. 2300 BCE",
     categoryTag: "connect-the-clues",
     icon: "⚓",
-    description: "Heavy stone anchor stone with boreholes excavated at Lothal tidal basin, designed to secure oceanic merchant vessels."
+    description: "Heavy stone anchor excavated at Lothal's dockyard, used to tie and secure sailing merchant ships."
   },
   {
     id: "art_21",
@@ -199,7 +199,7 @@ export const ARTIFACTS_CATALOG: ArtifactDefinition[] = [
     era: "c. 2 BCE",
     categoryTag: "source-detective",
     icon: "🪙",
-    description: "Found in Tamil Nadu hoard alongside local coins, documenting international luxury pepper and silk exchange."
+    description: "Silver coin of Roman Emperor Augustus found in India, proving trade of Indian spices for Roman coins."
   },
   {
     id: "art_22",
@@ -208,7 +208,7 @@ export const ARTIFACTS_CATALOG: ArtifactDefinition[] = [
     era: "c. 2200 BCE",
     categoryTag: "sources",
     icon: "🛞",
-    description: "Miniature ceramic ox-cart showing how ancient children played and revealing early vehicular technology."
+    description: "Miniature clay ox-cart toy with wheels, showing how Harappan children played and traveled."
   },
   {
     id: "art_23",
@@ -217,7 +217,7 @@ export const ARTIFACTS_CATALOG: ArtifactDefinition[] = [
     era: "c. 250 BCE",
     categoryTag: "sources",
     icon: "🦁",
-    description: "Polished Chunar sandstone featuring four back-to-back lions and the Dharmachakra, symbol of sovereign righteousness."
+    description: "Polished sandstone pillar capital at Sarnath featuring four lions, adopted as India's national emblem."
   },
   {
     id: "art_24",
@@ -226,7 +226,7 @@ export const ARTIFACTS_CATALOG: ArtifactDefinition[] = [
     era: "c. 300 BCE",
     categoryTag: "timeline",
     icon: "⏳",
-    description: "Calibrated Clepsydra bowl with orifice indicating precise nocturnal hours for astronomical calculation."
+    description: "Ancient bowl with a hole used to measure time by dripping water, an early water clock."
   }
 ];
 
