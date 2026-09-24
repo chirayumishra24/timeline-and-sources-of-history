@@ -36,6 +36,41 @@ export default function HistoryWheelApp() {
   const [reviewOpen, setReviewOpen] = useState(false);
   const [historyOpen, setHistoryOpen] = useState(false);
   const [inspectArtifact, setInspectArtifact] = useState<{ artifact: DiscoveredArtifact; team: Team } | null>(null);
+  const [historyStack, setHistoryStack] = useState<GameState[]>([]);
+
+  const pushStateToHistory = useCallback((currentState: GameState) => {
+    setHistoryStack(prev => [...prev.slice(-20), currentState]);
+  }, []);
+
+  const canGoBack = historyStack.length > 0 || state.phase !== 'intro';
+
+  const handleGoBack = useCallback(() => {
+    if (historyStack.length > 0) {
+      const prevState = historyStack[historyStack.length - 1];
+      setHistoryStack(prev => prev.slice(0, -1));
+      setState(prevState);
+    } else {
+      // Deterministic fallback if stack was empty (e.g. after page refresh)
+      setState(prev => {
+        if (prev.phase === 'setup') return { ...prev, phase: 'intro' };
+        if (prev.phase === 'instructions') return { ...prev, phase: 'setup' };
+        if (prev.phase === 'spin') return { ...prev, phase: 'instructions' };
+        if (prev.phase === 'question') {
+          return {
+            ...prev,
+            phase: 'spin',
+            currentCategory: null,
+            dualQuestions: null,
+            dualAnswers: { teamA: null, teamB: null },
+          };
+        }
+        if (prev.phase === 'final_challenge') return { ...prev, phase: 'spin' };
+        if (prev.phase === 'tie_breaker') return { ...prev, phase: 'final_challenge' };
+        if (prev.phase === 'results') return { ...prev, phase: 'spin' };
+        return prev;
+      });
+    }
+  }, [historyStack]);
 
   // Restore game session on client mount
   useEffect(() => {
@@ -122,6 +157,7 @@ export default function HistoryWheelApp() {
     }
 
     // Directly show both questions on screen - NO POPUP NOTHING!
+    pushStateToHistory(state);
     setState(prev => ({
       ...prev,
       currentCategory: category,
@@ -138,7 +174,7 @@ export default function HistoryWheelApp() {
       lastAnswerResult: null,
       pendingDiscovery: null,
     }));
-  }, [state.usedQuestionIds]);
+  }, [state, pushStateToHistory]);
 
   // 2. Question Answer Submission for a Team (Inline Feedback, NO POPUP)
   const handleDualAnswerSubmit = (teamId: 'teamA' | 'teamB', userAnswer: any) => {
@@ -221,6 +257,7 @@ export default function HistoryWheelApp() {
 
   // 3. Proceed to Next Spin
   const handleProceedToNextSpin = () => {
+    pushStateToHistory(state);
     setState(prev => {
       const nextRound = prev.currentRound + 1;
 
@@ -260,6 +297,7 @@ export default function HistoryWheelApp() {
     teamACorrect: boolean;
     teamBCorrect: boolean;
   }) => {
+    pushStateToHistory(state);
     setState(prev => {
       const updatedTeamA = {
         ...prev.teams.teamA,
@@ -287,6 +325,7 @@ export default function HistoryWheelApp() {
 
   // 8. Tie-breaker resolution
   const handleTieResolved = (winnerId: 'teamA' | 'teamB') => {
+    pushStateToHistory(state);
     setState(prev => {
       const winner = prev.teams[winnerId];
       const updatedWinner = {
@@ -306,6 +345,7 @@ export default function HistoryWheelApp() {
 
   // 9. Reset Game
   const handleResetGame = () => {
+    setHistoryStack([]);
     clearGameSession();
     setState(INITIAL_GAME_STATE);
   };
@@ -324,6 +364,7 @@ export default function HistoryWheelApp() {
     teamBEmblem: EmblemType;
     maxRounds: number;
   }) => {
+    pushStateToHistory(state);
     setState(prev => ({
       ...prev,
       maxRounds,
@@ -384,13 +425,20 @@ export default function HistoryWheelApp() {
         onOpenSettings={() => setSettingsOpen(true)}
         onOpenReview={() => setReviewOpen(true)}
         hasAnswerHistory={state.answerHistory.length > 0}
+        canGoBack={canGoBack}
+        onGoBack={handleGoBack}
       />
 
       {/* Main Game Arena */}
       <main className="flex-1 w-full max-w-7xl 2xl:max-w-[1680px] mx-auto p-2 sm:p-4 2xl:p-6 flex flex-col justify-center">
         {/* Phase 1: Intro */}
         {state.phase === 'intro' && (
-          <GameIntro onProceedToSetup={() => setState(p => ({ ...p, phase: 'setup' }))} />
+          <GameIntro
+            onProceedToSetup={() => {
+              pushStateToHistory(state);
+              setState(p => ({ ...p, phase: 'setup' }));
+            }}
+          />
         )}
 
         {/* Phase 2: Setup */}
@@ -402,13 +450,18 @@ export default function HistoryWheelApp() {
             initialTeamBEmblem={state.teams.teamB.emblem}
             initialRounds={state.maxRounds}
             onCompleteSetup={handleCompleteSetup}
+            onBack={handleGoBack}
           />
         )}
 
         {/* Phase 3: Instructions */}
         {state.phase === 'instructions' && (
           <InstructionsScreen
-            onStart={() => setState(p => ({ ...p, phase: 'spin' }))}
+            onStart={() => {
+              pushStateToHistory(state);
+              setState(p => ({ ...p, phase: 'spin' }));
+            }}
+            onBack={handleGoBack}
           />
         )}
 
@@ -485,6 +538,7 @@ export default function HistoryWheelApp() {
             onAnswerSubmit={handleDualAnswerSubmit}
             onProceedToNextSpin={handleProceedToNextSpin}
             nextSpinTeam={nextTeam}
+            onBackToSpin={handleGoBack}
           />
         )}
 

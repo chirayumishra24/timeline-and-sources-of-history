@@ -15,7 +15,7 @@ import { SourceDetectiveView } from './questions/SourceDetectiveView';
 import { ConnectCluesView } from './questions/ConnectCluesView';
 import { EvidenceEvalView } from './questions/EvidenceEvalView';
 import { BlitzView } from './questions/BlitzView';
-import { CheckCircle2, XCircle, ArrowRight } from 'lucide-react';
+import { CheckCircle2, XCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 
 interface DualQuestionsArenaProps {
   category: WheelCategory;
@@ -30,6 +30,7 @@ interface DualQuestionsArenaProps {
   onAnswerSubmit: (teamId: TeamId, answer: any) => void;
   onProceedToNextSpin: () => void;
   nextSpinTeam: Team;
+  onBackToSpin?: () => void;
 }
 
 export const DualQuestionsArena: React.FC<DualQuestionsArenaProps> = ({
@@ -45,6 +46,7 @@ export const DualQuestionsArena: React.FC<DualQuestionsArenaProps> = ({
   onAnswerSubmit,
   onProceedToNextSpin,
   nextSpinTeam,
+  onBackToSpin,
 }) => {
   const meta = getCategoryMeta(category);
   const bothAnswered = !!answerTeamA && !!answerTeamB;
@@ -158,8 +160,20 @@ export const DualQuestionsArena: React.FC<DualQuestionsArenaProps> = ({
           </div>
         </div>
 
-        {/* Live Round Status */}
+        {/* Live Round Status & Back Button */}
         <div className="flex items-center space-x-1.5 2xl:space-x-3 text-[11px] 2xl:text-sm font-bold">
+          {onBackToSpin && (
+            <button
+              type="button"
+              onClick={onBackToSpin}
+              className="flex items-center space-x-1 px-2.5 2xl:px-3 py-1 2xl:py-2 rounded-lg bg-stone-100 hover:bg-stone-200 border border-stone-300 text-stone-700 text-xs font-semibold transition-colors shadow-xs"
+              title="Return to Wheel"
+            >
+              <ArrowLeft className="w-3.5 h-3.5 text-stone-600" />
+              <span>Back to Wheel</span>
+            </button>
+          )}
+
           <div className={`px-2.5 2xl:px-4 py-1 2xl:py-2 rounded-lg border flex items-center space-x-1 ${
             answerTeamA
               ? 'bg-emerald-50 text-emerald-800 border-emerald-300'

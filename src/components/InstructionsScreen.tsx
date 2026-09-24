@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
-import { ArrowRight, HelpCircle } from 'lucide-react';
+import { ArrowRight, ArrowLeft, HelpCircle } from 'lucide-react';
 
 interface InstructionsScreenProps {
   onStart: () => void;
+  onBack?: () => void;
 }
 
-export const InstructionsScreen: React.FC<InstructionsScreenProps> = ({ onStart }) => {
+export const InstructionsScreen: React.FC<InstructionsScreenProps> = ({ onStart, onBack }) => {
   // Press Enter key to start
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -98,16 +99,29 @@ export const InstructionsScreen: React.FC<InstructionsScreenProps> = ({ onStart 
           ))}
         </div>
 
-        {/* Start Button */}
+        {/* Start / Back Buttons */}
         <div className="flex flex-col items-center justify-center">
-          <button
-            type="button"
-            onClick={onStart}
-            className="px-8 sm:px-10 py-3 sm:py-3.5 rounded-2xl bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 hover:from-amber-500 hover:to-amber-500 text-white font-serif font-bold text-base sm:text-lg tracking-wider transition-all shadow-xl hover:scale-105 active:scale-95 flex items-center space-x-2.5 border-2 border-amber-400 animate-pulse"
-          >
-            <span>LET&apos;S PLAY</span>
-            <ArrowRight className="w-5 h-5" />
-          </button>
+          <div className="flex items-center space-x-3 sm:space-x-4">
+            {onBack && (
+              <button
+                type="button"
+                onClick={onBack}
+                className="px-6 py-3 sm:py-3.5 rounded-2xl bg-stone-100 hover:bg-stone-200 border border-stone-300 text-stone-700 font-serif font-bold text-sm tracking-wider transition-all shadow-md hover:scale-105 active:scale-95 flex items-center space-x-2"
+                title="Go back to setup"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                <span>BACK</span>
+              </button>
+            )}
+            <button
+              type="button"
+              onClick={onStart}
+              className="px-8 sm:px-10 py-3 sm:py-3.5 rounded-2xl bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 hover:from-amber-500 hover:to-amber-500 text-white font-serif font-bold text-base sm:text-lg tracking-wider transition-all shadow-xl hover:scale-105 active:scale-95 flex items-center space-x-2.5 border-2 border-amber-400 animate-pulse"
+            >
+              <span>LET&apos;S PLAY</span>
+              <ArrowRight className="w-5 h-5" />
+            </button>
+          </div>
           <span className="text-[10px] text-stone-400 font-medium mt-1.5 hidden sm:block">
             Press Enter ↵ to begin
           </span>

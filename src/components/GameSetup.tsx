@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { EmblemType } from '@/types/team';
 import { EmblemIcon } from './EmblemIcon';
-import { Sparkles, Users, ArrowRight } from 'lucide-react';
+import { Sparkles, Users, ArrowRight, ArrowLeft } from 'lucide-react';
 
 interface GameSetupProps {
   initialTeamAName: string;
@@ -16,6 +16,7 @@ interface GameSetupProps {
     teamBEmblem: EmblemType;
     maxRounds: number;
   }) => void;
+  onBack?: () => void;
 }
 
 const AVAILABLE_EMBLEMS: { type: EmblemType; label: string }[] = [
@@ -44,6 +45,7 @@ export const GameSetup: React.FC<GameSetupProps> = ({
   initialTeamBEmblem,
   initialRounds,
   onCompleteSetup,
+  onBack,
 }) => {
   const [teamAName, setTeamAName] = useState(initialTeamAName);
   const [teamBName, setTeamBName] = useState(initialTeamBName);
@@ -202,7 +204,18 @@ export const GameSetup: React.FC<GameSetupProps> = ({
           </div>
 
           {/* Action CTA */}
-          <div className="flex justify-center pt-2">
+          <div className="flex items-center justify-center space-x-3 sm:space-x-4 pt-2">
+            {onBack && (
+              <button
+                type="button"
+                onClick={onBack}
+                className="px-6 py-4 rounded-2xl bg-stone-100 hover:bg-stone-200 border border-stone-300 text-stone-700 font-serif font-bold text-sm tracking-wider transition-all shadow-md hover:scale-105 active:scale-95 flex items-center space-x-2"
+                title="Go back to introduction"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                <span>BACK</span>
+              </button>
+            )}
             <button
               type="submit"
               className="px-10 py-4 rounded-2xl bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 hover:from-amber-500 hover:to-amber-500 text-white font-serif font-bold text-lg tracking-wider transition-all shadow-xl hover:scale-105 active:scale-95 flex items-center space-x-2.5 border-2 border-amber-400"

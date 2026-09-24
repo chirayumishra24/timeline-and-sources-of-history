@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Volume2, VolumeX, RotateCcw, Settings as SettingsIcon, BookOpen, Maximize2, Minimize2 } from 'lucide-react';
+import { Volume2, VolumeX, RotateCcw, Settings as SettingsIcon, BookOpen, Maximize2, Minimize2, ArrowLeft } from 'lucide-react';
 import { soundManager } from '@/utils/sound';
 
 interface GameHeaderProps {
@@ -13,6 +13,8 @@ interface GameHeaderProps {
   onOpenSettings?: () => void;
   onOpenReview?: () => void;
   hasAnswerHistory?: boolean;
+  canGoBack?: boolean;
+  onGoBack?: () => void;
 }
 
 export const GameHeader: React.FC<GameHeaderProps> = ({
@@ -26,6 +28,8 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
   onOpenSettings,
   onOpenReview,
   hasAnswerHistory,
+  canGoBack,
+  onGoBack,
 }) => {
   const [isFullscreen, setIsFullscreen] = useState(false);
 
@@ -56,6 +60,17 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
       <div className="max-w-7xl mx-auto flex flex-row items-center justify-between gap-2">
         {/* Title and Academic Metadata */}
         <div className="flex items-center space-x-2">
+          {canGoBack && onGoBack && (
+            <button
+              onClick={onGoBack}
+              className="flex items-center space-x-1 px-2.5 py-1.5 rounded-lg bg-white/90 hover:bg-amber-100 border border-amber-300/80 hover:border-amber-400 text-amber-950 text-xs font-bold transition-all shadow-xs hover:scale-105 active:scale-95 shrink-0"
+              title="Go back a step"
+              aria-label="Go back one step"
+            >
+              <ArrowLeft className="w-3.5 h-3.5 text-amber-800" />
+              <span>Back</span>
+            </button>
+          )}
           <div className="w-7 h-7 rounded-full bg-amber-100 border border-amber-300 flex items-center justify-center text-sm shadow-inner shrink-0">
             🏛️
           </div>
